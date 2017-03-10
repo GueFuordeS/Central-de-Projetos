@@ -1,7 +1,7 @@
 Projeto final - Laboratorio de Programacao 2 - UFCG
 
-@Gabriel Fernandes 
+==> Gabriel Fernandes 
 
-@Ailton Araújo 
+==> Ailton Araújo 
 
-@Akylles Lima
+==> Akylles Lima
