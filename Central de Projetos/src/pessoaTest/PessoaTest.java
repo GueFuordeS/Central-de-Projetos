@@ -67,7 +67,5 @@ public class PessoaTest {
 		Pessoa p3 = new Pessoa("222.333.444-56","Natasha","natasha@ccc.ufcg.edu.br");
 		assertFalse(p.equals(p3));
 		System.out.println(p);
-	}
-	
-	
+	}	
 }
