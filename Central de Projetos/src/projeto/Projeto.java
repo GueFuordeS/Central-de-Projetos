@@ -9,6 +9,7 @@ public class Projeto {
 	String objetivo;
 	Date dataInicio;
 	int duracao;
+	Despesa despesa;
 	
 	public Projeto(String nome, String objetivo, String date, int duracao) throws ValidacaoException {
 		validaNome(nome);
@@ -19,6 +20,7 @@ public class Projeto {
 		this.objetivo = objetivo;
 		this.dataInicio = new Date(date);
 		this.duracao = duracao;
+		despesa = new Despesa();
 	}
 
 	public String getNome() {
