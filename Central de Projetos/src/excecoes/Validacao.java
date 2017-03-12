@@ -15,7 +15,7 @@ public class Validacao {
 		
 		String cpfForm = "\\d\\d\\d.\\d\\d\\d.\\d\\d\\d-\\d\\d";
 		
-		if(!cpf.matches(cpfForm)) throw new ValidacaoException("Erro no cadastro de pessoa: CPF nulo ou vazio");
+		if(!cpf.matches(cpfForm)) throw new ValidacaoException("Erro no cadastro de pessoa: CPF invalido");
 	} 
 } 
 		

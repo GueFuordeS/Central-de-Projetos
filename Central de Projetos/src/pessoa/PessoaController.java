@@ -2,7 +2,7 @@ package pessoa;
 
 import java.util.HashSet;
 
-import excecoes.ValidacaoException;
+import excecoes.*;
 
 public class PessoaController {
 	private HashSet<Pessoa> pessoas;
@@ -10,25 +10,37 @@ public class PessoaController {
 	public PessoaController() {
 		this.pessoas = new HashSet<>();
 	}
-	
+
 	public String cadastraPessoa(String cpf, String nome, String email) throws ValidacaoException {
 			Pessoa p = new Pessoa(cpf,nome,email);
 			this.pessoas.add(p);
 			return p.getCpf();
 	}
 	
-	public void removePath(String cpf) throws ValidacaoException {
-		boolean bool = true;
+	public void removePessoa(String cpf) throws ValidacaoException, NaoEncontradaException {
+		Pessoa p = this.recuperaPessoa(cpf);
+		pessoas.remove(p);
+	}
+	
+	public Pessoa recuperaPessoa(String cpf) throws NaoEncontradaException, ValidacaoException {
+		Validacao.validaCpf(cpf);
 		for(Pessoa p:pessoas) {
 			if(p.getCpf().equals(cpf)) {
-				pessoas.remove(p);
-				bool = false;
+				return p;
 			}
 		}
+		throw new NaoEncontradaException();
+	}
+	
+	public void editaPessoa(String cpf, String opcao, String nova) throws ValidacaoException, NaoEncontradaException {
+		Validacao.validaCpf(cpf);
+		Validacao.validaString(opcao);
+		Validacao.validaString(nova);
 		
-		if(bool) {
-			throw new Exception("Erro na consulta de pessoa: Pessoa nao encontrada");
-		}
+		Pessoa p = this.recuperaPessoa(cpf);
+		if(opcao.toLowerCase().equals("nome")) p.setNome(nova);
+		else if(opcao.toLowerCase().equals("email")) p.setEmail(nova);
+		else throw new ValidacaoException("Opcao especificada nao existe");
 	}
 	
 	public String toString() {
