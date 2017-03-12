@@ -23,7 +23,7 @@ public class PessoaController {
 	}
 	
 	public Pessoa recuperaPessoa(String cpf) throws NaoEncontradaException, ValidacaoException {
-		Validacao.validaCpf(cpf);
+		Validacao.validaCpfUpdate(cpf);
 		for(Pessoa p:pessoas) {
 			if(p.getCpf().equals(cpf)) {
 				return p;
@@ -33,13 +33,20 @@ public class PessoaController {
 	}
 	
 	public void editaPessoa(String cpf, String opcao, String nova) throws ValidacaoException, NaoEncontradaException {
-		Validacao.validaCpf(cpf);
-		Validacao.validaString(opcao);
-		Validacao.validaString(nova);
+	
 		
 		Pessoa p = this.recuperaPessoa(cpf);
-		if(opcao.toLowerCase().equals("nome")) p.setNome(nova);
-		else if(opcao.toLowerCase().equals("email")) p.setEmail(nova);
+		if(opcao.toLowerCase().equals("nome")) {
+			p.setNome(nova);
+		}
+		else if(opcao.toLowerCase().equals("email")) {
+			p.setEmail(nova);
+		}
+		
+		else if(opcao.toLowerCase().equals("cpf")) { 
+			throw new ValidacaoException("Erro na atualizacao de pessoa: CPF nao pode ser alterado");
+	}
+		
 		else throw new ValidacaoException("Opcao especificada nao existe");
 	}
 	

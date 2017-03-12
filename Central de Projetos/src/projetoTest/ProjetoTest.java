@@ -37,5 +37,4 @@ public class ProjetoTest {
 			assertEquals("Erro: nome nao pode ser nulo ou vazio",e.getMessage());
 		}
 	}
-
 }

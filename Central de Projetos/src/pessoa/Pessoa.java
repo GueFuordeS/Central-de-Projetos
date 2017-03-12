@@ -11,7 +11,7 @@ public class Pessoa {
 	public Pessoa(String cpf, String nome, String email) throws ValidacaoException {
 		Validacao.validaCpf(cpf);
 		Validacao.validaString(nome);
-		Validacao.validaString(email);
+		Validacao.validaEmail(email);
 		
 		this.cpf = cpf;
 		this.nome = nome;
@@ -41,15 +41,9 @@ public class Pessoa {
 		}
 	}
 	
-	public Boolean setEmail(String email) {
-		try {
-			Validacao.validaString(email);
-			this.email = email;
-			return true;
-		}
-		catch (ValidacaoException e) {
-			return false;
-		}
+	public void setEmail(String email) throws ValidacaoException {
+		Validacao.validaEmail(email);
+		this.email = email;
 	}
 
 	@Override

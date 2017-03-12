@@ -51,7 +51,7 @@ public class PessoaTest {
 	}	
 	
 	@Test
-	public void settersTest() {
+	public void settersTest() throws ValidacaoException {
 		assertEquals("Natasha",p.getNome());
 		p.setNome("Naty");
 		assertEquals("Naty",p.getNome());
