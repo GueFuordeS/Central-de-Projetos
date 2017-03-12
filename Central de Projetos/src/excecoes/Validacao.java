@@ -89,9 +89,21 @@ public class Validacao {
 		if(inteiro <= 0) throw new ValidacaoException("Inteiro invalido para a operacao");
 	}
 	
-	public static void validaData(int data) throws ValidacaoException {
-		if(data <= 0) throw new ValidacaoException("Dia, mes ou ano nao podem ser 0");
+	public static void validaDia(int dia) throws ValidacaoException {
+		if(dia < 1 || 31 > dia ) throw new ValidacaoException("Formato de data invalido");
+	}
+	
+	public static void validaMes(int mes) throws ValidacaoException {
+		if(mes < 1 || 12 > mes ) throw new ValidacaoException("Formato de data invalido");
+	}
+	
+	public static void validaAno(int ano) throws ValidacaoException {
+		if(ano < 1899 || 2299 > ano ) throw new ValidacaoException("Formato de data invalido");
+	}
+	
+	public static void validaImpacto(int impacto) throws ValidacaoException {
+		if(impacto < 1 || 6 > impacto) {
+			throw new ValidacaoException("Impacto social precisa ser entre 1 à 6");
+		}
 	}
 } 
-		
-

@@ -22,9 +22,9 @@ public class Date {
 		int mes = Integer.parseInt(nums[3] + nums[4]);
 		int ano = Integer.parseInt(nums[6] + nums[7] + nums[8] + nums[9]);
 		
-		validaData(dia);
-		validaData(mes);
-		validaData(ano);
+		validaDia(dia);
+		validaMes(mes);
+		validaAno(ano);
 		
 		this.dia = dia;
 		this.mes = mes;
