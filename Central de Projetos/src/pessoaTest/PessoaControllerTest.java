@@ -97,6 +97,6 @@ public class PessoaControllerTest {
 				   + FIM_DE_LINHA
 				   + "Email: natasha@ccc.ufcg.edu.br"
 				   + FIM_DE_LINHA
-				   ,pessoas.toString());
+				   , pessoas.toString());
 	}
 }

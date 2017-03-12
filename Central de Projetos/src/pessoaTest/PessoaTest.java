@@ -30,8 +30,9 @@ public class PessoaTest {
 			fail();
 		}
 		catch(ValidacaoException e) {
-			assertEquals("Erro no cadastro de pessoa: CPF nulo ou vazio",e.getMessage());
+			assertEquals("Erro no cadastro de pessoa: CPF invalido",e.getMessage());
 		}
+		
 		try {
 			new Pessoa("222.333.444-55","     ","natasha@ccc.ufcg.edu.br");
 			fail();
@@ -39,6 +40,7 @@ public class PessoaTest {
 		catch(ValidacaoException e) {
 			assertEquals("Erro no cadastro de pessoa.",e.getMessage());
 		}
+		
 		try {
 			new Pessoa("222.333.444-55","natasha",null);
 			fail();
@@ -66,6 +68,14 @@ public class PessoaTest {
 		
 		Pessoa p3 = new Pessoa("222.333.444-56","Natasha","natasha@ccc.ufcg.edu.br");
 		assertFalse(p.equals(p3));
-		System.out.println(p);
-	}	
+	}
+	
+	@Test
+	public void toStringTest() {
+		final String FIM_DE_LINHA = System.lineSeparator();
+		String string = "Cpf: 222.333.444-55"   + FIM_DE_LINHA +
+		        "Nome: Natasha"                 + FIM_DE_LINHA +
+		        "Email: natasha@ccc.ufcg.edu.br"+ FIM_DE_LINHA;
+		assertEquals(string, p.toString());
+	}
 }
