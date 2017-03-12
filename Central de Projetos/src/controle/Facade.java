@@ -24,6 +24,10 @@ public class Facade {
 		pessoaController.removePessoa(cpf);
 	}
 	
+	public void getInfoPessoa(String cpf, String atributo) throws NaoEncontradaException, ValidacaoException {
+		pessoaController.getInfoPessoa(cpf, atributo);
+	}
+	
 	public void fechaSistema() {
 		
 	}

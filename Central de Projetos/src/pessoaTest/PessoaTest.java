@@ -46,7 +46,7 @@ public class PessoaTest {
 			fail();
 		}
 		catch(ValidacaoException e) {
-			assertEquals("Erro no cadastro de pessoa.",e.getMessage());
+			assertEquals("Erro no cadastro de pessoa: Email nulo ou vazio",e.getMessage());
 		}
 	}	
 	

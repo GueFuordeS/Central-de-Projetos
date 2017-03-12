@@ -84,7 +84,7 @@ public class PessoaControllerTest {
 			fail();
 		}
 		catch(ValidacaoException e) {
-			assertEquals("Opcao especificada nao existe",e.getMessage());
+			assertEquals("Erro na atualizacao de pessoa: CPF nao pode ser alterado",e.getMessage());
 		}
 	}
 

@@ -30,15 +30,9 @@ public class Pessoa {
 		return this.email;
 	}
 	
-	public Boolean setNome(String nome) {
-		try {
-			Validacao.validaString(nome);
-			this.nome = nome;
-			return true;
-		}
-		catch (ValidacaoException e) {
-			return false;
-		}
+	public void setNome(String nome) throws ValidacaoException {
+		Validacao.validaNome(nome);
+		this.nome = nome;
 	}
 	
 	public void setEmail(String email) throws ValidacaoException {
@@ -77,7 +71,4 @@ public class Pessoa {
 		return "Cpf: " + cpf + FIM_DE_LINHA + "Nome: " + nome + FIM_DE_LINHA + "Email: " + email
 				+ FIM_DE_LINHA;
 	}
-	
-	
-	
 }
