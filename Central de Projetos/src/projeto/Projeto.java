@@ -4,6 +4,13 @@ import static excecoes.Validacao.*;
 
 import excecoes.ValidacaoException;
 
+/**
+ * 
+ * Classe responsavel por criar uma forma geral para projetos, uma abstracao para suas subclasses
+ * 
+ * @author Gabriel Fernandes
+ *
+ */
 public abstract class Projeto {
 	String nome;
 	String objetivo;
@@ -11,7 +18,7 @@ public abstract class Projeto {
 	int duracao;
 	
 	public Projeto(String nome, String objetivo, String date, int duracao) throws ValidacaoException {
-		validaNome(nome);
+		validaNomeProjeto(nome);
 		validaObjetivo(objetivo);
 		validaInt(duracao);
 		

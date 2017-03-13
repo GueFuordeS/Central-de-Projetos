@@ -4,6 +4,13 @@ import java.util.HashSet;
 
 import excecoes.*;
 
+/**
+ * 
+ * Classe responsavel por controlar as pessoas representadas em nosso sistema
+ * 
+ * @author Gabriel Fernandes
+ *
+ */
 public class PessoaController {
 	private HashSet<Pessoa> pessoas;
 	

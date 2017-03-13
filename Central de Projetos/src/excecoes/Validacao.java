@@ -1,5 +1,12 @@
 package excecoes;
 
+/**
+ * 
+ * Classe de utilidade, por isso a necessidade de uso de metodos estaticos
+ * 
+ * @author Gabriel Fernandes
+ *
+ */
 public class Validacao {
 	
 	public static void validaString(String string) throws ValidacaoException {
@@ -40,6 +47,18 @@ public class Validacao {
 	public static void validaNome(String string) throws ValidacaoException {
 		if(string == null || string.trim().isEmpty()) {
 			throw new ValidacaoException("Erro no cadastro de pessoa: Nome nulo ou vazio");
+		}
+	}
+
+	public static void validaNomeDisciplina(String string) throws ValidacaoException {
+		if(string == null || string.trim().isEmpty()) {
+			throw new ValidacaoException("Nome de disciplina nao pode ser nulo ou vazio");
+		}
+	}
+	
+	public static void validaNomeProjeto(String string) throws ValidacaoException {
+		if(string == null || string.trim().isEmpty()) {
+			throw new ValidacaoException("Nome de projeto nao pode ser nulo ou vazio");
 		}
 	}
 	
@@ -116,7 +135,7 @@ public class Validacao {
 	}
 	
 	public static void validaRendimento(int rendimento) throws ValidacaoException {
-		if(rendimento < 0 || 100 > rendimento) {
+		if(rendimento < 0 || 100 < rendimento) {
 			throw new ValidacaoException("Rendimento precisa estar entre 0 e 100");
 		}
 	}

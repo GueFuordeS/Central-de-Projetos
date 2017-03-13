@@ -9,15 +9,19 @@ public class Monitoria extends Projeto {
 	String periodo;
 	int rendimento;
 	
-	public Monitoria(String nome, String objetivo, String date, int duracao, String disciplina, String periodo, int rendimento) 
-			throws ValidacaoException {
+	public Monitoria(String nome, String objetivo, String date, int duracao, String disciplina, String periodo,
+			int rendimento) throws ValidacaoException {
 		super(nome, objetivo, date, duracao);
 		
-		validaString(disciplina);
+		validaNomeDisciplina(disciplina);
 		validaPeriodo(periodo);
 		validaRendimento(rendimento);
 		this.disciplina = disciplina;
 		this.periodo = periodo;
 		this.rendimento = rendimento;
+	}
+	
+	public int getRendimento() {
+		return this.rendimento;
 	}
 }

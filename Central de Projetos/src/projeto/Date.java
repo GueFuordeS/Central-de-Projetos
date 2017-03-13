@@ -4,6 +4,14 @@ import static excecoes.Validacao.*;
 
 import excecoes.ValidacaoException;
 
+/**
+ * 
+ * Classe implementada para representar um tipo de dado, no caso uma data para as necessidades do projeto
+ * para manter um maior controle sobre esse tipo preferiu-se implementa-lo do que reusar de uma classe ja disponivel
+ * 
+ * @author Gabriel Fernandes
+ *
+ */
 public class Date {
 	int dia;
 	int mes;
