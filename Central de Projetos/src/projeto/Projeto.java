@@ -4,7 +4,7 @@ import static excecoes.Validacao.*;
 
 import excecoes.ValidacaoException;
 
-public class Projeto {
+public abstract class Projeto {
 	String nome;
 	String objetivo;
 	Date dataInicio;

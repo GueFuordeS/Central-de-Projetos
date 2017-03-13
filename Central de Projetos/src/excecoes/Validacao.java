@@ -90,15 +90,15 @@ public class Validacao {
 	}
 	
 	public static void validaDia(int dia) throws ValidacaoException {
-		if(dia < 1 || 31 > dia ) throw new ValidacaoException("Formato de data invalido");
+		if(dia < 1 || 31 < dia) throw new ValidacaoException("Formato de data invalido");
 	}
 	
 	public static void validaMes(int mes) throws ValidacaoException {
-		if(mes < 1 || 12 > mes ) throw new ValidacaoException("Formato de data invalido");
+		if(mes < 1 || 12 < mes) throw new ValidacaoException("Formato de data invalido");
 	}
 	
 	public static void validaAno(int ano) throws ValidacaoException {
-		if(ano < 1899 || 2299 > ano ) throw new ValidacaoException("Formato de data invalido");
+		if(ano < 1899 || 2299 < ano) throw new ValidacaoException("Formato de data invalido");
 	}
 	
 	public static void validaImpacto(int impacto) throws ValidacaoException {

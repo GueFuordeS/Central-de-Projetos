@@ -37,7 +37,7 @@ public class DateTest {
 			fail();
 		}
 		catch(ValidacaoException e) {
-			assertEquals("Erro: formato invalido de data",e.getMessage());
+			assertEquals("Formato de data invalido",e.getMessage());
 		}
 		
 		try {
@@ -45,7 +45,7 @@ public class DateTest {
 			fail();
 		}
 		catch(ValidacaoException e) {
-			assertEquals("Erro: formato invalido de data",e.getMessage());
+			assertEquals("Formato de data invalido",e.getMessage());
 		}
 		
 		try {
@@ -53,7 +53,7 @@ public class DateTest {
 			fail();
 		}
 		catch(ValidacaoException e) {
-			assertEquals("Dia, mes ou ano nao podem ser 0",e.getMessage());
+			assertEquals("Formato de data invalido",e.getMessage());
 		}
 		
 		try {
@@ -61,7 +61,7 @@ public class DateTest {
 			fail();
 		}
 		catch(ValidacaoException e) {
-			assertEquals("Dia, mes ou ano nao podem ser 0",e.getMessage());
+			assertEquals("Formato de data invalido",e.getMessage());
 		}
 	}
 		
@@ -83,6 +83,7 @@ public class DateTest {
 		String string = "Dia: 27" + FIM_DE_LINHA +
 				        "Mes: 1"  + FIM_DE_LINHA +
 				        "Ano: 2017"+FIM_DE_LINHA;
+		System.out.println(data);
 		assertEquals(string, data.toString());
 	}
 }

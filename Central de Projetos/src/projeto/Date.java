@@ -11,7 +11,7 @@ public class Date {
 	
 	public Date(String date) throws ValidacaoException {
 		String dateForm = "\\d\\d/\\d\\d/\\d\\d\\d\\d";
-		if(!date.matches(dateForm)) throw new ValidacaoException("Erro: formato invalido de data");
+		if(!date.matches(dateForm)) throw new ValidacaoException("Formato de data invalido");
 		
 		String[] nums = new String[date.length()];
 		for (int i = 0; i < date.length(); i++) {
@@ -21,7 +21,7 @@ public class Date {
 		int dia = Integer.parseInt(nums[0] + nums[1]);
 		int mes = Integer.parseInt(nums[3] + nums[4]);
 		int ano = Integer.parseInt(nums[6] + nums[7] + nums[8] + nums[9]);
-		
+
 		validaDia(dia);
 		validaMes(mes);
 		validaAno(ano);
