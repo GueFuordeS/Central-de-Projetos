@@ -106,4 +106,34 @@ public class Validacao {
 			throw new ValidacaoException("Impacto social precisa ser entre 1 à 6");
 		}
 	}
+	
+	public static void validaPeriodo(String periodo) throws ValidacaoException {
+		String periodoForm = "\\d\\d\\d\\d"+"."+"1";
+		String periodoForm2 = "\\d\\d\\d\\d"+"."+"2";
+		if(!periodo.matches(periodoForm) && !periodo.matches(periodoForm2)) {
+			throw new ValidacaoException("Formato de periodo invalido");
+		}
+	}
+	
+	public static void validaRendimento(int rendimento) throws ValidacaoException {
+		if(rendimento < 0 || 100 > rendimento) {
+			throw new ValidacaoException("Rendimento precisa estar entre 0 e 100");
+		}
+	}
+	
+	public static void validaCategoria(String categoria) throws ValidacaoException {
+		if(categoria == null || categoria.trim().isEmpty()) {
+			throw new ValidacaoException("Categoria nao pode ser nula ou vazia");
+		}
+		else if(!categoria.equals("PIBIC") && !categoria.equals("PIBITI") && !categoria.equals("PIVIC")
+				&& !categoria.equals("COOP")) {
+			throw new ValidacaoException("Categoria invalida");
+		}
+	}
+	
+	public static void validaProdutividade(int produtividade) throws ValidacaoException {
+		if(produtividade < 0) {
+			throw new ValidacaoException("Produtividade nao pode ser menor que 0");
+		}
+	}
 } 

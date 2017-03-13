@@ -1,5 +1,5 @@
 package projeto;
 
 public enum Categoria {
-	CONSTANTES, EVENTUAIS, CAPITAL;
+	PIBIC, PIBITI, PIVIC, COOPERACAO;
 }
