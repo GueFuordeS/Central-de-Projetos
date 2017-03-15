@@ -69,6 +69,10 @@ public class DateTest {
 	public void comparableTest() throws ValidacaoException {
 		Date data2 = new Date("10/08/1993");
 		assertEquals(-1,data.compareTo(data2));
+		Date data3 = new Date("10/08/1992");
+		assertEquals(1,data2.compareTo(data3));
+		Date data4 = new Date("27/01/2017");
+		assertEquals(0,data4.compareTo(data));
 	}
 		
 	@Test
@@ -89,7 +93,6 @@ public class DateTest {
 		String string = "Dia: 27" + FIM_DE_LINHA +
 				        "Mes: 1"  + FIM_DE_LINHA +
 				        "Ano: 2017"+FIM_DE_LINHA;
-		System.out.println(data);
 		assertEquals(string, data.toString());
 	}
 }
