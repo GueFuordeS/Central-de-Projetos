@@ -12,7 +12,7 @@ import excecoes.ValidacaoException;
  * @author Gabriel Fernandes
  *
  */
-public class Date {
+public class Date implements Comparable<Date> {
 	int dia;
 	int mes;
 	int ano;
@@ -83,5 +83,16 @@ public class Date {
 	public String toString() {
 		final String FIM_DE_LINHA = System.lineSeparator();
 		return "Dia:" + " " + dia + FIM_DE_LINHA + "Mes:" + " " + mes + FIM_DE_LINHA + "Ano:" + " " + ano + FIM_DE_LINHA;
+	}
+
+	@Override
+	public int compareTo(Date date) {
+		if(this.ano > date.getAno()) return 1;
+		if(this.ano < date.getAno()) return -1;
+		if(this.mes > date.getMes()) return 1;
+		if(this.mes < date.getMes()) return -1;
+		if(this.dia > date.getDia()) return 1;
+		if(this.dia < date.getDia()) return -1;
+		return 0;
 	}
 }
