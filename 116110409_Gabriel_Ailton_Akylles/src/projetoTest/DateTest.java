@@ -68,13 +68,24 @@ public class DateTest {
 	@Test
 	public void comparableTest() throws ValidacaoException {
 		Date data2 = new Date("10/08/1993");
-		assertEquals(-1,data.compareTo(data2));
 		Date data3 = new Date("10/08/1992");
 		assertEquals(1,data2.compareTo(data3));
 		Date data4 = new Date("27/01/2017");
 		assertEquals(0,data4.compareTo(data));
-	}
 		
+	}
+	
+	
+	@Test
+	public void contructorFailTest(){
+		try {
+			new Date("-12/11/1991");
+			fail();
+		} catch (Exception e) {
+			assertEquals("Formato de data invalido", e.getMessage());
+		}
+	}
+	
 	@Test
 	public void hashEqualsTest() throws ValidacaoException {
 		Date data2 = new Date("10/08/1993");
