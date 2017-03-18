@@ -1,0 +1,41 @@
+package projeto;
+
+import static excecoes.Validacao.*;
+
+import excecoes.ValidacaoException;
+
+public class Projeto {
+	String nome;
+	String objetivo;
+	Date dataInicio;
+	int duracao;
+	Despesa despesa;
+	
+	public Projeto(String nome, String objetivo, String date, int duracao) throws ValidacaoException {
+		validaNome(nome);
+		validaObjetivo(objetivo);
+		validaInt(duracao);
+		
+		this.nome = nome;
+		this.objetivo = objetivo;
+		this.dataInicio = new Date(date);
+		this.duracao = duracao;
+		despesa = new Despesa();
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public String getObjetivo() {
+		return objetivo;
+	}
+
+	public Date getDataInicio() {
+		return dataInicio;
+	}
+
+	public int getDuracao() {
+		return duracao;
+	}
+}

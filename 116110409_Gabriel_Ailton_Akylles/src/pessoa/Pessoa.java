@@ -3,18 +3,24 @@ package pessoa;
 import excecoes.Validacao;
 import excecoes.ValidacaoException;
 
-/**
- * 
- * Classe responsavel por moldar as caracteristicas de uma pessoa, tornando-a interativa em nosso
- * sistema
+/** Classe responsavel por moldar as caracteristicas de uma pessoa, tornando-a interativa em nosso
+ * sistema.
  * 
  * @author Gabriel Fernandes
- *
+ * 
  */
 public class Pessoa {
 	private String cpf;
 	private String nome;
 	private String email;
+	
+	/**
+	 * O método abaixo irá validar o cpf, nome e email da pessoa cadastrada.
+	 * @param cpf String - Cpf da pessoa.
+	 * @param nome String - Nome da pessoa.
+	 * @param email String - Email da pessoa.
+	 * @throws ValidacaoException Irá validar os "param" cpf, nome e email.
+	 */
 	
 	public Pessoa(String cpf, String nome, String email) throws ValidacaoException {
 		Validacao.validaCpf(cpf);
@@ -26,28 +32,55 @@ public class Pessoa {
 		this.email = email;
 	}
 	
+	/** Método que irá retornar o nome da pessoa.
+	 * 
+	 * @return String - Nome da pessoa.
+	 */
+	
 	public String getNome() {
 		return this.nome;
 	}
+	
+	/** Método que irá retornar o cpf da pessoa.
+	 * 
+	 * @return String - Cpf da pessoa.
+	 */
 	
 	public String getCpf() {
 		return this.cpf;
 	}
 	
+	/** Método que irá retornar o email da pessoa.
+	 * 
+	 * @return String - Email da pessoa.
+	 */
+	
 	public String getEmail() {
 		return this.email;
 	}
+	
+	/** Método que mudará o nome da pessoa.
+	 * 
+	 * @param nome String - Nome da pessoa.
+	 * @throws ValidacaoException - Validará a String nome.
+	 */
 	
 	public void setNome(String nome) throws ValidacaoException {
 		Validacao.validaNome(nome);
 		this.nome = nome;
 	}
 	
+	/** Método que mudará o email da pessoa.
+	 * 
+	 * @param email - Email da pessoa.
+	 * @throws ValidacaoException - Validará a String email.
+	 */
+	
 	public void setEmail(String email) throws ValidacaoException {
 		Validacao.validaEmail(email);
 		this.email = email;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -1,0 +1,69 @@
+package projetoTest;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import excecoes.ValidacaoException;
+import projeto.Date;
+
+public class DateTest {
+	Date data;
+	
+	@Before
+	public void setUp() throws Exception {
+		data = new Date("27/01/2017");
+	}
+
+	@Test
+	public void construtorTest() {
+		assertEquals(27,data.getDia());
+		assertEquals(01,data.getMes());
+		assertEquals(2017,data.getAno());
+	}
+	
+	@Test
+	public void construtorWithFailTest() {
+		try {
+			new Date("10/08/1993");
+		}
+		catch(ValidacaoException e) {
+			fail();
+		}
+		
+		try {
+			new Date("100/080/190");
+			fail();
+		}
+		catch(ValidacaoException e) {
+			assertEquals("Erro: formato invalido de data",e.getMessage());
+		}
+		
+		try {
+			new Date("10/08/0");
+			fail();
+		}
+		catch(ValidacaoException e) {
+			assertEquals("Erro: formato invalido de data",e.getMessage());
+		}
+		
+		try {
+			new Date("00/08/1993");
+			fail();
+		}
+		catch(ValidacaoException e) {
+			assertEquals("Dia, mes ou ano nao podem ser 0",e.getMessage());
+		}
+		
+		try {
+			new Date("10/08/0000");
+			fail();
+		}
+		catch(ValidacaoException e) {
+			assertEquals("Dia, mes ou ano nao podem ser 0",e.getMessage());
+		}
+		
+		
+	}
+}

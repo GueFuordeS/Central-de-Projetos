@@ -1,0 +1,11 @@
+package projeto;
+
+public class Data {
+	int dia;
+	int mes;
+	int ano;
+	
+	public Data(String data) {
+		String dataForm = "\\d\\d\\d.\\d\\d\\d.\\d\\d\\d-\\d\\d";
+	}
+}

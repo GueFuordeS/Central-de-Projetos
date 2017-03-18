@@ -1,0 +1,24 @@
+package projetoTest;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import projeto.Date;
+
+public class DateTest {
+	Date data;
+	
+	@Before
+	public void setUp() throws Exception {
+		data = new Date("27/01/1017");
+	}
+
+	@Test
+	public void test() {
+		assertEquals(27,data.getDia());
+		assertEquals(01,data.getMes());
+		assertEquals(2017,data.getAno());
+	}
+}

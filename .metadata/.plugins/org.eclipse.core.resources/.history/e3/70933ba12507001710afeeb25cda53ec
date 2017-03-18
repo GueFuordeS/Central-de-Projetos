@@ -1,0 +1,23 @@
+package projetoTest;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import projeto.Date;
+
+public class DateTest {
+	Date data;
+	
+	@Before
+	public void setUp() throws Exception {
+		data = new Date("27/")
+	}
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

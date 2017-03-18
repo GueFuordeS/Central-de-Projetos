@@ -1,0 +1,23 @@
+package pessoaTest;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import static org.junit.Test;
+
+import pessoa.Pessoa;
+
+public class PessoaTest {
+	Pessoa p;
+	
+	@Before
+	public void setUp() throws Exception {
+		p = new Pessoa("222.333.444-55","Natasha","natasha@ccc.ufcg.edu.br");
+	}
+
+	@Test
+	public void contructorTest() {
+		asserEquals("Natasha",p.getNome());
+	}
+
+}
