@@ -15,11 +15,11 @@ public class Pessoa {
 	private String email;
 	
 	/**
-	 * O método abaixo irá validar o cpf, nome e email da pessoa cadastrada.
+	 * O mï¿½todo abaixo irï¿½ validar o cpf, nome e email da pessoa cadastrada.
 	 * @param cpf String - Cpf da pessoa.
 	 * @param nome String - Nome da pessoa.
 	 * @param email String - Email da pessoa.
-	 * @throws ValidacaoException Irá validar os "param" cpf, nome e email.
+	 * @throws ValidacaoException Irï¿½ validar os "param" cpf, nome e email.
 	 */
 	
 	public Pessoa(String cpf, String nome, String email) throws ValidacaoException {
@@ -32,7 +32,7 @@ public class Pessoa {
 		this.email = email;
 	}
 	
-	/** Método que irá retornar o nome da pessoa.
+	/** Mï¿½todo que irï¿½ retornar o nome da pessoa.
 	 * 
 	 * @return String - Nome da pessoa.
 	 */
@@ -41,7 +41,7 @@ public class Pessoa {
 		return this.nome;
 	}
 	
-	/** Método que irá retornar o cpf da pessoa.
+	/** Mï¿½todo que irï¿½ retornar o cpf da pessoa.
 	 * 
 	 * @return String - Cpf da pessoa.
 	 */
@@ -50,7 +50,7 @@ public class Pessoa {
 		return this.cpf;
 	}
 	
-	/** Método que irá retornar o email da pessoa.
+	/** Mï¿½todo que irï¿½ retornar o email da pessoa.
 	 * 
 	 * @return String - Email da pessoa.
 	 */
@@ -59,10 +59,10 @@ public class Pessoa {
 		return this.email;
 	}
 	
-	/** Método que mudará o nome da pessoa.
+	/** Mï¿½todo que mudarï¿½ o nome da pessoa.
 	 * 
 	 * @param nome String - Nome da pessoa.
-	 * @throws ValidacaoException - Validará a String nome.
+	 * @throws ValidacaoException - Validarï¿½ a String nome.
 	 */
 	
 	public void setNome(String nome) throws ValidacaoException {
@@ -70,10 +70,10 @@ public class Pessoa {
 		this.nome = nome;
 	}
 	
-	/** Método que mudará o email da pessoa.
+	/** Mï¿½todo que mudarï¿½ o email da pessoa.
 	 * 
 	 * @param email - Email da pessoa.
-	 * @throws ValidacaoException - Validará a String email.
+	 * @throws ValidacaoException - Validarï¿½ a String email.
 	 */
 	
 	public void setEmail(String email) throws ValidacaoException {

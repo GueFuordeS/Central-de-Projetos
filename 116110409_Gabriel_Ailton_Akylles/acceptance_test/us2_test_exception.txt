@@ -42,7 +42,7 @@ expectError "Erro na consulta de projeto: Monitoria nao possui Producao academic
 #      Atualiza Projetos      #
 ###############################
 
-expectError "Erro na atualizacao de projeto: Objetivo nao pode ser vazio ou nulo" editaProjeto codigo=${cod2} atributo="Objetivo" valor=" "
+expectError "Erro na atualizacao de projeto: Objetivo nulo ou vazio" editaProjeto codigo=${cod2} atributo="Objetivo" valor=" "
 expectError "Erro na atualizacao de projeto: Formato de data invalido" editaProjeto codigo=${cod2} atributo="Data de Inicio" valor="01.02.2017"
 expectError "Erro na atualizacao de projeto: Formato de data invalido" editaProjeto codigo=${cod2} atributo="Data de Inicio" valor="32/02/1920"
 expectError "Erro na atualizacao de projeto: Formato de data invalido" editaProjeto codigo=${cod2} atributo="Data de Inicio" valor="10/13/1920"

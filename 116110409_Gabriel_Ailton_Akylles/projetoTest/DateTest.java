@@ -72,7 +72,6 @@ public class DateTest {
 		assertEquals(1,data2.compareTo(data3));
 		Date data4 = new Date("27/01/2017");
 		assertEquals(0,data4.compareTo(data));
-		
 	}
 	
 	

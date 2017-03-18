@@ -18,13 +18,13 @@ public abstract class Projeto {
 	Date dataInicio;
 	int duracao;
 	
-	/** Método que irá verificar se o padrão para cada parâmetro está correto.
+	/** Mï¿½todo que irï¿½ verificar se o padrï¿½o para cada parï¿½metro estï¿½ correto.
 	 * 
 	 * @param nome - String nome do projeto.
 	 * @param objetivo - String objetivo do projeto.
-	 * @param date - String data de início do projeto.
+	 * @param date - String data de inï¿½cio do projeto.
 	 * @param duracao - int duracao do projeto.
-	 * @throws ValidacaoException - Irá validar os "param" nome, objetivo, dataInicio e duracao.
+	 * @throws ValidacaoException - Irï¿½ validar os "param" nome, objetivo, dataInicio e duracao.
 	 */
 	
 	public Projeto(String nome, String objetivo, String date, int duracao) throws ValidacaoException {
@@ -38,7 +38,7 @@ public abstract class Projeto {
 		this.duracao = duracao;
 	}
 	
-	/** Método que irá retornar o nome do projeto.
+	/** Mï¿½todo que irï¿½ retornar o nome do projeto.
 	 * 
 	 * @return String - nome do projeto.
 	 */
@@ -47,7 +47,7 @@ public abstract class Projeto {
 		return nome;
 	}
 	
-	/** Método que irá retornar o objetivo do projeto.
+	/** Mï¿½todo que irï¿½ retornar o objetivo do projeto.
 	 * 
 	 * @return String - objetivo do projeto.
 	 */
@@ -56,18 +56,18 @@ public abstract class Projeto {
 		return objetivo;
 	}
 	
-	/** Método que irá retornar a data de início do projeto.
+	/** Mï¿½todo que irï¿½ retornar a data de inï¿½cio do projeto.
 	 * 
-	 * @return String - data de início do projeto.
+	 * @return String - data de inï¿½cio do projeto.
 	 */
 	
 	public Date getDataInicio() {
 		return dataInicio;
 	}
 	
-	/** Método que irá retornar a duração do projeto.
+	/** Mï¿½todo que irï¿½ retornar a duraï¿½ï¿½o do projeto.
 	 * 
-	 * @return int - duração do projeto.
+	 * @return int - duraï¿½ï¿½o do projeto.
 	 */
 	
 	public int getDuracao() {
