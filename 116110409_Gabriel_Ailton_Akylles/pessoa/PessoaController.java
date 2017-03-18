@@ -67,6 +67,8 @@ public class PessoaController {
 	
 	public String getInfoPessoa(String cpf, String atributo) throws NaoEncontradaException, ValidacaoException {
 		Pessoa p = this.recuperaPessoa(cpf);
+		System.out.println(p);
+		
 		if(atributo.toLowerCase().equals("cpf")) {
 			return p.getCpf();
 		}
