@@ -60,6 +60,16 @@ public class PessoaControllerTest {
 		Pessoa pessoinha = pessoas.recuperaPessoa("222.333.444-55");
 		assertEquals("Natasha",pessoinha.getNome());
 		
+		pessoas.cadastraPessoa("134.134.134-84", "Roberta", "roberta@yahoo.com");
+		assertEquals(new Pessoa("134.134.134-84", "Roberta", "roberta@yahoo.com"),pessoas.recuperaPessoa("134.134.134-84"));
+		
+		try {
+			pessoas.recuperaPessoa("134.134.134-84");
+		}
+		catch(NaoEncontradaException e) {
+			fail();
+		}
+		
 		try {
 			pessoas.recuperaPessoa("700.600.500-40");
 			fail();

@@ -96,12 +96,12 @@ public class Validacao {
 	
 	public static void validaCpfGeneric(String cpf) throws ValidacaoException {
 		if(cpf == null || cpf.trim().isEmpty()) {
-			throw new ValidacaoException("CPF nulo ou vazio");
+			throw new ValidacaoException("Erro no cadastro de pessoa: CPF nulo ou vazio");
 		}
 		
 		String cpfForm = "\\d\\d\\d.\\d\\d\\d.\\d\\d\\d-\\d\\d";
 		
-		if(!cpf.matches(cpfForm)) throw new ValidacaoException("CPF invalido");
+		if(!cpf.matches(cpfForm)) throw new ValidacaoException("Erro no cadastro de pessoa: CPF invalido");
 	} 
 	
 	public static void validaInt(int inteiro) throws ValidacaoException {
