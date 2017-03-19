@@ -6,22 +6,26 @@ import java.util.HashMap;
 
 import excecoes.ValidacaoException;
 
-public class PeD extends Projeto {
-	private HashMap<Produtividade,Integer> produtividade;
+public class PED extends Projeto {
 	String categoria;
+	private HashMap<Produtividade,Integer> produtividade;
 	
-	public PeD(String nome, String objetivo, String date, int duracao, String categoria,
-			int prodTecnica, int prodAcademica, int patentes) throws ValidacaoException {
-		super(nome, objetivo, date, duracao);
+	public PED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, 
+			String objetivo, String dataInicio, int duracao) throws ValidacaoException {
+		super(nome, objetivo, dataInicio, duracao);
 		
 		validaCategoria(categoria);
 		validaProdutividade(prodTecnica);
 		validaProdutividade(prodAcademica);
 		validaProdutividade(patentes);
 		
-		produtividade = new HashMap<>();
 		this.categoria = categoria;
+		produtividade = new HashMap<>();
 		iniciaMap(prodTecnica, prodAcademica, patentes);
+	}
+	
+	public String getCategoria() {
+		return this.categoria;
 	}
 	
 	private void iniciaMap(int prodTecnica, int prodAcademica, int patentes) {

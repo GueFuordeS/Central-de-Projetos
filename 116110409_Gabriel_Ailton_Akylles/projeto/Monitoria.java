@@ -3,10 +3,11 @@ package projeto;
 import static myUtils.Validacao.*;
 
 import excecoes.ValidacaoException;
+import myUtils.Periodo;
 
 public class Monitoria extends Projeto {
 	String disciplina;
-	String periodo;
+	Periodo periodo;
 	int rendimento;
 	
 	public Monitoria(String nome, String disciplina, int rendimento, String objetivo,
@@ -18,7 +19,14 @@ public class Monitoria extends Projeto {
 		validaPeriodo(periodo);
 		this.disciplina = disciplina;
 		this.rendimento = rendimento;
-		this.periodo = periodo;
+		this.periodo = new Periodo(periodo);
+	}
+	public String getDisciplina() {
+		return this.disciplina;
+	}
+	
+	public String getPeriodo() {
+		return this.periodo.toString();
 	}
 	
 	public int getRendimento() {

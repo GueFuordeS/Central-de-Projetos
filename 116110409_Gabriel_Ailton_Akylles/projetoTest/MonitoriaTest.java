@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import excecoes.ValidacaoException;
-import myUtils.Date;
 import projeto.Monitoria;
 
 public class MonitoriaTest {
@@ -21,9 +20,9 @@ public class MonitoriaTest {
 	public void construtorTest() throws ValidacaoException {
 		assertEquals("Monitoria de lp2", ext.getNome());
 		assertEquals("auxiliar", ext.getObjetivo());
-		assertEquals(new Date("01/01/2017"),ext.getDataInicio());
-		assertEquals(12,ext.getDuracao());
-		assertEquals(95,ext.getRendimento());
+		assertEquals("01/01/2017", ext.getDataInicio());
+		assertEquals(12, ext.getDuracao());
+		assertEquals(95, ext.getRendimento());
 	}
 	
 	@Test

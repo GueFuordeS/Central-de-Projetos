@@ -24,19 +24,19 @@ public abstract class Projeto {
 	 * 
 	 * @param nome - String nome do projeto.
 	 * @param objetivo - String objetivo do projeto.
-	 * @param date - String data de inicio do projeto.
+	 * @param dataInicio - String data de inicio do projeto.
 	 * @param duracao - int duracao do projeto.
 	 * @throws ValidacaoException - Ira validar os "param" nome, objetivo, dataInicio e duracao.
 	 */
 	
-	public Projeto(String nome, String objetivo, String date, int duracao) throws ValidacaoException {
+	public Projeto(String nome, String objetivo, String dataInicio, int duracao) throws ValidacaoException {
 		validaNomeProjeto(nome);
 		validaObjetivo(objetivo);
 		validaInt(duracao);
 		
 		this.nome = nome;
 		this.objetivo = objetivo;
-		this.dataInicio = new Date(date);
+		this.dataInicio = new Date(dataInicio);
 		this.duracao = duracao;
 	}
 	
@@ -46,7 +46,7 @@ public abstract class Projeto {
 	 */
 	
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 	
 	/** Metodo que ira retornar o objetivo do projeto.
@@ -55,7 +55,7 @@ public abstract class Projeto {
 	 */
 	
 	public String getObjetivo() {
-		return objetivo;
+		return this.objetivo;
 	}
 	
 	/** Metodo que ira retornar a data de inicio do projeto.
@@ -63,16 +63,15 @@ public abstract class Projeto {
 	 * @return String - data de inicio do projeto.
 	 */
 	
-	public Date getDataInicio() {
-		return dataInicio;
+	public String getDataInicio() {
+		return this.dataInicio.toString();
 	}
 	
 	/** Metodo que ira retornar a duracao do projeto.
 	 * 
 	 * @return int - duracao do projeto.
 	 */
-	
 	public int getDuracao() {
-		return duracao;
+		return this.duracao;
 	}
 }

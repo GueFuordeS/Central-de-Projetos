@@ -87,8 +87,10 @@ public class Date implements Comparable<Date> {
 
 	@Override
 	public String toString() {
-		final String FIM_DE_LINHA = System.lineSeparator();
-		return "Dia:" + " " + dia + FIM_DE_LINHA + "Mes:" + " " + mes + FIM_DE_LINHA + "Ano:" + " " + ano + FIM_DE_LINHA;
+		if(dia<10 && mes<10) return "0" + dia + "/" + "0" + mes + "/" + ano;
+		if(dia<10) return "0" + dia + "/" + mes + "/" + ano;
+		if(mes<10) return dia + "/" + "0" + mes + "/" + ano;
+		return dia + "/" + mes + "/" + ano;
 	}
 
 	@Override
