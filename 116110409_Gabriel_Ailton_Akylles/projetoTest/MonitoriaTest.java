@@ -13,7 +13,7 @@ public class MonitoriaTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		ext = new Monitoria("Monitoria de lp2", "lp2", 95, "auxiliar","2016.2", "01/01/2017", 12);
+		ext = new Monitoria(0, "Monitoria de lp2", "lp2", 95, "auxiliar","2016.2", "01/01/2017", 12);
 	}
 
 	@Test
@@ -28,7 +28,7 @@ public class MonitoriaTest {
 	@Test
 	public void construtorWithFailTest() {
 		try {
-			new Monitoria("     ", "lp2", 95, "auxiliar","2016.2", "01/01/2017", 12);
+			new Monitoria(0, "     ", "lp2", 95, "auxiliar","2016.2", "01/01/2017", 12);
 			fail();
 		}
 		catch(ValidacaoException e) {
@@ -36,7 +36,7 @@ public class MonitoriaTest {
 		}
 		
 		try {
-			new Monitoria("Monitoria de lp2", "lp2", 105, "auxiliar","2016.2", "01/01/2017", 12);
+			new Monitoria(0, "Monitoria de lp2", "lp2", 105, "auxiliar","2016.2", "01/01/2017", 12);
 			fail();
 		}
 		catch(ValidacaoException e) {

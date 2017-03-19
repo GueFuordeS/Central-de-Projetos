@@ -14,6 +14,7 @@ import myUtils.Date;
  */
 
 public abstract class Projeto {
+	int codigo;
 	String nome;
 	String objetivo;
 	Date dataInicio;
@@ -29,22 +30,31 @@ public abstract class Projeto {
 	 * @throws ValidacaoException - Ira validar os "param" nome, objetivo, dataInicio e duracao.
 	 */
 	
-	public Projeto(String nome, String objetivo, String dataInicio, int duracao) throws ValidacaoException {
+	public Projeto(int codigo, String nome, String objetivo, String dataInicio, int duracao) throws ValidacaoException {
 		validaNomeProjeto(nome);
 		validaObjetivo(objetivo);
 		validaInt(duracao);
 		
+		this.codigo = codigo;
 		this.nome = nome;
 		this.objetivo = objetivo;
 		this.dataInicio = new Date(dataInicio);
 		this.duracao = duracao;
 	}
 	
+	/**
+	 * Acessador de codigo
+	 * 
+	 * @return inteiro com o codigo do projeto
+	 */
+	public int getCodigo() {
+		return this.codigo;
+	}
+	
 	/** Metodo que ira retornar o nome do projeto.
 	 * 
 	 * @return String - nome do projeto.
 	 */
-	
 	public String getNome() {
 		return this.nome;
 	}
@@ -53,7 +63,6 @@ public abstract class Projeto {
 	 * 
 	 * @return String - objetivo do projeto.
 	 */
-	
 	public String getObjetivo() {
 		return this.objetivo;
 	}
@@ -62,7 +71,6 @@ public abstract class Projeto {
 	 * 
 	 * @return String - data de inicio do projeto.
 	 */
-	
 	public String getDataInicio() {
 		return this.dataInicio.toString();
 	}

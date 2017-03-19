@@ -10,9 +10,9 @@ public class PED extends Projeto {
 	String categoria;
 	private HashMap<Produtividade,Integer> produtividade;
 	
-	public PED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, 
+	public PED(int codigo, String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, 
 			String objetivo, String dataInicio, int duracao) throws ValidacaoException {
-		super(nome, objetivo, dataInicio, duracao);
+		super(codigo, nome, objetivo, dataInicio, duracao);
 		
 		validaCategoria(categoria);
 		validaProdutividade(prodTecnica);

@@ -10,9 +10,9 @@ public class Monitoria extends Projeto {
 	Periodo periodo;
 	int rendimento;
 	
-	public Monitoria(String nome, String disciplina, int rendimento, String objetivo,
+	public Monitoria(int codigo, String nome, String disciplina, int rendimento, String objetivo,
 		 String periodo, String dataInicio, int duracao) throws ValidacaoException {
-		super(nome, objetivo, dataInicio, duracao);
+		super(codigo, nome, objetivo, dataInicio, duracao);
 		
 		validaNomeDisciplina(disciplina);
 		validaRendimento(rendimento);

@@ -12,9 +12,9 @@ public class PET extends Projeto {
 	private HashMap<Produtividade,Integer> produtividade;
 	
 	
-	public PET(String nome, String objetivo, int impacto, int rendimento, 
+	public PET(int codigo, String nome, String objetivo, int impacto, int rendimento, 
 			int prodTecnica, int prodAcademica, int patentes, String dataInicio, int duracao) throws ValidacaoException {
-		super(nome, objetivo, dataInicio, duracao);
+		super(codigo, nome, objetivo, dataInicio, duracao);
 		
 		validaImpacto(impacto);
 		validaRendimento(rendimento);

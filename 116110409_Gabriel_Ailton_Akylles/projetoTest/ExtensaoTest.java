@@ -13,7 +13,7 @@ public class ExtensaoTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		ext = new Extensao("Projeto olimpico","Ganhar medalhas de ouro",12,"01/01/2017",6);
+		ext = new Extensao(0, "Projeto olimpico","Ganhar medalhas de ouro",12,"01/01/2017",6);
 	}
 
 	@Test
@@ -28,7 +28,7 @@ public class ExtensaoTest {
 	@Test
 	public void construtorWithFailTest() {
 		try {
-			new Extensao(null,"Ganhar medalhas de ouro",12,"01/01/2017",6);
+			new Extensao(0, null,"Ganhar medalhas de ouro",12,"01/01/2017",6);
 			fail();
 		}
 		catch(ValidacaoException e) {
@@ -36,7 +36,7 @@ public class ExtensaoTest {
 		}
 		
 		try {
-			new Extensao("Projeto olimpico","Ganhar medalhas de ouro",12,"01/13/2017",6);
+			new Extensao(0, "Projeto olimpico","Ganhar medalhas de ouro",12,"01/13/2017",6);
 			fail();
 		}
 		catch(ValidacaoException e) {
