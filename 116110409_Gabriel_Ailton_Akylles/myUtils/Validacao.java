@@ -1,4 +1,6 @@
-package excecoes;
+package myUtils;
+
+import excecoes.ValidacaoException;
 
 /**
  * 
@@ -133,7 +135,7 @@ public class Validacao {
 			throw new ValidacaoException("Formato de periodo invalido");
 		}
 	}
-	
+
 	public static void validaRendimento(int rendimento) throws ValidacaoException {
 		if(rendimento < 0 || 100 < rendimento) {
 			throw new ValidacaoException("Rendimento precisa estar entre 0 e 100");

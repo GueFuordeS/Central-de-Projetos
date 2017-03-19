@@ -1,6 +1,6 @@
 package projeto;
 
-import static excecoes.Validacao.*;
+import static myUtils.Validacao.*;
 
 import java.util.HashMap;
 

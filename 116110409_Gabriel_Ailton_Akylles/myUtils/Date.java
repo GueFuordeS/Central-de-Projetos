@@ -1,6 +1,6 @@
-package projeto;
+package myUtils;
 
-import static excecoes.Validacao.*;
+import static myUtils.Validacao.*;
 
 import excecoes.ValidacaoException;
 

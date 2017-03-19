@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import excecoes.ValidacaoException;
-import projeto.Date;
+import myUtils.Date;
 import projeto.Extensao;
 
 public class ExtensaoTest {

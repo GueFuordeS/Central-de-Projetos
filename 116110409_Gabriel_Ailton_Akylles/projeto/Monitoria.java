@@ -1,6 +1,6 @@
 package projeto;
 
-import static excecoes.Validacao.*;
+import static myUtils.Validacao.*;
 
 import excecoes.ValidacaoException;
 
@@ -9,16 +9,16 @@ public class Monitoria extends Projeto {
 	String periodo;
 	int rendimento;
 	
-	public Monitoria(String nome, String objetivo, String date, int duracao, String disciplina, String periodo,
-			int rendimento) throws ValidacaoException {
-		super(nome, objetivo, date, duracao);
+	public Monitoria(String nome, String disciplina, int rendimento, String objetivo, 
+			String periodo, String dataInicio, int duracao) throws ValidacaoException {
+		super(nome, objetivo, dataInicio, duracao);
 		
 		validaNomeDisciplina(disciplina);
-		validaPeriodo(periodo);
 		validaRendimento(rendimento);
+		validaPeriodo(periodo);
 		this.disciplina = disciplina;
-		this.periodo = periodo;
 		this.rendimento = rendimento;
+		this.periodo = periodo;
 	}
 	
 	public int getRendimento() {

@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import excecoes.ValidacaoException;
-import projeto.Date;
+import myUtils.Date;
 import projeto.Monitoria;
 
 public class MonitoriaTest {
@@ -14,7 +14,7 @@ public class MonitoriaTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		ext = new Monitoria("Monitoria de lp2","auxiliar","01/01/2017",12,"lp2","2016.2",95);
+		ext = new Monitoria("Monitoria de lp2","auxiliar",12,"01/01/2017","lp2","2016.2",95);
 	}
 
 	@Test
@@ -29,7 +29,7 @@ public class MonitoriaTest {
 	@Test
 	public void construtorWithFailTest() {
 		try {
-			new Monitoria("    ","auxiliar","01/01/2017",12,"lp2","2016.2",95);
+			new Monitoria("    ","auxiliar",12,"01/01/2017","lp2","2016.2",95);
 			fail();
 		}
 		catch(ValidacaoException e) {
@@ -37,7 +37,7 @@ public class MonitoriaTest {
 		}
 		
 		try {
-			new Monitoria("Monitoria de lp2","auxiliar","01/01/2017",12,"lp2","2016.2",105);
+			new Monitoria("Monitoria de lp2","auxiliar",12,"01/01/2017","lp2","2016.2",105);
 			fail();
 		}
 		catch(ValidacaoException e) {

@@ -1,6 +1,7 @@
 package projeto;
 
-import static excecoes.Validacao.*;
+import static myUtils.Validacao.*;
+
 import excecoes.ValidacaoException;
 
 public class Extensao extends Projeto {

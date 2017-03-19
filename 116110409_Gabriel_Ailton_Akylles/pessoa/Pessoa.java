@@ -1,7 +1,7 @@
 package pessoa;
 
-import excecoes.Validacao;
 import excecoes.ValidacaoException;
+import myUtils.Validacao;
 
 /** Classe responsavel por moldar as caracteristicas de uma pessoa, tornando-a interativa em nosso
  * sistema.

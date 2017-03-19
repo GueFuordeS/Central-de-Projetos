@@ -3,6 +3,7 @@ package pessoa;
 import java.util.HashSet;
 
 import excecoes.*;
+import myUtils.Validacao;
 
 /**
  * 
