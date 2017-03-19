@@ -122,7 +122,7 @@ public class Validacao {
 	}
 	
 	public static void validaImpacto(int impacto) throws ValidacaoException {
-		if(impacto < 1 || 6 > impacto) {
+		if(impacto < 1 || 6 < impacto) {
 			throw new ValidacaoException("Impacto social precisa ser entre 1 à 6");
 		}
 	}

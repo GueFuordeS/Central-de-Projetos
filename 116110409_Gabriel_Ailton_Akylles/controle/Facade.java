@@ -76,6 +76,10 @@ public class Facade {
 		return getCodigoProjeto(nome);
 	}
 	
+	public void removeProjeto(int codigo) throws NaoEncontradaException, ValidacaoException {
+		projetoController.removeProjeto(codigo);
+	}
+	
 	public void fechaSistema() {
 		//por implementar
 	}
