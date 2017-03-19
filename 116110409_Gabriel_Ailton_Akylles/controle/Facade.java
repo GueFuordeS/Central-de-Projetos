@@ -12,8 +12,8 @@ public class Facade {
 		
 	}
 	
-	public void cadastraPessoa(String cpf, String nome, String email) throws ValidacaoException {
-		pessoaController.cadastraPessoa(cpf, nome, email);
+	public String cadastraPessoa(String cpf, String nome, String email) throws ValidacaoException {
+		return pessoaController.cadastraPessoa(cpf, nome, email);
 	}
 	
 	public void editaPessoa(String cpf, String opcao, String nova) throws ValidacaoException, NaoEncontradaException {
@@ -24,8 +24,8 @@ public class Facade {
 		pessoaController.removePessoa(cpf);
 	}
 	
-	public void getInfoPessoa(String cpf, String atributo) throws NaoEncontradaException, ValidacaoException {
-		pessoaController.getInfoPessoa(cpf, atributo);
+	public String getInfoPessoa(String cpf, String atributo) throws NaoEncontradaException, ValidacaoException {
+		return pessoaController.getInfoPessoa(cpf, atributo);
 	}
 	
 	public void fechaSistema() {
