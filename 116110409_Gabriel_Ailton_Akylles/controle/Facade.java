@@ -5,11 +5,18 @@ import excecoes.NaoEncontradaException;
 import excecoes.ValidacaoException;
 import pessoa.PessoaController;
 
+/**
+ * Uso do padrao de projeto "facade" para convergir todo o sistema para esta classe,
+ * a fim de ela ser uma porta de entrada para o controle do sistema como um todo
+ * (interface com o usuario)
+ * 
+ * @author Gabriel Fernandes
+ */
 public class Facade {
 	private PessoaController pessoaController = new PessoaController();
 	
 	public void iniciaSistema() {
-		
+		//por implementar
 	}
 	
 	public String cadastraPessoa(String cpf, String nome, String email) throws ValidacaoException {
@@ -29,7 +36,7 @@ public class Facade {
 	}
 	
 	public void fechaSistema() {
-		
+		//por implementar
 	}
 	
 	public static void main(String[] args) {

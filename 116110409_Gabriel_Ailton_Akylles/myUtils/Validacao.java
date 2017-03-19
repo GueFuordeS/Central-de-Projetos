@@ -45,7 +45,6 @@ public class Validacao {
 		}
 	}
 
-	
 	public static void validaNome(String string) throws ValidacaoException {
 		if(string == null || string.trim().isEmpty()) {
 			throw new ValidacaoException("Erro no cadastro de pessoa: Nome nulo ou vazio");

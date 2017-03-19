@@ -19,13 +19,14 @@ public abstract class Projeto {
 	Date dataInicio;
 	int duracao;
 	
-	/** M�todo que ir� verificar se o padr�o para cada par�metro est� correto.
+	/** 
+	 * Construtor de classe
 	 * 
 	 * @param nome - String nome do projeto.
 	 * @param objetivo - String objetivo do projeto.
-	 * @param date - String data de in�cio do projeto.
+	 * @param date - String data de inicio do projeto.
 	 * @param duracao - int duracao do projeto.
-	 * @throws ValidacaoException - Ir� validar os "param" nome, objetivo, dataInicio e duracao.
+	 * @throws ValidacaoException - Ira validar os "param" nome, objetivo, dataInicio e duracao.
 	 */
 	
 	public Projeto(String nome, String objetivo, String date, int duracao) throws ValidacaoException {
@@ -39,7 +40,7 @@ public abstract class Projeto {
 		this.duracao = duracao;
 	}
 	
-	/** M�todo que ir� retornar o nome do projeto.
+	/** Metodo que ira retornar o nome do projeto.
 	 * 
 	 * @return String - nome do projeto.
 	 */
@@ -48,7 +49,7 @@ public abstract class Projeto {
 		return nome;
 	}
 	
-	/** M�todo que ir� retornar o objetivo do projeto.
+	/** Metodo que ira retornar o objetivo do projeto.
 	 * 
 	 * @return String - objetivo do projeto.
 	 */
@@ -57,18 +58,18 @@ public abstract class Projeto {
 		return objetivo;
 	}
 	
-	/** M�todo que ir� retornar a data de in�cio do projeto.
+	/** Metodo que ira retornar a data de inicio do projeto.
 	 * 
-	 * @return String - data de in�cio do projeto.
+	 * @return String - data de inicio do projeto.
 	 */
 	
 	public Date getDataInicio() {
 		return dataInicio;
 	}
 	
-	/** M�todo que ir� retornar a dura��o do projeto.
+	/** Metodo que ira retornar a duracao do projeto.
 	 * 
-	 * @return int - dura��o do projeto.
+	 * @return int - duracao do projeto.
 	 */
 	
 	public int getDuracao() {

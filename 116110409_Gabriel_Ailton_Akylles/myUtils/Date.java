@@ -17,6 +17,12 @@ public class Date implements Comparable<Date> {
 	int mes;
 	int ano;
 	
+	/**
+	 * Construtor da classe
+	 * 
+	 * @param date recebe a data
+	 * @throws ValidacaoException caso o formato ou a data em si seja invalida
+	 */
 	public Date(String date) throws ValidacaoException {
 		String dateForm = "\\d\\d/\\d\\d/\\d\\d\\d\\d";
 		if(!date.matches(dateForm)) throw new ValidacaoException("Formato de data invalido");

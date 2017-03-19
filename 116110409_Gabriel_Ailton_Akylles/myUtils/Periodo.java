@@ -4,6 +4,12 @@ import static myUtils.Validacao.*;
 
 import excecoes.ValidacaoException;
 
+/**
+ * Implementacao de um tipo periodo para usar dadas nossas necessidades
+ * (Embora um pouco desnecessario, nao fica legal usando de string para representar este tipo)
+ * 
+ * @author Gabriel Fernandes
+ */
 public class Periodo implements Comparable<Periodo> {
 	int ano;
 	int semestre;
