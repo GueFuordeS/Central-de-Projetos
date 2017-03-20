@@ -32,7 +32,7 @@ public class ExtensaoTest {
 			fail();
 		}
 		catch(ValidacaoException e) {
-			assertEquals("Nome de projeto nao pode ser nulo ou vazio",e.getMessage());
+			assertEquals("Erro no cadastro de projeto: Nome nulo ou vazio",e.getMessage());
 		}
 		
 		try {
@@ -40,7 +40,7 @@ public class ExtensaoTest {
 			fail();
 		}
 		catch(ValidacaoException e) {
-			assertEquals("Formato de data invalido",e.getMessage());
+			assertEquals("Erro: Formato de data invalido",e.getMessage());
 		}
 		try {
 			new Extensao(0, "Projeto olimpico","Ganhar medalhas de ouro",7,"01/01/2017",6);

@@ -26,6 +26,6 @@ public class Codigo {
 	 * @return um inteiro que representa o codigo unico
 	 */
 	public static int geraCodigo() {
-		return codigo++;
+		return ++codigo;
 	}
 }

@@ -38,7 +38,7 @@ public class PeriodoTest {
 			fail();
 		}
 		catch(ValidacaoException e) {
-			assertEquals("Formato de data invalido", e.getMessage());
+			assertEquals("Erro: Formato de data invalido", e.getMessage());
 		}
 		
 		try {
@@ -46,7 +46,7 @@ public class PeriodoTest {
 			fail();
 		}
 		catch(ValidacaoException e) {
-			assertEquals("Formato de data invalido", e.getMessage());
+			assertEquals("Erro: Formato de data invalido", e.getMessage());
 		}
 		
 		try {

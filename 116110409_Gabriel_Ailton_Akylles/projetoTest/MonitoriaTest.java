@@ -9,20 +9,20 @@ import excecoes.ValidacaoException;
 import projeto.Monitoria;
 
 public class MonitoriaTest {
-	private Monitoria ext;
+	private Monitoria mon;
 	
 	@Before
 	public void setUp() throws Exception {
-		ext = new Monitoria(0, "Monitoria de lp2", "lp2", 95, "auxiliar","2016.2", "01/01/2017", 12);
+		mon = new Monitoria(0, "Monitoria de lp2", "lp2", 95, "auxiliar","2016.2", "01/01/2017", 12);
 	}
 
 	@Test
 	public void construtorTest() throws ValidacaoException {
-		assertEquals("Monitoria de lp2", ext.getNome());
-		assertEquals("auxiliar", ext.getObjetivo());
-		assertEquals("01/01/2017", ext.getDataInicio());
-		assertEquals(12, ext.getDuracao());
-		assertEquals(95, ext.getRendimento());
+		assertEquals("Monitoria de lp2", mon.getNome());
+		assertEquals("auxiliar", mon.getObjetivo());
+		assertEquals("01/01/2017", mon.getDataInicio());
+		assertEquals(12, mon.getDuracao());
+		assertEquals(95, mon.getRendimento());
 	}
 	
 	@Test
@@ -32,7 +32,7 @@ public class MonitoriaTest {
 			fail();
 		}
 		catch(ValidacaoException e) {
-			assertEquals("Nome de projeto nao pode ser nulo ou vazio",e.getMessage());
+			assertEquals("Erro no cadastro de projeto: Nome nulo ou vazio",e.getMessage());
 		}
 		
 		try {

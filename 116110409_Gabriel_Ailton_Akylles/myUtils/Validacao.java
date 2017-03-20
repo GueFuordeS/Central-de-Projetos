@@ -120,17 +120,17 @@ public class Validacao {
 	}
 	
 	public static void validaDia(int dia) throws ValidacaoException {
-		if(dia < 1 || 31 < dia) throw new ValidacaoException("Erro na atualizacao de projeto: Formato de data invalido");
+		if(dia < 1 || 31 < dia) throw new ValidacaoException("Erro: Formato de data invalido");
 	}
-	
+
 	public static void validaMes(int mes) throws ValidacaoException {
-		if(mes < 1 || 12 < mes) throw new ValidacaoException("Erro na atualizacao de projeto: Formato de data invalido");
+		if(mes < 1 || 12 < mes) throw new ValidacaoException("Erro: Formato de data invalido");
 	}
-	
+
 	public static void validaAno(int ano) throws ValidacaoException {
-		if(ano < 1899 || 2299 < ano) throw new ValidacaoException("Erro na atualizacao de projeto: Formato de data invalido");
+		if(ano < 1899 || 2299 < ano) throw new ValidacaoException("Erro: Formato de data invalido");
 	}
-	
+
 	public static void validaImpacto(int impacto) throws ValidacaoException {
 		if(impacto < 1 || 6 < impacto) {
 			throw new ValidacaoException("Impacto social precisa ser entre 1 e 6");

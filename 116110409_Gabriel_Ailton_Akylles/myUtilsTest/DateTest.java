@@ -46,7 +46,7 @@ public class DateTest {
 			fail();
 		}
 		catch(ValidacaoException e) {
-			assertEquals("Formato de data invalido",e.getMessage());
+			assertEquals("Erro: Formato de data invalido",e.getMessage());
 		}
 		
 		try {
@@ -54,7 +54,7 @@ public class DateTest {
 			fail();
 		}
 		catch(ValidacaoException e) {
-			assertEquals("Formato de data invalido",e.getMessage());
+			assertEquals("Erro: Formato de data invalido",e.getMessage());
 		}
 		
 		try {
@@ -62,7 +62,7 @@ public class DateTest {
 			fail();
 		}
 		catch(ValidacaoException e) {
-			assertEquals("Formato de data invalido",e.getMessage());
+			assertEquals("Erro: Formato de data invalido",e.getMessage());
 		}
 		
 		try {
@@ -70,7 +70,7 @@ public class DateTest {
 			fail();
 		}
 		catch(ValidacaoException e) {
-			assertEquals("Formato de data invalido",e.getMessage());
+			assertEquals("Erro: Formato de data invalido",e.getMessage());
 		}
 	}
 	
@@ -99,7 +99,7 @@ public class DateTest {
 			new Date("-12/11/1991");
 			fail();
 		} catch (Exception e) {
-			assertEquals("Formato de data invalido", e.getMessage());
+			assertEquals("Erro: Formato de data invalido", e.getMessage());
 		}
 	}
 	

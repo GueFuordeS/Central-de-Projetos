@@ -95,7 +95,13 @@ public abstract class Projeto {
 	}
 	
 	public void setDataInicio(String data) throws ValidacaoException {
-		this.dataInicio = new Date(data);
+		try {
+			this.dataInicio = new Date(data);
+		}
+		catch(ValidacaoException e) {
+			throw new ValidacaoException("Erro na atualizacao de projeto: Formato de data invalido");
+		}
+		
 	}
 
 	public void setDuracao(int duracao) throws ValidacaoException {

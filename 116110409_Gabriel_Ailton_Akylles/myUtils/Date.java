@@ -25,7 +25,7 @@ public class Date implements Comparable<Date> {
 	 */
 	public Date(String date) throws ValidacaoException {
 		String dateForm = "\\d\\d/\\d\\d/\\d\\d\\d\\d";
-		if(!date.matches(dateForm)) throw new ValidacaoException("Erro na atualizacao de projeto: Formato de data invalido");
+		if(!date.matches(dateForm)) throw new ValidacaoException("Erro: Formato de data invalido");
 		
 		String[] nums = new String[date.length()];
 		for (int i = 0; i < date.length(); i++) {
