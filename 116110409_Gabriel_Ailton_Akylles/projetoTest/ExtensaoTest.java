@@ -13,7 +13,7 @@ public class ExtensaoTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		ext = new Extensao(0, "Projeto olimpico","Ganhar medalhas de ouro",12,"01/01/2017",6);
+		ext = new Extensao(0, "Projeto olimpico","Ganhar medalhas de ouro",6,"01/01/2017",6);
 	}
 
 	@Test
@@ -22,13 +22,13 @@ public class ExtensaoTest {
 		assertEquals("Ganhar medalhas de ouro", ext.getObjetivo());
 		assertEquals("01/01/2017", ext.getDataInicio());
 		assertEquals(6, ext.getDuracao());
-		assertEquals(12, ext.getImpacto());
+		assertEquals(6, ext.getImpacto());
 	}
 	
 	@Test
 	public void construtorWithFailTest() {
 		try {
-			new Extensao(0, null,"Ganhar medalhas de ouro",12,"01/01/2017",6);
+			new Extensao(0, null,"Ganhar medalhas de ouro",6,"01/01/2017",6);
 			fail();
 		}
 		catch(ValidacaoException e) {
@@ -36,11 +36,18 @@ public class ExtensaoTest {
 		}
 		
 		try {
-			new Extensao(0, "Projeto olimpico","Ganhar medalhas de ouro",12,"01/13/2017",6);
+			new Extensao(0, "Projeto olimpico","Ganhar medalhas de ouro",6,"01/13/2017",6);
 			fail();
 		}
 		catch(ValidacaoException e) {
 			assertEquals("Formato de data invalido",e.getMessage());
+		}
+		try {
+			new Extensao(0, "Projeto olimpico","Ganhar medalhas de ouro",7,"01/01/2017",6);
+			fail();
+		}
+		catch(ValidacaoException e) {
+			assertEquals("Impacto social precisa ser entre 1 e 6",e.getMessage());
 		}
 	}
 }

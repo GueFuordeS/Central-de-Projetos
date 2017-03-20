@@ -1,8 +1,7 @@
 package controle;
 
 import easyaccept.EasyAccept;
-import excecoes.NaoEncontradaException;
-import excecoes.ValidacaoException;
+import excecoes.*;
 import pessoa.PessoaController;
 import projeto.*;
 
@@ -72,12 +71,16 @@ public class Facade {
 		return projetoController.getInfoProjeto(codigo, atributo);
 	}
 	
-	public int getCodigoProjeto(String nome) {
-		return getCodigoProjeto(nome);
+	public int getCodigoProjeto(String nome) throws NaoEncontradaException, ValidacaoException {
+		return projetoController.getCodigoProjeto(nome);
 	}
 	
 	public void removeProjeto(int codigo) throws NaoEncontradaException, ValidacaoException {
 		projetoController.removeProjeto(codigo);
+	}
+	
+	public void editaProjeto(int codigo, String atributo, String valor) throws NaoEncontradaException, ValidacaoException {
+		projetoController.editaProjeto(codigo, atributo, valor);
 	}
 	
 	public void fechaSistema() {

@@ -18,4 +18,9 @@ public class Extensao extends Projeto {
 	public int getImpacto() {
 		return this.impacto;
 	}
+	
+	public void setImpacto(int impacto) throws ValidacaoException {
+		validaImpacto(impacto);
+		this.impacto = impacto;
+	}
 }

@@ -1,13 +1,14 @@
 package projeto;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import excecoes.NaoEncontradaException;
 import excecoes.ValidacaoException;
 import static myUtils.Codigo.*;
 
 public class ProjetoController {
-	private HashSet<Projeto> projetos;
+	private Set<Projeto> projetos;
 	
 	public ProjetoController() {
 		this.projetos = new HashSet<>();
@@ -85,9 +86,72 @@ public class ProjetoController {
 		else if(atributo.toLowerCase().equals("categoria")) {
 			return this.getCategoria(p);
 		}
-		return null;
+		else if(atributo.toLowerCase().equals("producao academica")) {
+			return this.getProdAcademica(p);
+		}
+		else if(atributo.toLowerCase().equals("producao tecnica")) {
+			return this.getProdTecnica(p);
+		}
+		else if(atributo.toLowerCase().equals("patentes")) {
+			return this.getPatentes(p);
+		}
+		throw new ValidacaoException("Erro na consulta de projeto: Atributo nulo ou invalido");
 	}
 	
+	private String getPatentes(Projeto p) throws ValidacaoException {
+		if(p instanceof PED) {
+			PED ext = (PED) p;
+			return Integer.toString(ext.getValor(Produtividade.PATENTES));
+		}
+		if(p instanceof PET) {
+			PET ext = (PET) p;
+			return Integer.toString(ext.getValor(Produtividade.PATENTES));
+		}
+		if(p instanceof Monitoria) {
+			throw new ValidacaoException("Erro na consulta de projeto: Monitoria nao possui Patentes");
+		}
+		if(p instanceof Extensao) {
+			throw new ValidacaoException("Erro na consulta de projeto: Extensao nao possui Patentes");
+		}
+		return null;
+	}
+
+	private String getProdTecnica(Projeto p) throws ValidacaoException {
+		if(p instanceof PED) {
+			PED ext = (PED) p;
+			return Integer.toString(ext.getValor(Produtividade.PRODTECNICA));
+		}
+		if(p instanceof PET) {
+			PET ext = (PET) p;
+			return Integer.toString(ext.getValor(Produtividade.PRODTECNICA));
+		}
+		if(p instanceof Monitoria) {
+			throw new ValidacaoException("Erro na consulta de projeto: Monitoria nao possui Producao tecnica");
+		}
+		if(p instanceof Extensao) {
+			throw new ValidacaoException("Erro na consulta de projeto: Extensao nao possui Producao tecnica");
+		}
+		return null;
+	}
+
+	private String getProdAcademica(Projeto p) throws ValidacaoException {
+		if(p instanceof PED) {
+			PED ext = (PED) p;
+			return Integer.toString(ext.getValor(Produtividade.PRODACADEMICA));
+		}
+		if(p instanceof PET) {
+			PET ext = (PET) p;
+			return Integer.toString(ext.getValor(Produtividade.PRODACADEMICA));
+		}
+		if(p instanceof Monitoria) {
+			throw new ValidacaoException("Erro na consulta de projeto: Monitoria nao possui Producao academica");
+		}
+		if(p instanceof Extensao) {
+			throw new ValidacaoException("Erro na consulta de projeto: Extensao nao possui Producao academica");
+		}
+		return null;
+	}
+
 	private String getCategoria(Projeto p) {
 		if(p instanceof PED) {
 			PED ext = (PED) p;
@@ -142,18 +206,125 @@ public class ProjetoController {
 				return p;
 			}
 		}
-		throw new NaoEncontradaException();
+		throw new NaoEncontradaException("Erro na consulta de projeto: Projeto nao encontrado");
 	}
 	
 	public Projeto recuperaProjeto(String nome) throws NaoEncontradaException, ValidacaoException {
 		for(Projeto p:this.projetos) {
-			if(p.getNome() == nome) {
+			if(p.getNome().equals(nome)) {
 				return p;
 			}
 		}
-		throw new NaoEncontradaException();
+		throw new NaoEncontradaException("Erro na consulta de projeto: Projeto nao encontrado");
 	}
 	
+	public void editaProjeto(int codigo, String atributo, String valor) 
+			throws NaoEncontradaException, ValidacaoException {
+		
+		Projeto p = recuperaProjeto(codigo);
+		
+		if(atributo.toLowerCase().equals("nome")) {
+			p.setNome(valor);
+		}
+		else if(atributo.toLowerCase().equals("objetivo")) {
+			p.setObjetivo(valor);
+		}
+		else if(atributo.toLowerCase().equals("data de inicio")) {
+			p.setDataInicio(valor);
+		}
+		else if(atributo.toLowerCase().equals("duracao")) {
+			p.setDuracao(Integer.parseInt(valor));
+		}
+		else if(atributo.toLowerCase().equals("impacto")) {
+			this.setImpacto(p, valor);
+		}
+		else if(atributo.toLowerCase().equals("disciplina")) {
+			this.setDisciplina(p, valor);
+		}
+		else if(atributo.toLowerCase().equals("periodo")) {
+			this.setPeriodo(p, valor);
+		}
+		else if(atributo.toLowerCase().equals("rendimento")) {
+			this.setRendimento(p, valor);
+		}
+		else if(atributo.toLowerCase().equals("categoria")) {
+			this.setCategoria(p, valor);
+		}
+		else if(atributo.toLowerCase().equals("producao academica")) {
+			this.setProdAcademica(p, valor);
+		}
+		else if(atributo.toLowerCase().equals("producao tecnica")) {
+			this.setProdTecnica(p, valor);
+		}
+		else if(atributo.toLowerCase().equals("patentes")) {
+			this.setPatentes(p, valor);
+		}
+	}
+	
+	private void setPatentes(Projeto p, String valor) throws NumberFormatException, ValidacaoException {
+		if(p instanceof PED) {
+			((PED) p).setProdutividade(Produtividade.PATENTES, valor);
+		}
+		if(p instanceof PET) {
+			((PET) p).setProdutividade(Produtividade.PATENTES, valor);
+		}
+		
+	}
+
+	private void setProdTecnica(Projeto p, String valor) throws NumberFormatException, ValidacaoException {
+		if(p instanceof PED) {
+			((PED) p).setProdutividade(Produtividade.PRODTECNICA, valor);
+		}
+		if(p instanceof PET) {
+			((PET) p).setProdutividade(Produtividade.PRODTECNICA, valor);
+		}
+	}
+
+	private void setProdAcademica(Projeto p, String valor) throws NumberFormatException, ValidacaoException {
+		if(p instanceof PED) {
+			((PED) p).setProdutividade(Produtividade.PRODACADEMICA, valor);
+		}
+		if(p instanceof PET) {
+			((PET) p).setProdutividade(Produtividade.PRODACADEMICA, valor);
+		}
+	}
+
+	private void setCategoria(Projeto p, String valor) throws ValidacaoException {
+		if(p instanceof PED) {
+			((PED) p).setCategoria(valor);
+		}
+	}
+
+	private void setRendimento(Projeto p, String valor) throws NumberFormatException, ValidacaoException {
+		if(p instanceof Monitoria) {
+			((Monitoria) p).setRendimento(Integer.parseInt(valor));
+		}
+		if(p instanceof PET) {
+			((PET) p).setRendimento(Integer.parseInt(valor));
+		}
+	}
+
+	private void setPeriodo(Projeto p, String valor) throws ValidacaoException {
+		if(p instanceof Monitoria) {
+			((Monitoria) p).setPeriodo(valor);
+		}
+	}
+
+	private void setDisciplina(Projeto p, String valor) throws ValidacaoException {
+		if(p instanceof Monitoria) {
+			((Monitoria) p).setDisciplina(valor);
+		}
+	}
+
+	private void setImpacto(Projeto p, String valor) throws NumberFormatException, ValidacaoException {
+		if(p instanceof Extensao) {
+			((Extensao) p).setImpacto(Integer.parseInt(valor));
+		}
+		if(p instanceof PET) {
+			((PET) p).setImpacto(Integer.parseInt(valor));
+		}
+	}
+
 	public int getCodigoProjeto(String nome) throws NaoEncontradaException, ValidacaoException {
 		Projeto p = this.recuperaProjeto(nome);
 		return p.getCodigo();

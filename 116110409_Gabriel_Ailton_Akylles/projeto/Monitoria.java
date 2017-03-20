@@ -32,4 +32,19 @@ public class Monitoria extends Projeto {
 	public int getRendimento() {
 		return this.rendimento;
 	}
+	
+	public void setDisciplina(String disciplina) throws ValidacaoException {
+		validaNomeDisciplina(disciplina);
+		this.disciplina = disciplina;
+	}
+	
+	public void setPeriodo(String periodo) throws ValidacaoException {
+		validaPeriodo(periodo);
+		this.periodo = new Periodo(periodo);
+	}
+	
+	public void setRendimento(int rendimento) throws ValidacaoException {
+		validaRendimento(rendimento);
+		this.rendimento = rendimento;
+	}
 }

@@ -31,9 +31,10 @@ public abstract class Projeto {
 	 */
 	
 	public Projeto(int codigo, String nome, String objetivo, String dataInicio, int duracao) throws ValidacaoException {
+		
 		validaNomeProjeto(nome);
 		validaObjetivo(objetivo);
-		validaInt(duracao);
+		validaDuracao(duracao);
 		
 		this.codigo = codigo;
 		this.nome = nome;
@@ -82,7 +83,26 @@ public abstract class Projeto {
 	public int getDuracao() {
 		return this.duracao;
 	}
+	
+	public void setNome(String nome) throws ValidacaoException {
+		validaNomeProjeto(nome);
+		this.nome = nome;
+	}
+	
+	public void setObjetivo(String objetivo) throws ValidacaoException {
+		validaObjetivoUpdate(objetivo);
+		this.objetivo = objetivo;
+	}
+	
+	public void setDataInicio(String data) throws ValidacaoException {
+		this.dataInicio = new Date(data);
+	}
 
+	public void setDuracao(int duracao) throws ValidacaoException {
+		validaInt(duracao);
+		this.duracao = duracao;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

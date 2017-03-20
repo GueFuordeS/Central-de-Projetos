@@ -1,6 +1,7 @@
 package pessoa;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import excecoes.*;
 import myUtils.Validacao;
@@ -13,7 +14,7 @@ import myUtils.Validacao;
  *
  */
 public class PessoaController {
-	private HashSet<Pessoa> pessoas;
+	private Set<Pessoa> pessoas;
 	
 	public PessoaController() {
 		this.pessoas = new HashSet<>();

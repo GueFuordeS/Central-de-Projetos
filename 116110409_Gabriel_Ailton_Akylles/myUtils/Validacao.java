@@ -59,7 +59,7 @@ public class Validacao {
 	
 	public static void validaNomeProjeto(String string) throws ValidacaoException {
 		if(string == null || string.trim().isEmpty()) {
-			throw new ValidacaoException("Nome de projeto nao pode ser nulo ou vazio");
+			throw new ValidacaoException("Erro no cadastro de projeto: Nome nulo ou vazio");
 		}
 	}
 	
@@ -71,7 +71,13 @@ public class Validacao {
 	
 	public static void validaObjetivo(String string) throws ValidacaoException {
 		if(string == null || string.trim().isEmpty()) {
-			throw new ValidacaoException("Erro: objetivo nao pode ser nulo ou vazio");
+			throw new ValidacaoException("Erro no cadastro de projeto: Objetivo nulo ou vazio");
+		}
+	}
+	
+	public static void validaObjetivoUpdate(String string) throws ValidacaoException {
+		if(string == null || string.trim().isEmpty()) {
+			throw new ValidacaoException("Erro na atualizacao de projeto: Objetivo nulo ou vazio");
 		}
 	}
 	
@@ -109,21 +115,25 @@ public class Validacao {
 		if(inteiro <= 0) throw new ValidacaoException("Inteiro invalido para a operacao");
 	}
 	
+	public static void validaDuracao(int inteiro) throws ValidacaoException {
+		if(inteiro <= 0) throw new ValidacaoException("Erro no cadastro de projeto: Duracao invalida");
+	}
+	
 	public static void validaDia(int dia) throws ValidacaoException {
-		if(dia < 1 || 31 < dia) throw new ValidacaoException("Formato de data invalido");
+		if(dia < 1 || 31 < dia) throw new ValidacaoException("Erro na atualizacao de projeto: Formato de data invalido");
 	}
 	
 	public static void validaMes(int mes) throws ValidacaoException {
-		if(mes < 1 || 12 < mes) throw new ValidacaoException("Formato de data invalido");
+		if(mes < 1 || 12 < mes) throw new ValidacaoException("Erro na atualizacao de projeto: Formato de data invalido");
 	}
 	
 	public static void validaAno(int ano) throws ValidacaoException {
-		if(ano < 1899 || 2299 < ano) throw new ValidacaoException("Formato de data invalido");
+		if(ano < 1899 || 2299 < ano) throw new ValidacaoException("Erro na atualizacao de projeto: Formato de data invalido");
 	}
 	
 	public static void validaImpacto(int impacto) throws ValidacaoException {
 		if(impacto < 1 || 6 < impacto) {
-			throw new ValidacaoException("Impacto social precisa ser entre 1 à 6");
+			throw new ValidacaoException("Impacto social precisa ser entre 1 e 6");
 		}
 	}
 	
@@ -147,13 +157,26 @@ public class Validacao {
 		}
 		else if(!categoria.equals("PIBIC") && !categoria.equals("PIBITI") && !categoria.equals("PIVIC")
 				&& !categoria.equals("COOP")) {
-			throw new ValidacaoException("Categoria invalida");
+			throw new ValidacaoException("Erro no cadastro de projeto: Categoria invalida");
+		}
+	}
+
+	public static void validaProdAcademica(int produtividade) throws ValidacaoException {
+		if(produtividade < 0) {
+			throw new ValidacaoException("Erro no cadastro de projeto: Numero de producoes academicas invalido");
 		}
 	}
 	
-	public static void validaProdutividade(int produtividade) throws ValidacaoException {
+	public static void validaProdTecnica(int produtividade) throws ValidacaoException {
 		if(produtividade < 0) {
-			throw new ValidacaoException("Produtividade nao pode ser menor que 0");
+			throw new ValidacaoException("Erro no cadastro de projeto: Numero de producoes tecnicas invalido");
 		}
 	}
+	
+	public static void validaPatentes(int produtividade) throws ValidacaoException {
+		if(produtividade < 0) {
+			throw new ValidacaoException("Erro no cadastro de projeto: Numero de patentes invalido");
+		}
+	}
+	
 } 
