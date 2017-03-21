@@ -1,8 +1,7 @@
 package controle;
 
 import easyaccept.EasyAccept;
-import excecoes.NaoEncontradaException;
-import excecoes.ValidacaoException;
+import excecoes.*;
 import participacao.ParticipacaoController;
 import pessoa.PessoaController;
 import projeto.*;
@@ -86,10 +85,6 @@ public class Facade {
 		projetoController.editaProjeto(codigo, atributo, valor);
 	}
 	
-	public void fechaSistema() {
-		//por implementar
-	}
-	
 	// Aqui comeca a parte de associacao de pessoa a projetos, ou seja, a criacao de participacoes
 	
 	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora, int qntHoras)
@@ -110,4 +105,7 @@ public class Facade {
 	    EasyAccept.main(args);
 	}
 	
+	public void fechaSistema() {
+		//por implementar
+	}
 }// fim da classe

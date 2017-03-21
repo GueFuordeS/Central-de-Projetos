@@ -41,8 +41,8 @@ public class ParticipacaoController {
 	
 	public void associaProfissional(String cpfPessoa, String codigoProjeto,String cargo, double valorHora, int qntHoras) throws NaoEncontradaException, ValidacaoException{
 
-		Pessoa pessoa = pessoaController.recuperaPessoa(cpfPessoa);
-		Projeto projeto = projetoController.recuperaProjeto(codigoProjeto);
+//		Pessoa pessoa = pessoaController.recuperaPessoa(cpfPessoa);
+//		Projeto projeto = projetoController.recuperaProjeto(codigoProjeto);
 //		ParticipacaoProfissional partProf = 
 //				new ParticipacaoProfissional(pessoa, projeto, cargo, dataInicio, duracaoEmMeses, qtdeHorasDedicadas, valorDaHora)
 	}
