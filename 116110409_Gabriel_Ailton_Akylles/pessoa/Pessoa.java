@@ -15,13 +15,12 @@ public class Pessoa {
 	private String email;
 	
 	/**
-	 * O metodo abaixo ira validar o cpf, nome e email da pessoa cadastrada.
+	 * O Construtor abaixo ira validar o cpf, nome e email da pessoa cadastrada.
 	 * @param cpf String - Cpf da pessoa.
 	 * @param nome String - Nome da pessoa.
 	 * @param email String - Email da pessoa.
 	 * @throws ValidacaoException Ira validar os "param" cpf, nome e email.
 	 */
-	
 	public Pessoa(String cpf, String nome, String email) throws ValidacaoException {
 		Validacao.validaCpf(cpf);
 		Validacao.validaString(nome);
