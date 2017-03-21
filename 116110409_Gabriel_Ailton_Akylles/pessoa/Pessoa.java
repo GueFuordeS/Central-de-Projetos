@@ -32,11 +32,12 @@ public class Pessoa {
 		this.email = email;
 	}
 	
+	
+	
 	/** Metodo que ira retornar o nome da pessoa.
 	 * 
 	 * @return String - Nome da pessoa.
 	 */
-	
 	public String getNome() {
 		return this.nome;
 	}
