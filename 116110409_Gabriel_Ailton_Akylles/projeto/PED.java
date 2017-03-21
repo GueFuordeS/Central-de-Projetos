@@ -7,10 +7,31 @@ import java.util.Map;
 
 import excecoes.ValidacaoException;
 
+/**
+ * Subclasse de projeto responsavel  por moldar projetos do tipo
+ * PeD
+ *
+ * @author Gabriel Fernandes
+ *
+ */
 public class PED extends Projeto {
 	String categoria;
 	private Map<Produtividade,Integer> produtividade;
 	
+	/**
+	 * 
+	 * 
+	 * @param codigo recebe o codigo que vai diferenciar cada projeto
+	 * @param nome nome referente ao projeto
+	 * @param categoria á que categoria o projeto está associado
+	 * @param prodTecnica Valor que no projeto sera produzido de producao tecnica
+	 * @param prodAcademica Valor que no projeto sera produzido de producao academica
+	 * @param patentes Valor que no projeto sera produzido de patentes
+	 * @param objetivo Objetivo geral do projeto
+	 * @param dataInicio data de inicio do projeto
+	 * @param duracao planejada para o projeto
+	 * @throws ValidacaoException Lanca excecao caso falhe nas validacoes
+	 */
 	public PED(int codigo, String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, 
 			String objetivo, String dataInicio, int duracao) throws ValidacaoException {
 		super(codigo, nome, objetivo, dataInicio, duracao);
