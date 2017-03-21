@@ -8,9 +8,9 @@ public class ParticipacaoPosGraduando extends Participacao {
 	private TipoPosGraduando tipo;
 	
 	public ParticipacaoPosGraduando(Pessoa pessoa, Projeto projeto, String dataInicio, int duracaoEmMeses,
-			int qtdeHorasDedicadas, double valorDaHora, TipoPosGraduando tipo) {
+			double valorDaHora, int qtdeHorasDedicadas , TipoPosGraduando tipo) {
 		
-		super(pessoa, projeto, dataInicio, duracaoEmMeses, qtdeHorasDedicadas, valorDaHora);
+		super(pessoa, projeto, dataInicio, duracaoEmMeses, valorDaHora, qtdeHorasDedicadas);
 		this.tipo = tipo;
 	}
 

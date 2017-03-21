@@ -8,9 +8,9 @@ public class ParticipacaoProfissional extends Participacao {
 	private String cargo;
 	
 	public ParticipacaoProfissional(Pessoa pessoa, Projeto projeto, String cargo, String dataInicio, int duracaoEmMeses,
-			int qtdeHorasDedicadas, double valorDaHora) {
+			double valorDaHora, int qtdeHorasDedicadas) {
 	
-		super(pessoa, projeto, dataInicio, duracaoEmMeses, qtdeHorasDedicadas, valorDaHora);
+		super(pessoa, projeto, dataInicio, duracaoEmMeses, valorDaHora, qtdeHorasDedicadas);
 		this.cargo = cargo;
 	}
 	

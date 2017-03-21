@@ -12,8 +12,7 @@ public abstract class Participacao {
 		private int qtdeHorasDedicadas;
 		private double valorDaHora;
 		
-		public Participacao(Pessoa pessoa, Projeto projeto, String dataInicio, int duracaoEmMeses, int qtdeHorasDedicadas,
-				double valorDaHora) {
+		public Participacao(Pessoa pessoa, Projeto projeto, String dataInicio, int duracaoEmMeses, double valorDaHora, int qtdeHorasDedicadas) {
 			super();
 			this.pessoa = pessoa;
 			this.projeto = projeto;
