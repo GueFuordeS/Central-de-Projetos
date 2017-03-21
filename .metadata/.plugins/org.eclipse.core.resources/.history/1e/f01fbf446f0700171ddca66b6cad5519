@@ -1,5 +1,0 @@
-package projeto;
-
-public class PET extends Projeto {
-
-}
