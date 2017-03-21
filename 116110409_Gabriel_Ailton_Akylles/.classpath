@@ -3,6 +3,6 @@
 	<classpathentry kind="src" path=""/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/home/akylleslb/projeto/easyaccept/easyaccept.jar"/>
+	<classpathentry kind="lib" path="/home/fernandes/projeto/easyaccept/easyaccept.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
