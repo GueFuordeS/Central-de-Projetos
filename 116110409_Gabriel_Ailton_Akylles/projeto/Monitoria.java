@@ -21,6 +21,7 @@ public class Monitoria extends Projeto {
 		this.rendimento = rendimento;
 		this.periodo = new Periodo(periodo);
 	}
+	
 	public String getDisciplina() {
 		return this.disciplina;
 	}

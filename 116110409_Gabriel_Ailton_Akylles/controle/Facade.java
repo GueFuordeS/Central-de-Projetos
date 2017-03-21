@@ -3,6 +3,7 @@ package controle;
 import easyaccept.EasyAccept;
 import excecoes.NaoEncontradaException;
 import excecoes.ValidacaoException;
+import participacao.ParticipacaoController;
 import pessoa.PessoaController;
 import projeto.*;
 
@@ -16,6 +17,7 @@ import projeto.*;
 public class Facade {
 	private PessoaController pessoaController = new PessoaController();
 	private ProjetoController projetoController = new ProjetoController();
+	private ParticipacaoController participacaoController = new ParticipacaoController(pessoaController, projetoController);
 	
 	public void iniciaSistema() {
 		//por implementar
@@ -84,9 +86,24 @@ public class Facade {
 		//por implementar
 	}
 	
+	// Aqui comeca a parte de associacao de pessoa a projetos, ou seja, a criacao de participacoes
+	
+	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora, int qntHoras)
+			throws NaoEncontradaException, ValidacaoException{
+		
+		participacaoController.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras);
+	}
+	
+	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras)
+			throws NaoEncontradaException, ValidacaoException{
+		
+		participacaoController.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras);
+	}
+	
 	public static void main(String[] args) {
 	    args = new String[] {"controle.Facade", "acceptance_test/us1_test.txt", "acceptance_test/us1_test_exception.txt",
-	    		"acceptance_test/us2_test.txt", "acceptance_test/us2_test_exception.txt"};
+	    		"acceptance_test/us2_test.txt", "acceptance_test/us2_test_exception.txt", "acceptance_test/us3_test.txt"};
 	    EasyAccept.main(args);
 	}
-}
+	
+}// fim da classe

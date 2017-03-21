@@ -29,7 +29,6 @@ public abstract class Projeto {
 	 * @param duracao - int duracao do projeto.
 	 * @throws ValidacaoException - Ira validar os "param" nome, objetivo, dataInicio e duracao.
 	 */
-	
 	public Projeto(int codigo, String nome, String objetivo, String dataInicio, int duracao) throws ValidacaoException {
 		validaNomeProjeto(nome);
 		validaObjetivo(objetivo);

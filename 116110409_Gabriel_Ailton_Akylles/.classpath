@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="lib" path="/home/aquiles/ProgramaçãoII/Central-de-Projetos/easyaccept/easyaccept-1.0.3-jar/easyaccept.jar"/>
 	<classpathentry kind="src" path=""/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/home/fernandes/projeto/easyaccept/easyaccept.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
