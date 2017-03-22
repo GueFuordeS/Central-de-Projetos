@@ -116,7 +116,8 @@ public class Facade {
 	
 	public static void main(String[] args) {
 	    args = new String[] {"controle.Facade", "acceptance_test/us1_test.txt", "acceptance_test/us1_test_exception.txt",
-	    		"acceptance_test/us2_test.txt", "acceptance_test/us2_test_exception.txt", "acceptance_test/us3_test.txt"};
+	    		"acceptance_test/us2_test.txt", "acceptance_test/us2_test_exception.txt", "acceptance_test/us3_test.txt",
+	    		"acceptance_test/us3_test_exception.txt"};
 	    EasyAccept.main(args);
 	}
 	
