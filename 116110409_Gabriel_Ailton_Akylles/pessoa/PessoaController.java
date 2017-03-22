@@ -1,10 +1,12 @@
 package pessoa;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 import excecoes.*;
 import myUtils.Validacao;
+import participacao.Participacao;
 
 /**
  * 
@@ -68,16 +70,28 @@ public class PessoaController {
 	}
 	
 	public String getInfoPessoa(String cpf, String atributo) throws NaoEncontradaException, ValidacaoException {
-		Pessoa p = this.recuperaPessoa(cpf);
+		Pessoa pessoa = this.recuperaPessoa(cpf);
 		
 		if(atributo.toLowerCase().equals("cpf")) {
-			return p.getCpf();
+			return pessoa.getCpf();
 		}
 		else if(atributo.toLowerCase().equals("nome")) {
-			return p.getNome();
+			return pessoa.getNome();
 		}
 		else if(atributo.toLowerCase().equals("email")) {
-			return p.getEmail();
+			return pessoa.getEmail();
+		}else if(atributo.equalsIgnoreCase("participacoes")){
+			
+			ArrayList<Participacao> array = pessoa.getParticipacoes();
+			String participacoes = "";
+			
+			for (int i = 0; i < array.size() - 1; i++) {
+				
+				String nomeProjeto = array.get(i).getProjeto().getNome();
+				participacoes += nomeProjeto + ", ";
+			}
+			participacoes += array.get(array.size() - 1);
+			return participacoes;
 		}
 		return null;
 	}
