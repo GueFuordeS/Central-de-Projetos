@@ -16,7 +16,8 @@ import projeto.*;
 public class Facade {
 	private PessoaController pessoaController = new PessoaController();
 	private ProjetoController projetoController = new ProjetoController();
-	private ParticipacaoController participacaoController = new ParticipacaoController(pessoaController, projetoController);
+	private ParticipacaoController participacaoController = 
+			new ParticipacaoController(pessoaController, projetoController);
 	
 	public void iniciaSistema() {
 		//por implementar
@@ -50,7 +51,8 @@ public class Facade {
 	}
 	
 	public int adicionaPET(String nome, String objetivo, int impacto, int rendimento, 
-			int prodTecnica, int prodAcademica, int patentes, String dataInicio, int duracao) throws ValidacaoException {
+			int prodTecnica, int prodAcademica, int patentes, String dataInicio, int duracao) 
+					throws ValidacaoException {
 		
 		return projetoController.adicionaPET(nome, objetivo, impacto, rendimento, 
 				 prodTecnica, prodAcademica, patentes, dataInicio, duracao);
@@ -81,13 +83,15 @@ public class Facade {
 		projetoController.removeProjeto(codigo);
 	}
 	
-	public void editaProjeto(int codigo, String atributo, String valor) throws NaoEncontradaException, ValidacaoException {
+	public void editaProjeto(int codigo, String atributo, String valor) throws NaoEncontradaException, 
+	ValidacaoException {
 		projetoController.editaProjeto(codigo, atributo, valor);
 	}
 	
-	// Aqui comeca a parte de associacao de pessoa a projetos, ou seja, a criacao de participacoes
+	//Aqui comeca a parte de controle de participacoes
 	
-	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora, int qntHoras)
+	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, 
+			double valorHora, int qntHoras)
 			throws NaoEncontradaException, ValidacaoException{
 		
 		participacaoController.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras);
@@ -113,15 +117,16 @@ public class Facade {
 		participacaoController.associaPosGraduando(cpfPessoa, codigoProjeto, titulacao, valorHora, qntHoras);
 	}
 	
-	
-	public static void main(String[] args) {
-	    args = new String[] {"controle.Facade", "acceptance_test/us1_test.txt", "acceptance_test/us1_test_exception.txt",
-	    		"acceptance_test/us2_test.txt", "acceptance_test/us2_test_exception.txt", "acceptance_test/us3_test.txt",
-	    		"acceptance_test/us3_test_exception.txt"};
-	    EasyAccept.main(args);
-	}
-	
 	public void fechaSistema() {
 		//por implementar
 	}
-}// fim da classe
+	
+	public static void main(String[] args) {
+	    args = new String[] {"controle.Facade", "acceptance_test/us1_test.txt", 
+	    		"acceptance_test/us1_test_exception.txt",
+	    		"acceptance_test/us2_test.txt", "acceptance_test/us2_test_exception.txt", 
+	    		"acceptance_test/us3_test.txt",
+	    		"acceptance_test/us3_test_exception.txt"};
+	    EasyAccept.main(args);
+	}
+}

@@ -1,5 +1,8 @@
 package participacao;
 
+import excecoes.ValidacaoException;
+import myUtils.Date;
+import static myUtils.Validacao.*;
 import pessoa.Pessoa;
 import projeto.Projeto;
 
@@ -7,19 +10,25 @@ public abstract class Participacao {
 
 		private Pessoa pessoa;
 		private Projeto projeto;
-		private String dataInicio;
-		private int duracaoEmMeses;
-		private int qtdeHorasDedicadas;
-		private double valorDaHora;
+		private Date dataInicio;
+		private int duracao;
+		private int qntHoras;
+		private double valorHora;
 		
-		public Participacao(Pessoa pessoa, Projeto projeto, String dataInicio, int duracaoEmMeses, double valorDaHora, int qtdeHorasDedicadas) {
-			super();
+		public Participacao(Pessoa pessoa, Projeto projeto, String dataInicio, 
+				int duracaoEmMeses, double valorDaHora, int qtdeHorasDedicadas) throws ValidacaoException {
+
+			
+			validaDuracao(duracaoEmMeses);
+			validaQntHoras(qtdeHorasDedicadas);
+			validaValorHora(valorDaHora);
+			
 			this.pessoa = pessoa;
 			this.projeto = projeto;
-			this.dataInicio = dataInicio;
-			this.duracaoEmMeses = duracaoEmMeses;
-			this.qtdeHorasDedicadas = qtdeHorasDedicadas;
-			this.valorDaHora = valorDaHora;
+			this.dataInicio = new Date(dataInicio);
+			this.duracao = duracaoEmMeses;
+			this.qntHoras = qtdeHorasDedicadas;
+			this.valorHora = valorDaHora;
 		}
 		
 		public Pessoa getPessoa() {
@@ -39,35 +48,38 @@ public abstract class Participacao {
 		}
 
 		public String getDataInicio() {
-			return dataInicio;
+			return dataInicio.toString();
 		}
 
-		public void setDataInicio(String dataInicio) {
-			this.dataInicio = dataInicio;
+		public void setDataInicio(String dataInicio) throws ValidacaoException {
+			this.dataInicio = new Date(dataInicio);
 		}
 
 		public int getDuracaoEmMeses() {
-			return duracaoEmMeses;
+			return duracao;
 		}
 
-		public void setDuracaoEmMeses(int duracaoEmMeses) {
-			this.duracaoEmMeses = duracaoEmMeses;
+		public void setDuracaoEmMeses(int duracaoEmMeses) throws ValidacaoException {
+			validaDuracao(duracaoEmMeses);
+			this.duracao = duracaoEmMeses;
 		}
 
 		public int getQtdeHorasDedicadas() {
-			return qtdeHorasDedicadas;
+			return qntHoras;
 		}
 
-		public void setQtdeHorasDedicadas(int qtdeHorasDedicadas) {
-			this.qtdeHorasDedicadas = qtdeHorasDedicadas;
+		public void setQtdeHorasDedicadas(int qtdeHorasDedicadas) throws ValidacaoException {
+			validaQntHoras(qtdeHorasDedicadas);
+			this.qntHoras = qtdeHorasDedicadas;
 		}
 
 		public double getValorDaHora() {
-			return valorDaHora;
+			return valorHora;
 		}
 
-		public void setValorDaHora(double valorDaHora) {
-			this.valorDaHora = valorDaHora;
+		public void setValorDaHora(double valorDaHora) throws ValidacaoException {
+			validaValorHora(valorDaHora);
+			this.valorHora = valorDaHora;
 		}
 
 		@Override
@@ -75,12 +87,12 @@ public abstract class Participacao {
 			final int prime = 31;
 			int result = 1;
 			result = prime * result + ((dataInicio == null) ? 0 : dataInicio.hashCode());
-			result = prime * result + duracaoEmMeses;
+			result = prime * result + duracao;
 			result = prime * result + ((pessoa == null) ? 0 : pessoa.hashCode());
 			result = prime * result + ((projeto == null) ? 0 : projeto.hashCode());
-			result = prime * result + qtdeHorasDedicadas;
+			result = prime * result + qntHoras;
 			long temp;
-			temp = Double.doubleToLongBits(valorDaHora);
+			temp = Double.doubleToLongBits(valorHora);
 			result = prime * result + (int) (temp ^ (temp >>> 32));
 			return result;
 		}
@@ -99,7 +111,7 @@ public abstract class Participacao {
 					return false;
 			} else if (!dataInicio.equals(other.dataInicio))
 				return false;
-			if (duracaoEmMeses != other.duracaoEmMeses)
+			if (duracao != other.duracao)
 				return false;
 			if (pessoa == null) {
 				if (other.pessoa != null)
@@ -111,9 +123,9 @@ public abstract class Participacao {
 					return false;
 			} else if (!projeto.equals(other.projeto))
 				return false;
-			if (qtdeHorasDedicadas != other.qtdeHorasDedicadas)
+			if (qntHoras != other.qntHoras)
 				return false;
-			if (Double.doubleToLongBits(valorDaHora) != Double.doubleToLongBits(other.valorDaHora))
+			if (Double.doubleToLongBits(valorHora) != Double.doubleToLongBits(other.valorHora))
 				return false;
 			return true;
 		}	

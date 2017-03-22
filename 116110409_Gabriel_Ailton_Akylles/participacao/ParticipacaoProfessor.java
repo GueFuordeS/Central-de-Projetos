@@ -1,5 +1,6 @@
 package participacao;
 
+import excecoes.ValidacaoException;
 import pessoa.Pessoa;
 import projeto.Projeto;
 
@@ -8,7 +9,7 @@ public class ParticipacaoProfessor extends Participacao {
 	private boolean isCoordenador;
 	
 	public ParticipacaoProfessor(Pessoa pessoa, Projeto projeto, boolean isCoordenador, String dataInicio, int duracaoEmMeses, 
-			double valorDaHora, int qtdeHorasDedicadas) {
+			double valorDaHora, int qtdeHorasDedicadas) throws ValidacaoException {
 		
 		super(pessoa, projeto, dataInicio, duracaoEmMeses, valorDaHora, qtdeHorasDedicadas);
 		this.isCoordenador = isCoordenador;

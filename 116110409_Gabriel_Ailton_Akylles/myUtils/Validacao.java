@@ -115,6 +115,14 @@ public class Validacao {
 		if(inteiro <= 0) throw new ValidacaoException("Inteiro invalido para a operacao");
 	}
 	
+	public static void validaValorHora(double valorHora) throws ValidacaoException {
+		if(valorHora <= 0) throw new ValidacaoException("Erro na associacao de pessoa a projeto: Valor da hora invalido");
+	}
+	
+	public static void validaQntHoras(int valorHora) throws ValidacaoException {
+		if(valorHora <= 0) throw new ValidacaoException("Erro na associacao de pessoa a projeto: Quantidade de horas invalida");
+	}
+	
 	public static void validaDuracao(int inteiro) throws ValidacaoException {
 		if(inteiro <= 0) throw new ValidacaoException("Erro no cadastro de projeto: Duracao invalida");
 	}

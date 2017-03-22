@@ -326,7 +326,12 @@ public class ProjetoController {
 	}
 
 	public int getCodigoProjeto(String nome) throws NaoEncontradaException, ValidacaoException {
-		Projeto p = this.recuperaProjeto(nome);
-		return p.getCodigo();
+		try {
+			Projeto p = this.recuperaProjeto(nome);
+			return p.getCodigo();
+		}
+		catch(NaoEncontradaException e) {
+			throw new NaoEncontradaException("Erro na obtencao de codigo de projeto: Projeto nao encontrado");
+		}
 	}
 }
