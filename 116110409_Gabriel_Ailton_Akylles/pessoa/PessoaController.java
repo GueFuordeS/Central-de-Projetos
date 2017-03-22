@@ -1,7 +1,7 @@
 package pessoa;
 
-import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import excecoes.*;
@@ -80,18 +80,22 @@ public class PessoaController {
 		}
 		else if(atributo.toLowerCase().equals("email")) {
 			return pessoa.getEmail();
-		}else if(atributo.equalsIgnoreCase("participacoes")){
+		}else if(atributo.toLowerCase().equals("participacoes")){
 			
-			ArrayList<Participacao> array = pessoa.getParticipacoes();
-			String participacoes = "";
+			Set<Participacao> participacoes = pessoa.getParticipacoes();
+			String participacoesRetorno = "";
 			
-			for (int i = 0; i < array.size() - 1; i++) {
-				
-				String nomeProjeto = array.get(i).getProjeto().getNome();
-				participacoes += nomeProjeto + ", ";
+			Iterator<Participacao> it = participacoes.iterator();
+			
+			for (Participacao p:participacoes) {
+				if(it.hasNext()) {
+					participacoesRetorno += p.getProjeto().getNome() + ", ";
+				}
+				else {
+					participacoesRetorno += p.getProjeto().getNome();
+				}
 			}
-			participacoes += array.get(array.size() - 1);
-			return participacoes;
+			return participacoesRetorno;
 		}
 		return null;
 	}

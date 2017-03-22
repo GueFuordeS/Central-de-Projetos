@@ -2,8 +2,11 @@ package projeto;
 
 import static myUtils.Validacao.*;
 
+import java.util.Set;
+
 import excecoes.ValidacaoException;
 import myUtils.Date;
+import participacao.Participacao;
 
 /**
  * 
@@ -14,11 +17,12 @@ import myUtils.Date;
  */
 
 public abstract class Projeto {
-	int codigo;
-	String nome;
-	String objetivo;
-	Date dataInicio;
-	int duracao;
+	private int codigo;
+	private String nome;
+	private String objetivo;
+	private Date dataInicio;
+	private int duracao;
+	private Set<Participacao> participacoes;
 	
 	/** 
 	 * Construtor de classe
@@ -106,6 +110,14 @@ public abstract class Projeto {
 	public void setDuracao(int duracao) throws ValidacaoException {
 		validaInt(duracao);
 		this.duracao = duracao;
+	}
+	
+	public void removeParticipacao(String cpf) {
+		for(Participacao p:participacoes) {
+			if(p.getPessoa().getCpf().equals(cpf)) {
+				participacoes.remove(p);
+			}
+		}
 	}
 	
 	@Override

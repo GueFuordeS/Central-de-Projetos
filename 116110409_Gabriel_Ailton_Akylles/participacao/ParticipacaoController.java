@@ -1,6 +1,7 @@
 package participacao;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import excecoes.NaoEncontradaException;
 import excecoes.ValidacaoException;
@@ -12,11 +13,12 @@ public class ParticipacaoController {
 
 	private PessoaController pessoaController;
 	private ProjetoController projetoController;
-	private ArrayList<Participacao> participacoes = new ArrayList<>();
+	private Set<Participacao> participacoes;
 	
 	public ParticipacaoController(PessoaController pessoaController, ProjetoController projetoController){
 		this.pessoaController = pessoaController;
 		this.projetoController = projetoController;
+		this.participacoes = new HashSet<>();
 	}
 	
 	
@@ -33,7 +35,7 @@ public class ParticipacaoController {
 
 
 
-	public ArrayList<Participacao> getParticipacoes() {
+	public Set<Participacao> getParticipacoes() {
 		return participacoes;
 	}
 
@@ -103,5 +105,21 @@ public class ParticipacaoController {
 		
 		participacoes.add(partPosGrad);
 		pessoaController.recuperaPessoa(cpfPessoa).adicionaPartcicipacao(partPosGrad);
+	}
+
+
+
+	public void removeParticipacao(String cpfPessoa, int codigoProjeto) throws NaoEncontradaException, ValidacaoException {
+		Pessoa pes = pessoaController.recuperaPessoa(cpfPessoa);
+		Projeto proj = projetoController.recuperaProjeto(codigoProjeto);
+		
+		for(Participacao p:participacoes) {
+			if(p.getPessoa().equals(pes)) {
+				participacoes.remove(p);
+				pes.removeParticipacao(codigoProjeto);
+				proj.removeParticipacao(cpfPessoa);
+			}
+		}
+		
 	}
 }
