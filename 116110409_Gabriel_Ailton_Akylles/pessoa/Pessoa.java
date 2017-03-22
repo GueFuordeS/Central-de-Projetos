@@ -1,7 +1,10 @@
 package pessoa;
 
+import java.util.ArrayList;
+
 import excecoes.ValidacaoException;
 import myUtils.Validacao;
+import participacao.*;
 
 /** Classe responsavel por moldar as caracteristicas de uma pessoa, tornando-a interativa em nosso
  * sistema.
@@ -13,6 +16,7 @@ public class Pessoa {
 	private String cpf;
 	private String nome;
 	private String email;
+	private ArrayList<Participacao> participacao;
 	
 	/**
 	 * O Construtor abaixo ira validar o cpf, nome e email da pessoa cadastrada.
@@ -29,9 +33,16 @@ public class Pessoa {
 		this.cpf = cpf;
 		this.nome = nome;
 		this.email = email;
+		participacao = new ArrayList<Participacao>();
 	}
 	
+	public void adicionaPartcicipacao(Participacao participacao){
+		this.participacao.add(participacao);
+	}
 	
+	public ArrayList<Participacao> getParticipacoes(){
+		return this.participacao;
+	}
 	
 	/** Metodo que ira retornar o nome da pessoa.
 	 * 

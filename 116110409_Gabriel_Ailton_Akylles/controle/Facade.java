@@ -96,13 +96,28 @@ public class Facade {
 			throws NaoEncontradaException, ValidacaoException{
 		
 		participacaoController.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras);
+		
 	}
 	
 	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras)
 			throws NaoEncontradaException, ValidacaoException{
 		
 		participacaoController.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras);
+		
 	}
+	
+	public void associaProfissional(String cpfPessoa, String codigoProjeto,String cargo, double valorHora, int qntHoras) 
+			throws NaoEncontradaException, ValidacaoException{
+		
+		participacaoController.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras);
+	}
+	
+	public void associaPosGraduando(String cpfPessoa, String codigoProjeto, String titulacao, double valorHora, int qntHoras) 
+			throws NaoEncontradaException, ValidacaoException{
+		
+		participacaoController.associaPosGraduando(cpfPessoa, codigoProjeto, titulacao, valorHora, qntHoras);
+	}
+	
 	
 	public static void main(String[] args) {
 	    args = new String[] {"controle.Facade", "acceptance_test/us1_test.txt", "acceptance_test/us1_test_exception.txt",

@@ -5,28 +5,28 @@ import projeto.Projeto;
 
 public class ParticipacaoPosGraduando extends Participacao {
 
-	private TipoPosGraduando tipo;
+	private String titulacao;
 	
-	public ParticipacaoPosGraduando(Pessoa pessoa, Projeto projeto, String dataInicio, int duracaoEmMeses,
-			double valorDaHora, int qtdeHorasDedicadas , TipoPosGraduando tipo) {
+	public ParticipacaoPosGraduando(Pessoa pessoa, Projeto projeto, String titulacao,String dataInicio, int duracaoEmMeses,
+			double valorDaHora, int qtdeHorasDedicadas) {
 		
 		super(pessoa, projeto, dataInicio, duracaoEmMeses, valorDaHora, qtdeHorasDedicadas);
-		this.tipo = tipo;
+		this.titulacao = titulacao;
 	}
 
-	public TipoPosGraduando getTipo() {
-		return tipo;
+	public String getTitulacao() {
+		return titulacao;
 	}
 
-	public void setTipo(TipoPosGraduando tipo) {
-		this.tipo = tipo;
+	public void setTitulacao(String titulacao) {
+		this.titulacao = titulacao;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+		result = prime * result + ((titulacao == null) ? 0 : titulacao.hashCode());
 		return result;
 	}
 
@@ -39,7 +39,7 @@ public class ParticipacaoPosGraduando extends Participacao {
 		if (getClass() != obj.getClass())
 			return false;
 		ParticipacaoPosGraduando other = (ParticipacaoPosGraduando) obj;
-		if (tipo != other.tipo)
+		if (titulacao != other.titulacao)
 			return false;
 		return true;
 	}
