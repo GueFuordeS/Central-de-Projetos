@@ -1,9 +1,6 @@
 package pessoa;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-
 import excecoes.*;
 import myUtils.Validacao;
 import participacao.Participacao;
@@ -16,10 +13,10 @@ import participacao.Participacao;
  *
  */
 public class PessoaController {
-	private Set<Pessoa> pessoas;
+	private ArrayList<Pessoa> pessoas;
 	
 	public PessoaController() {
-		this.pessoas = new HashSet<>();
+		this.pessoas = new ArrayList<>();
 	}
 
 	public String cadastraPessoa(String cpf, String nome, String email) throws ValidacaoException {
@@ -33,6 +30,16 @@ public class PessoaController {
 		}
 		this.pessoas.add(new Pessoa(cpf,nome,email));
 		return cpf;
+	}
+	
+	public void adicionaParticipacao(String cpf, Participacao participacao)
+			throws NaoEncontradaException, ValidacaoException{
+			
+		for (int i = 0; i < this.pessoas.size(); i++) {
+			if (pessoas.get(i).getCpf().equals(cpf)){
+				pessoas.get(i).adicionaPartcicipacao(participacao);
+			}
+		}
 	}
 	
 	public void removePessoa(String cpf) throws ValidacaoException, NaoEncontradaException {
@@ -90,7 +97,7 @@ public class PessoaController {
 				String nomeProjeto = array.get(i).getProjeto().getNome();
 				participacoes += nomeProjeto + ", ";
 			}
-			participacoes += array.get(array.size() - 1);
+			participacoes += array.get(array.size() - 1).getProjeto().getNome();
 			return participacoes;
 		}
 		return null;

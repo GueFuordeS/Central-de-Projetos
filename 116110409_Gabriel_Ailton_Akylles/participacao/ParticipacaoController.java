@@ -8,29 +8,12 @@ import pessoa.*;
 import projeto.*;
 
 public class ParticipacaoController {
-
-	private PessoaController pessoaController;
-	private ProjetoController projetoController;
-	private ArrayList<Participacao> participacoes = new ArrayList<>();
 	
-	public ParticipacaoController(PessoaController pessoaController, ProjetoController projetoController){
-		this.pessoaController = pessoaController;
-		this.projetoController = projetoController;
+	private ArrayList<Participacao> participacoes;;
+	
+	public ParticipacaoController() {
+		participacoes = new ArrayList<>();
 	}
-	
-	
-	
-	public PessoaController getPessoaController() {
-		return pessoaController;
-	}
-
-
-
-	public ProjetoController getProjetoController() {
-		return projetoController;
-	}
-
-
 
 	public ArrayList<Participacao> getParticipacoes() {
 		return participacoes;
@@ -38,59 +21,66 @@ public class ParticipacaoController {
 
 
 
-	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora, int qntHoras)
+	public void associaProfessor(Pessoa pessoa, Projeto projeto, boolean coordenador, double valorHora, int qntHoras)
 			throws NaoEncontradaException, ValidacaoException{
 		
-		Pessoa pessoa = pessoaController.recuperaPessoa(cpfPessoa);
-		Projeto projeto = projetoController.recuperaProjeto(codigoProjeto);
-
 		ParticipacaoProfessor partProf = new ParticipacaoProfessor(pessoa, projeto, coordenador, projeto.getDataInicio(),projeto.getDuracao() ,
 				valorHora, qntHoras);
-		
 		participacoes.add(partProf);
-		pessoaController.recuperaPessoa(cpfPessoa).adicionaPartcicipacao(partProf);
-	
+		
 	}
 	
-	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras) 
+	public void associaGraduando(Pessoa pessoa, Projeto projeto, double valorHora, int qntHoras) 
 			throws NaoEncontradaException, ValidacaoException{
 		
-		Pessoa pessoa = pessoaController.recuperaPessoa(cpfPessoa);
-		Projeto projeto = projetoController.recuperaProjeto(codigoProjeto);
-
 		ParticipacaoGraduando partGrad = new ParticipacaoGraduando(pessoa, projeto, projeto.getDataInicio(), 
 				projeto.getDuracao(), valorHora, qntHoras);
 		
 		participacoes.add(partGrad);
-		pessoaController.recuperaPessoa(cpfPessoa).adicionaPartcicipacao(partGrad);
 	}
 	
-	public void associaProfissional(String cpfPessoa, String codigoProjeto,String cargo, double valorHora, int qntHoras) 
+	public void associaProfissional(Pessoa pessoa, Projeto projeto, String cargo, double valorHora, int qntHoras) 
 			throws NaoEncontradaException, ValidacaoException{
 
-		Pessoa pessoa = pessoaController.recuperaPessoa(cpfPessoa);
-		Projeto projeto = projetoController.recuperaProjeto(codigoProjeto);
-		
 		ParticipacaoProfissional partProf = new 
 				ParticipacaoProfissional(pessoa, projeto, cargo, projeto.getDataInicio(), 
 						projeto.getDuracao(), valorHora, qntHoras);
 		
 		participacoes.add(partProf);
-		pessoaController.recuperaPessoa(cpfPessoa).adicionaPartcicipacao(partProf);
 	}
 	
-	public void associaPosGraduando(String cpfPessoa, String codigoProjeto, String titulacao, double valorHora, int qntHoras) 
+	public void associaPosGraduando(Pessoa pessoa, Projeto projeto, String titulacao, double valorHora, int qntHoras) 
 			throws NaoEncontradaException, ValidacaoException{
 	
-		Pessoa pessoa = pessoaController.recuperaPessoa(cpfPessoa);
-		Projeto projeto = projetoController.recuperaProjeto(codigoProjeto);
-		
 		ParticipacaoPosGraduando partPosGrad = new ParticipacaoPosGraduando(pessoa, projeto, titulacao,projeto.getDataInicio(), 
 				projeto.getDuracao(), valorHora, qntHoras);
 		
 		participacoes.add(partPosGrad);
-		pessoaController.recuperaPessoa(cpfPessoa).adicionaPartcicipacao(partPosGrad);
 	}
+	
+	public Participacao recuperaParticipacao(String cpf){
+		Participacao part = null;
+		
+		for (Participacao participacao : participacoes) {
+			participacao.getPessoa().getCpf().equals(cpf);
+			part = participacao;
+		}
+		return part;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

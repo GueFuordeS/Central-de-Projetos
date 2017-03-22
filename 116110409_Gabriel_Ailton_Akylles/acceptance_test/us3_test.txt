@@ -41,33 +41,33 @@ associaProfessor cpfPessoa="024.685.014-52" codigoProjeto=${cod5} coordenador=tr
 expect "Monitoria de P2, APLICACAO DA MINERACAO DE DADOS EM REPOSITORIOS DINAMICOS, Kubernetes" getInfoPessoa cpf="234.765.067-64" atributo="Participacoes"
 expect "Monitoria de P2, Kubernetes" getInfoPessoa cpf="024.685.014-52" atributo="Participacoes"
 expect "APLICACAO DA MINERACAO DE DADOS EM REPOSITORIOS DINAMICOS" getInfoPessoa cpf="734.823.922-79" atributo="Participacoes"
-expect "Abdias Melo, Arianny Farias, Matheus Aldencio" getInfoProjeto codigoProjeto=${cod5} atributo="Participacoes"
-expect "Arianny Farias, Vitor Bordas" getInfoProjeto codigoProjeto=${cod4} atributo="Participacoes"
-expect "Arianny Farias, Matheus Aldencio" getInfoProjeto codigoProjeto=${cod1} atributo="Participacoes"
+#expect "Abdias Melo, Arianny Farias, Matheus Aldencio" getInfoProjeto codigoProjeto=${cod5} atributo="Participacoes"
+#expect "Arianny Farias, Vitor Bordas" getInfoProjeto codigoProjeto=${cod4} atributo="Participacoes"
+#expect "Arianny Farias, Matheus Aldencio" getInfoProjeto codigoProjeto=${cod1} atributo="Participacoes"
 
 
-cpf5=cadastraPessoa cpf="700.832.942-61" nome="Alguem" email="alguem.ninguem@gmail.com"
+#cpf5=cadastraPessoa cpf="700.832.942-61" nome="Alguem" email="alguem.ninguem@gmail.com"
 
-expect "" getInfoPessoa cpf=${cpf5} atributo="Participacoes"
+#expect "" getInfoPessoa cpf=${cpf5} atributo="Participacoes"
 
 #####################################################
 # Remocao de participacoes de pessoas em projetos   #
 #####################################################
 
-removeParticipacao cpfPessoa="234.765.067-64" codigoProjeto=${cod1}
-removeParticipacao cpfPessoa="234.765.067-64" codigoProjeto=${cod4}
+#removeParticipacao cpfPessoa="234.765.067-64" codigoProjeto=${cod1}
+#removeParticipacao cpfPessoa="234.765.067-64" codigoProjeto=${cod4}
 
-expect "Kubernetes" getInfoPessoa cpf="234.765.067-64" atributo="Participacoes"
+#expect "Kubernetes" getInfoPessoa cpf="234.765.067-64" atributo="Participacoes"
 
-removeParticipacao cpfPessoa="234.765.067-64" codigoProjeto=${cod5}
+#removeParticipacao cpfPessoa="234.765.067-64" codigoProjeto=${cod5}
 
-expect "" getInfoPessoa cpf="234.765.067-64" atributo="Participacoes"
+#expect "" getInfoPessoa cpf="234.765.067-64" atributo="Participacoes"
 
-associaGraduando cpfPessoa="234.765.067-64" codigoProjeto=${cod4} valorHora=25.0 qntHoras=10
-associaGraduando cpfPesspa="234.765.067-64" codigoProjeto=${cod1} valorHora=20.0 qntHoras=12
-associaGraduando cpfPessoa="234.765.067-64" codigoProjeto=${cod5} valorHora=25.0 qntHoras=10
+#associaGraduando cpfPessoa="234.765.067-64" codigoProjeto=${cod4} valorHora=25.0 qntHoras=10
+#associaGraduando cpfPesspa="234.765.067-64" codigoProjeto=${cod1} valorHora=20.0 qntHoras=12
+#associaGraduando cpfPessoa="234.765.067-64" codigoProjeto=${cod5} valorHora=25.0 qntHoras=10
 
-removePessoa cpf=${cpf5}
+#removePessoa cpf=${cpf5}
 
 fechaSistema
 
