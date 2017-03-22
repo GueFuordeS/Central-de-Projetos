@@ -2,7 +2,7 @@ package projeto;
 
 import static myUtils.Validacao.*;
 
-import java.util.Set;
+import java.util.ArrayList;
 
 import excecoes.ValidacaoException;
 import myUtils.Date;
@@ -22,7 +22,7 @@ public abstract class Projeto {
 	private String objetivo;
 	private Date dataInicio;
 	private int duracao;
-	private Set<Participacao> participacoes;
+	private ArrayList<Participacao> participacoes;
 	
 	/** 
 	 * Construtor de classe
@@ -44,6 +44,7 @@ public abstract class Projeto {
 		this.objetivo = objetivo;
 		this.dataInicio = new Date(dataInicio);
 		this.duracao = duracao;
+		participacoes = new ArrayList<>();
 	}
 	
 	/**
@@ -120,6 +121,10 @@ public abstract class Projeto {
 		}
 	}
 	
+	public ArrayList<Participacao> getParticipacoes() {
+		return this.participacoes;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -146,5 +151,9 @@ public abstract class Projeto {
 		} else if (!nome.equals(other.nome))
 			return false;
 		return true;
+	}
+
+	public void addicionaParticipacao(Participacao participacao) {
+		this.participacoes.add(participacao);
 	}
 }

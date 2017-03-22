@@ -90,28 +90,26 @@ public class Facade {
 	
 	//Aqui comeca a parte de controle de participacoes
 	
-	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, 
+	public void associaProfessor(String cpfPessoa, int codigoProjeto, boolean coordenador, 
 			double valorHora, int qntHoras)
 			throws NaoEncontradaException, ValidacaoException{
 		
 		participacaoController.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras);
-		
 	}
 	
-	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras)
+	public void associaGraduando(String cpfPessoa, int codigoProjeto, double valorHora, int qntHoras)
 			throws NaoEncontradaException, ValidacaoException{
 		
 		participacaoController.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras);
-		
 	}
 	
-	public void associaProfissional(String cpfPessoa, String codigoProjeto,String cargo, double valorHora, int qntHoras) 
+	public void associaProfissional(String cpfPessoa, int codigoProjeto,String cargo, double valorHora, int qntHoras) 
 			throws NaoEncontradaException, ValidacaoException{
 		
 		participacaoController.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras);
 	}
 	
-	public void associaPosGraduando(String cpfPessoa, String codigoProjeto, String titulacao, double valorHora, int qntHoras) 
+	public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String titulacao, double valorHora, int qntHoras) 
 			throws NaoEncontradaException, ValidacaoException{
 		
 		participacaoController.associaPosGraduando(cpfPessoa, codigoProjeto, titulacao, valorHora, qntHoras);

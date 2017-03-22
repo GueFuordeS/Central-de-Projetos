@@ -1,7 +1,6 @@
 package pessoa;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
 
 import excecoes.ValidacaoException;
 import myUtils.Validacao;
@@ -17,7 +16,7 @@ public class Pessoa {
 	private String cpf;
 	private String nome;
 	private String email;
-	private Set<Participacao> participacoes;
+	private ArrayList<Participacao> participacoes;
 	
 	/**
 	 * O Construtor abaixo ira validar o cpf, nome e email da pessoa cadastrada.
@@ -34,14 +33,14 @@ public class Pessoa {
 		this.cpf = cpf;
 		this.nome = nome;
 		this.email = email;
-		participacoes = new HashSet<>();
+		participacoes = new ArrayList<>();
 	}
 	
-	public void adicionaPartcicipacao(Participacao participacao){
-		this.participacoes.add(participacao);
+	public void adicionaPartcicipacao(Participacao participacao) {
+			this.participacoes.add(participacao);
 	}
 	
-	public Set<Participacao> getParticipacoes(){
+	public ArrayList<Participacao> getParticipacoes(){
 		return this.participacoes;
 	}
 	

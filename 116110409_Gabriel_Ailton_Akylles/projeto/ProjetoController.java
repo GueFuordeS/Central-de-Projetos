@@ -1,10 +1,12 @@
 package projeto;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 import excecoes.NaoEncontradaException;
 import excecoes.ValidacaoException;
+import participacao.Participacao;
 import static myUtils.Codigo.*;
 
 public class ProjetoController {
@@ -94,6 +96,21 @@ public class ProjetoController {
 		}
 		else if(atributo.toLowerCase().equals("patentes")) {
 			return this.getPatentes(p);
+		}
+		else if(atributo.toLowerCase().equals("participacoes")){
+			ArrayList<Participacao> participacoes = p.getParticipacoes();
+			String participacoesRetorno = "";
+			
+			for (int i = 0; i < participacoes.size(); i++) {
+
+					participacoesRetorno += participacoes.get(i).getProjeto().getNome() + ", ";
+			}
+			
+			String participacoesRetorno2 = "";
+			for(int i=0;i<participacoesRetorno.length()-2; i++) {
+				participacoesRetorno2 += participacoesRetorno.charAt(i);
+			}
+			return participacoesRetorno2;
 		}
 		throw new ValidacaoException("Erro na consulta de projeto: Atributo nulo ou invalido");
 	}
@@ -333,5 +350,10 @@ public class ProjetoController {
 		catch(NaoEncontradaException e) {
 			throw new NaoEncontradaException("Erro na obtencao de codigo de projeto: Projeto nao encontrado");
 		}
+	}
+
+	public void addParticipacao(int codigoProjeto, Participacao participacao) throws NaoEncontradaException, ValidacaoException {
+		Projeto p = this.recuperaProjeto(codigoProjeto);
+		p.addicionaParticipacao(participacao);
 	}
 }

@@ -1,9 +1,6 @@
 package pessoa;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-
+import java.util.ArrayList;
 import excecoes.*;
 import myUtils.Validacao;
 import participacao.Participacao;
@@ -16,10 +13,10 @@ import participacao.Participacao;
  *
  */
 public class PessoaController {
-	private Set<Pessoa> pessoas;
+	private ArrayList<Pessoa> pessoas;
 	
 	public PessoaController() {
-		this.pessoas = new HashSet<>();
+		this.pessoas = new ArrayList<>();
 	}
 
 	public String cadastraPessoa(String cpf, String nome, String email) throws ValidacaoException {
@@ -81,21 +78,19 @@ public class PessoaController {
 		else if(atributo.toLowerCase().equals("email")) {
 			return pessoa.getEmail();
 		}else if(atributo.toLowerCase().equals("participacoes")){
-			
-			Set<Participacao> participacoes = pessoa.getParticipacoes();
+			ArrayList<Participacao> participacoes = pessoa.getParticipacoes();
 			String participacoesRetorno = "";
 			
-			Iterator<Participacao> it = participacoes.iterator();
-			
-			for (Participacao p:participacoes) {
-				if(it.hasNext()) {
-					participacoesRetorno += p.getProjeto().getNome() + ", ";
-				}
-				else {
-					participacoesRetorno += p.getProjeto().getNome();
-				}
+			for (int i = 0; i < participacoes.size(); i++) {
+
+					participacoesRetorno += participacoes.get(i).getProjeto().getNome() + ", ";
 			}
-			return participacoesRetorno;
+			
+			String participacoesRetorno2 = "";
+			for(int i=0;i<participacoesRetorno.length()-2; i++) {
+				participacoesRetorno2 += participacoesRetorno.charAt(i);
+			}
+			return participacoesRetorno2;
 		}
 		return null;
 	}
@@ -106,5 +101,10 @@ public class PessoaController {
 			retorno += p;
 		}
 		return retorno;
+	}
+
+	public void addParicipacao(String cpfPessoa, Participacao participacao) throws NaoEncontradaException, ValidacaoException {
+		Pessoa p = this.recuperaPessoa(cpfPessoa);
+		p.adicionaPartcicipacao(participacao);
 	}
 }
