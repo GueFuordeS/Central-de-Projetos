@@ -10,7 +10,4 @@ public class ParticipacaoGraduando extends Participacao{
 		super(pessoa, projeto, dataInicio, duracaoEmMeses, qtdeHorasDedicadas, valorDaHora);
 		
 	}	
-	
-
-	
 }

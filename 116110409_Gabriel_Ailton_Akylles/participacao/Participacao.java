@@ -117,6 +117,5 @@ public abstract class Participacao {
 			if (Double.doubleToLongBits(valorDaHora) != Double.doubleToLongBits(other.valorDaHora))
 				return false;
 			return true;
-		}
-		
+		}	
 }

@@ -46,8 +46,4 @@ public class ParticipacaoProfissional extends Participacao {
 			return false;
 		return true;
 	}
-
-	
-	
-	
 }// fim da classe

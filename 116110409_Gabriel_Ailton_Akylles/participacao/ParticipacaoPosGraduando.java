@@ -43,6 +43,4 @@ public class ParticipacaoPosGraduando extends Participacao {
 			return false;
 		return true;
 	}
-	
-	
 }

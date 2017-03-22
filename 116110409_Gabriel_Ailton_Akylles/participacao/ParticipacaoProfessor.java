@@ -42,8 +42,5 @@ public class ParticipacaoProfessor extends Participacao {
 		if (isCoordenador != other.isCoordenador)
 			return false;
 		return true;
-	}
-	
-	
-	
+	}	
 }
