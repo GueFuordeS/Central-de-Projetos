@@ -25,25 +25,29 @@ public class ParticipacaoController {
 		Projeto projeto = projetoController.recuperaProjeto(codigoProjeto);
 
 		ParticipacaoProfessor partProf = new ParticipacaoProfessor(pessoa, projeto, coordenador, projeto.getDataInicio(),projeto.getDuracao() ,
-				qntHoras, valorHora);
+				valorHora, qntHoras);
 		
 		participacoes.add(partProf);
 	}
 	
-	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras) throws NaoEncontradaException, ValidacaoException{
+	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras) 
+			throws NaoEncontradaException, ValidacaoException{
 		
 		Pessoa pessoa = pessoaController.recuperaPessoa(cpfPessoa);
 		Projeto projeto = projetoController.recuperaProjeto(codigoProjeto);
 
-		ParticipacaoGraduando partGrad = new ParticipacaoGraduando(pessoa, projeto, projeto.getDataInicio(), projeto.getDuracao(), qntHoras, valorHora);
+		ParticipacaoGraduando partGrad = new ParticipacaoGraduando(pessoa, projeto, projeto.getDataInicio(), 
+				projeto.getDuracao(), valorHora, qntHoras);
 		participacoes.add(partGrad);
 	}
 	
-	public void associaProfissional(String cpfPessoa, String codigoProjeto,String cargo, double valorHora, int qntHoras) throws NaoEncontradaException, ValidacaoException{
-
-//		Pessoa pessoa = pessoaController.recuperaPessoa(cpfPessoa);
-//		Projeto projeto = projetoController.recuperaProjeto(codigoProjeto);
-//		ParticipacaoProfissional partProf = 
-//				new ParticipacaoProfissional(pessoa, projeto, cargo, dataInicio, duracaoEmMeses, qtdeHorasDedicadas, valorDaHora)
-	}
+	public void associaProfissional(String cpfPessoa, String codigoProjeto,String cargo, double valorHora, int qntHoras) 
+			throws NaoEncontradaException, ValidacaoException{
+		
+		Pessoa pessoa = pessoaController.recuperaPessoa(cpfPessoa);
+		Projeto projeto = projetoController.recuperaProjeto(codigoProjeto);
+		ParticipacaoProfissional partProf = new ParticipacaoProfissional(pessoa, projeto, cargo, projeto.getDataInicio(), 
+		projeto.getDuracao(), valorHora, qntHoras);
+		participacoes.add(partProf);
+	}	
 }// fim da classe

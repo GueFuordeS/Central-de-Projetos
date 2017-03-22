@@ -7,10 +7,10 @@ public class ParticipacaoProfessor extends Participacao {
 
 	private boolean isCoordenador;
 	
-	public ParticipacaoProfessor(Pessoa pessoa, Projeto projeto, boolean isCoordenador, String dataInicio, int duracaoEmMeses,
-			int qtdeHorasDedicadas, double valorDaHora) {
+	public ParticipacaoProfessor(Pessoa pessoa, Projeto projeto, boolean isCoordenador, String dataInicio, int duracaoEmMeses, 
+			double valorDaHora, int qtdeHorasDedicadas) {
 		
-		super(pessoa, projeto, dataInicio, duracaoEmMeses, qtdeHorasDedicadas, valorDaHora);
+		super(pessoa, projeto, dataInicio, duracaoEmMeses, valorDaHora, qtdeHorasDedicadas);
 		this.isCoordenador = isCoordenador;
 	}
 
