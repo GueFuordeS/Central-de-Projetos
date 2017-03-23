@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import excecoes.ValidacaoException;
 import myUtils.Date;
 import participacao.Participacao;
+import participacao.ParticipacaoProfessor;
 
 /**
  * 
@@ -160,5 +161,15 @@ public abstract class Projeto {
 			}
 		}
 		this.participacoes.add(participacao);
+	}
+	
+	
+	public boolean hasProfessor() {
+		for(Participacao p:participacoes) {
+			if(p instanceof ParticipacaoProfessor) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

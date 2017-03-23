@@ -38,7 +38,7 @@ public class ParticipacaoController {
 	public void associaProfessor(String cpfPessoa, int codigoProjeto, boolean coordenador, double valorHora, int qntHoras)
 			throws NaoEncontradaException, ValidacaoException {
 		
-
+		validaQntHoras(qntHoras);
 		
 		Pessoa pessoa = null;
 		Projeto projeto = null;
@@ -57,11 +57,13 @@ public class ParticipacaoController {
 		}
 		if(projeto instanceof Monitoria) {
 			validaValorHoraProfessor(valorHora);
+			if(projeto.hasProfessor()) {
+				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Monitoria nao pode ter mais de um professor");
+			}
 		}
 		else {
 			validaValorHora(valorHora);
 		}
-		validaQntHoras(qntHoras);
 		
 		if(pessoa != null && projeto != null) {
 			ParticipacaoProfessor partProf = new ParticipacaoProfessor(pessoa, projeto, coordenador, 
@@ -177,6 +179,5 @@ public class ParticipacaoController {
 				proj.removeParticipacao(cpfPessoa);
 			}
 		}
-		
 	}
 }

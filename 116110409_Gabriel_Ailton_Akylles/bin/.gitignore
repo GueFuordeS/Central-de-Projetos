@@ -1,5 +1,14 @@
+/.classpath
+/.directory
+/.project
+/acceptance_test/
+/controle/
+/easyaccept/
+/excecoes/
+/myUtils/
+/myUtilsTest/
 /participacao/
 /pessoa/
-/controle/
-/myUtils/
+/pessoaTest/
 /projeto/
+/projetoTest/
