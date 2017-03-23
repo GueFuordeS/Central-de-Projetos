@@ -37,9 +37,8 @@ public class ParticipacaoController {
 
 	public void associaProfessor(String cpfPessoa, int codigoProjeto, boolean coordenador, double valorHora, int qntHoras)
 			throws NaoEncontradaException, ValidacaoException {
+		
 
-		validaValorHora(valorHora);
-		validaQntHoras(qntHoras);
 		
 		Pessoa pessoa = null;
 		Projeto projeto = null;
@@ -56,6 +55,14 @@ public class ParticipacaoController {
 		catch(NaoEncontradaException e) {
 			throw new NaoEncontradaException("Erro na associacao de pessoa a projeto: Projeto nao encontrado");
 		}
+		if(projeto instanceof Monitoria) {
+			validaValorHoraProfessor(valorHora);
+		}
+		else {
+			validaValorHora(valorHora);
+		}
+		validaQntHoras(qntHoras);
+		
 		if(pessoa != null && projeto != null) {
 			ParticipacaoProfessor partProf = new ParticipacaoProfessor(pessoa, projeto, coordenador, 
 				projeto.getDataInicio(),projeto.getDuracao() ,
@@ -68,6 +75,9 @@ public class ParticipacaoController {
 	
 	public void associaGraduando(String cpfPessoa, int codigoProjeto, double valorHora, int qntHoras) 
 			throws NaoEncontradaException, ValidacaoException{
+		
+		validaValorHora(valorHora);
+		validaQntHoras(qntHoras);
 		
 		Pessoa pessoa = null;
 		Projeto projeto = null;
@@ -98,6 +108,9 @@ public class ParticipacaoController {
 	public void associaProfissional(String cpfPessoa, int codigoProjeto,String cargo, double valorHora, int qntHoras) 
 			throws NaoEncontradaException, ValidacaoException {
 		
+		validaValorHora(valorHora);
+		validaQntHoras(qntHoras);
+		
 		Pessoa pessoa = null;
 		Projeto projeto = null;
 		try {
@@ -125,6 +138,9 @@ public class ParticipacaoController {
 	public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String titulacao, double valorHora, int qntHoras) 
 			throws NaoEncontradaException, ValidacaoException {
 
+		validaValorHora(valorHora);
+		validaQntHoras(qntHoras);
+		
 		Pessoa pessoa = null;
 		Projeto projeto = null;
 		try {

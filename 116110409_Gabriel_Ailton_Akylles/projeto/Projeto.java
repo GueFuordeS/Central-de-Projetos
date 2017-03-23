@@ -153,7 +153,12 @@ public abstract class Projeto {
 		return true;
 	}
 
-	public void addicionaParticipacao(Participacao participacao) {
+	public void addicionaParticipacao(Participacao participacao) throws ValidacaoException {
+		for(Participacao p:participacoes) {
+			if(p.equals(participacao)) {
+				throw new ValidacaoException("Participacao ja associada a pessoa");
+			}
+		}
 		this.participacoes.add(participacao);
 	}
 }

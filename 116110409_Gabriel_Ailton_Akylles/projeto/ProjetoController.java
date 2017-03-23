@@ -99,18 +99,17 @@ public class ProjetoController {
 		}
 		else if(atributo.toLowerCase().equals("participacoes")){
 			ArrayList<Participacao> participacoes = p.getParticipacoes();
+			
 			String participacoesRetorno = "";
 			
 			for (int i = 0; i < participacoes.size(); i++) {
-
-					participacoesRetorno += participacoes.get(i).getProjeto().getNome() + ", ";
+				if(i<participacoes.size()-1)
+					participacoesRetorno += participacoes.get(i).getPessoa().getNome() + ", ";
+				else { 
+					participacoesRetorno += participacoes.get(i).getPessoa().getNome();
+				}
 			}
-			
-			String participacoesRetorno2 = "";
-			for(int i=0;i<participacoesRetorno.length()-2; i++) {
-				participacoesRetorno2 += participacoesRetorno.charAt(i);
-			}
-			return participacoesRetorno2;
+			return participacoesRetorno;
 		}
 		throw new ValidacaoException("Erro na consulta de projeto: Atributo nulo ou invalido");
 	}

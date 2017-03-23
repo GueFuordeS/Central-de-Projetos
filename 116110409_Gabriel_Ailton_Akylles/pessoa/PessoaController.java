@@ -82,15 +82,13 @@ public class PessoaController {
 			String participacoesRetorno = "";
 			
 			for (int i = 0; i < participacoes.size(); i++) {
-
+				if(i<participacoes.size()-1)
 					participacoesRetorno += participacoes.get(i).getProjeto().getNome() + ", ";
+				else { 
+					participacoesRetorno += participacoes.get(i).getProjeto().getNome();
+				}
 			}
-			
-			String participacoesRetorno2 = "";
-			for(int i=0;i<participacoesRetorno.length()-2; i++) {
-				participacoesRetorno2 += participacoesRetorno.charAt(i);
-			}
-			return participacoesRetorno2;
+			return participacoesRetorno;
 		}
 		return null;
 	}

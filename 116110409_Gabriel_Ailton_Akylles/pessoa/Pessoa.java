@@ -36,8 +36,13 @@ public class Pessoa {
 		participacoes = new ArrayList<>();
 	}
 	
-	public void adicionaPartcicipacao(Participacao participacao) {
-			this.participacoes.add(participacao);
+	public void adicionaPartcicipacao(Participacao participacao) throws ValidacaoException {
+		for(Participacao p:participacoes) {
+			if(p.equals(participacao)) {
+				throw new ValidacaoException("Participacao ja associada a pessoa");
+			}
+		}
+		this.participacoes.add(participacao);
 	}
 	
 	public ArrayList<Participacao> getParticipacoes(){

@@ -119,6 +119,8 @@ public class Validacao {
 		if(valorHora <= 0) throw new ValidacaoException("Erro na associacao de pessoa a projeto: Valor da hora invalido");
 	}
 	
+
+	
 	public static void validaQntHoras(int valorHora) throws ValidacaoException {
 		if(valorHora <= 0) throw new ValidacaoException("Erro na associacao de pessoa a projeto: Quantidade de horas invalida");
 	}
@@ -186,5 +188,8 @@ public class Validacao {
 			throw new ValidacaoException("Erro no cadastro de projeto: Numero de patentes invalido");
 		}
 	}
-	
+
+	public static void validaValorHoraProfessor(double valorHora) throws ValidacaoException {
+		if(valorHora < 0) throw new ValidacaoException("Erro na associacao de pessoa a projeto: Valor da hora invalido");
+	}
 } 

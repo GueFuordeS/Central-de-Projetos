@@ -21,7 +21,6 @@ public abstract class Participacao {
 			
 			validaDuracao(duracaoEmMeses);
 			validaQntHoras(qtdeHorasDedicadas);
-			validaValorHora(valorDaHora);
 			
 			this.pessoa = pessoa;
 			this.projeto = projeto;
