@@ -50,10 +50,16 @@ public class Pessoa {
 	}
 	
 	public void removeParticipacao(int codigoProjeto) {
+		boolean hasParticipacao = false;
+		Participacao participacao = null;
 		for(Participacao p:participacoes) {
 			if(p.getProjeto().getCodigo() == codigoProjeto) {
-				participacoes.remove(p);
+				hasParticipacao = true;
+				participacao = p;
 			}
+		}
+		if(hasParticipacao==true && participacao!=null) {
+			participacoes.remove(participacao);
 		}
 	}
 	

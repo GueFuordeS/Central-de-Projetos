@@ -6,7 +6,7 @@ import static myUtils.Validacao.*;
 import pessoa.Pessoa;
 import projeto.Projeto;
 
-public abstract class Participacao {
+public abstract class Participacao implements Comparable<Participacao> {
 
 		private Pessoa pessoa;
 		private Projeto projeto;
@@ -17,7 +17,6 @@ public abstract class Participacao {
 		
 		public Participacao(Pessoa pessoa, Projeto projeto, String dataInicio, 
 				int duracaoEmMeses, double valorDaHora, int qtdeHorasDedicadas) throws ValidacaoException {
-
 			
 			validaDuracao(duracaoEmMeses);
 			validaQntHoras(qtdeHorasDedicadas);
@@ -81,6 +80,10 @@ public abstract class Participacao {
 			this.valorHora = valorDaHora;
 		}
 
+		public int compareTo(Participacao part) {
+			return this.getPessoa().getNome().compareTo(part.getPessoa().getNome());
+		}
+		
 		@Override
 		public int hashCode() {
 			final int prime = 31;

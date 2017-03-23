@@ -21,8 +21,6 @@ public class ParticipacaoController {
 		this.participacoes = new HashSet<>();
 	}
 	
-	
-	
 	public PessoaController getPessoaController() {
 		return pessoaController;
 	}
@@ -171,13 +169,18 @@ public class ParticipacaoController {
 	public void removeParticipacao(String cpfPessoa, int codigoProjeto) throws NaoEncontradaException, ValidacaoException {
 		Pessoa pes = pessoaController.recuperaPessoa(cpfPessoa);
 		Projeto proj = projetoController.recuperaProjeto(codigoProjeto);
-		
+		Participacao participacao = null;
+		boolean hasParticipacao = false;
 		for(Participacao p:participacoes) {
 			if(p.getPessoa().equals(pes)) {
-				participacoes.remove(p);
-				pes.removeParticipacao(codigoProjeto);
-				proj.removeParticipacao(cpfPessoa);
+				hasParticipacao = true;
+				participacao = p;
 			}
+		}
+		if(hasParticipacao==true && participacao!=null) {
+			participacoes.remove(participacao);
+			pes.removeParticipacao(codigoProjeto);
+			proj.removeParticipacao(cpfPessoa);
 		}
 	}
 }

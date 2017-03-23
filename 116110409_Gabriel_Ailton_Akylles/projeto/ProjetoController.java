@@ -78,7 +78,7 @@ public class ProjetoController {
 		}
 		else if(atributo.toLowerCase().equals("disciplina")) {
 			return this.getDisciplina(p);
-		}
+		} 
 		else if(atributo.toLowerCase().equals("periodo")) {
 			return this.getPeriodo(p);
 		}
@@ -103,6 +103,7 @@ public class ProjetoController {
 			String participacoesRetorno = "";
 			
 			for (int i = 0; i < participacoes.size(); i++) {
+				System.out.println(participacoes.get(i).getPessoa().getNome());
 				if(i<participacoes.size()-1)
 					participacoesRetorno += participacoes.get(i).getPessoa().getNome() + ", ";
 				else { 

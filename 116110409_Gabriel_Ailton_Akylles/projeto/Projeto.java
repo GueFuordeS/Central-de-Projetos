@@ -3,6 +3,7 @@ package projeto;
 import static myUtils.Validacao.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import excecoes.ValidacaoException;
 import myUtils.Date;
@@ -115,10 +116,16 @@ public abstract class Projeto {
 	}
 	
 	public void removeParticipacao(String cpf) {
+		boolean hasParticipacao = false;
+		Participacao participacao = null;
 		for(Participacao p:participacoes) {
-			if(p.getPessoa().getCpf().equals(cpf)) {
-				participacoes.remove(p);
+			if(p.getPessoa().getCpf() == cpf) {
+				hasParticipacao = true;
+				participacao = p;
 			}
+		}
+		if(hasParticipacao==true && participacao!=null) {
+			participacoes.remove(participacao);
 		}
 	}
 	
@@ -161,6 +168,7 @@ public abstract class Projeto {
 			}
 		}
 		this.participacoes.add(participacao);
+		Collections.sort(participacoes);
 	}
 	
 	

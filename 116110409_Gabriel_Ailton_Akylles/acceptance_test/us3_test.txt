@@ -65,7 +65,7 @@ expect "" getInfoPessoa cpf="234.765.067-64" atributo="Participacoes"
 
 associaGraduando cpfPessoa="234.765.067-64" codigoProjeto=${cod4} valorHora=25.0 qntHoras=10
 associaGraduando cpfPesspa="234.765.067-64" codigoProjeto=${cod1} valorHora=20.0 qntHoras=12
-associaGraduando cpfPessoa="234.765.067-64" codigoProjeto=${cod5} valorHora=25.0 qntHoras=10
+associaGraduando cpfPessoa="234.765.067-064" codigoProjeto=${cod5} valorHora=25.0 qntHoras=10
 
 removePessoa cpf=${cpf5}
 
