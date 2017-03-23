@@ -1,6 +1,10 @@
+.metadata
+.recommenders
 /.classpath
-/.directory
+/.gitignore
 /.project
+/README.md
+/RemoteSystemsTempFiles/
 /acceptance_test/
 /controle/
 /easyaccept/

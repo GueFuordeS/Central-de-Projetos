@@ -103,7 +103,6 @@ public class ProjetoController {
 			String participacoesRetorno = "";
 			
 			for (int i = 0; i < participacoes.size(); i++) {
-				System.out.println(participacoes.get(i).getPessoa().getNome());
 				if(i<participacoes.size()-1)
 					participacoesRetorno += participacoes.get(i).getPessoa().getNome() + ", ";
 				else { 
