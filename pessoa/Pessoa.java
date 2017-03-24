@@ -111,6 +111,15 @@ public class Pessoa {
 		this.email = email;
 	}
 	
+	public boolean hasParticipacao(Participacao participacao) {
+		for(Participacao p:participacoes) {
+			if(participacao.equals(p)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

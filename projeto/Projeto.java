@@ -8,6 +8,7 @@ import java.util.Collections;
 import excecoes.ValidacaoException;
 import myUtils.Date;
 import participacao.Participacao;
+import participacao.ParticipacaoGraduando;
 import participacao.ParticipacaoProfessor;
 
 /**
@@ -176,6 +177,26 @@ public abstract class Projeto {
 		for(Participacao p:participacoes) {
 			if(p instanceof ParticipacaoProfessor) {
 				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean hasGraduando() {
+		for(Participacao p:participacoes) {
+			if(p instanceof ParticipacaoGraduando) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean hasCoordenador() {
+		for(Participacao p:participacoes) {
+			if(p instanceof ParticipacaoProfessor) {
+				if(((ParticipacaoProfessor) p).isCoordenador()) {
+					return true;
+				}
 			}
 		}
 		return false;

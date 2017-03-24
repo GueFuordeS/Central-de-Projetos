@@ -53,16 +53,36 @@ public class ParticipacaoController {
 		catch(NaoEncontradaException e) {
 			throw new NaoEncontradaException("Erro na associacao de pessoa a projeto: Projeto nao encontrado");
 		}
+		
 		if(projeto instanceof Monitoria) {
-			validaValorHoraProfessor(valorHora);
-			if(projeto.hasProfessor()) {
-				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Monitoria nao pode ter mais de um professor");
-			}
+			validaValorHoraProfessorMonitoria(valorHora);
 		}
 		else {
 			validaValorHora(valorHora);
 		}
 		
+		if(coordenador) {
+			if(projeto instanceof PED) {
+				if(projeto.hasCoordenador()) {
+						throw new ValidacaoException("Erro na associacao de pessoa a projeto: "
+								+ "Projetos P&D nao podem ter mais de um coordenador");
+				}
+			}
+		}
+		
+		if(projeto instanceof Monitoria) {
+			if(projeto.hasProfessor()) {
+				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Monitoria nao pode ter mais de um professor");
+			}
+		}
+		
+		if(projeto instanceof PED) {
+			if(((PED) projeto).hasProfLimitacao()) {
+				if(projeto.hasProfessor()) {
+					throw new ValidacaoException("Erro na associacao de pessoa a projeto: Projetos P&D nao podem ter mais de um professor");
+				}
+			}
+		}
 		if(pessoa != null && projeto != null) {
 			ParticipacaoProfessor partProf = new ParticipacaoProfessor(pessoa, projeto, coordenador, 
 				projeto.getDataInicio(),projeto.getDuracao() ,
@@ -94,10 +114,15 @@ public class ParticipacaoController {
 		catch(NaoEncontradaException e) {
 			throw new NaoEncontradaException("Erro na associacao de pessoa a projeto: Projeto nao encontrado");
 		}
+		if(projeto instanceof PED) {
+			if(projeto.hasGraduando()) {
+				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Projetos P&D nao podem ter mais de um graduando");
+			}
+		}
 
 		if(pessoa != null && projeto != null) {
 			ParticipacaoGraduando partGrad = new ParticipacaoGraduando(pessoa, projeto, projeto.getDataInicio(), 
-				projeto.getDuracao(), valorHora, qntHoras);
+			projeto.getDuracao(), valorHora, qntHoras);
 			participacoes.add(partGrad);
 			
 			pessoaController.addParicipacao(cpfPessoa, partGrad);
@@ -167,8 +192,22 @@ public class ParticipacaoController {
 	}
 
 	public void removeParticipacao(String cpfPessoa, int codigoProjeto) throws NaoEncontradaException, ValidacaoException {
-		Pessoa pes = pessoaController.recuperaPessoa(cpfPessoa);
-		Projeto proj = projetoController.recuperaProjeto(codigoProjeto);
+		Pessoa pes = null;
+		Projeto proj = null;
+		
+		try {
+			pes = pessoaController.recuperaPessoa(cpfPessoa);
+		}
+		catch(NaoEncontradaException e) {
+			throw new ValidacaoException("Erro na remocao de participacao: Pessoa nao encontrada");
+		}
+		try {
+			proj = projetoController.recuperaProjeto(codigoProjeto);
+		}
+		catch(NaoEncontradaException e) {
+			throw new ValidacaoException("Erro na remocao de participacao: Projeto nao encontrado");
+		}
+		
 		Participacao participacao = null;
 		boolean hasParticipacao = false;
 		for(Participacao p:participacoes) {
@@ -176,6 +215,9 @@ public class ParticipacaoController {
 				hasParticipacao = true;
 				participacao = p;
 			}
+		}
+		if(hasParticipacao==false) {
+			throw new ValidacaoException("Erro na remocao de participacao: Pessoa nao possui participacao no projeto indicado");
 		}
 		if(hasParticipacao==true && participacao!=null) {
 			participacoes.remove(participacao);

@@ -76,4 +76,12 @@ public class PED extends Projeto {
 		produtividade.put(Produtividade.PRODACADEMICA, prodAcademica);
 		produtividade.put(Produtividade.PATENTES, patentes);
 	}
+
+	public boolean hasProfLimitacao() {
+		if(this.categoria.toLowerCase().equals("pibic") || this.categoria.toLowerCase().equals("pibiti") 
+				|| this.categoria.toLowerCase().equals("pivic")) {
+			return true;
+		}
+		return false;
+	}
 }

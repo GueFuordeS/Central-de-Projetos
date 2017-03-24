@@ -192,4 +192,9 @@ public class Validacao {
 	public static void validaValorHoraProfessor(double valorHora) throws ValidacaoException {
 		if(valorHora < 0) throw new ValidacaoException("Erro na associacao de pessoa a projeto: Valor da hora invalido");
 	}
+	
+	public static void validaValorHoraProfessorMonitoria(double valorHora) throws ValidacaoException {
+		if(valorHora != 0) throw new ValidacaoException("Erro na associacao de pessoa a projeto: Valor da hora de um "
+				+ "professor da monitoria deve ser zero");
+	}
 } 
