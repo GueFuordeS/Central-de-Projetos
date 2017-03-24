@@ -37,6 +37,7 @@ public class ParticipacaoController {
 			throws NaoEncontradaException, ValidacaoException {
 		
 		validaQntHoras(qntHoras);
+		validaValorHoraProfessor(valorHora);
 		
 		Pessoa pessoa = null;
 		Projeto projeto = null;
@@ -72,14 +73,16 @@ public class ParticipacaoController {
 		
 		if(projeto instanceof Monitoria) {
 			if(projeto.hasProfessor()) {
-				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Monitoria nao pode ter mais de um professor");
+				throw new ValidacaoException("Erro na associacao de pessoa a projeto: "
+						+ "Monitoria nao pode ter mais de um professor");
 			}
 		}
 		
 		if(projeto instanceof PED) {
 			if(((PED) projeto).hasProfLimitacao()) {
 				if(projeto.hasProfessor()) {
-					throw new ValidacaoException("Erro na associacao de pessoa a projeto: Projetos P&D nao podem ter mais de um professor");
+					throw new ValidacaoException("Erro na associacao de pessoa a projeto: Projetos P&D "
+							+ "nao podem ter mais de um professor");
 				}
 			}
 		}
@@ -88,7 +91,7 @@ public class ParticipacaoController {
 				projeto.getDataInicio(),projeto.getDuracao() ,
 				valorHora, qntHoras);
 			participacoes.add(partProf);
-			pessoaController.addParicipacao(cpfPessoa, partProf);
+			pessoaController.addParticipacao(cpfPessoa, partProf);
 			projetoController.addParticipacao(codigoProjeto, partProf);
 		}
 	}
@@ -114,19 +117,26 @@ public class ParticipacaoController {
 		catch(NaoEncontradaException e) {
 			throw new NaoEncontradaException("Erro na associacao de pessoa a projeto: Projeto nao encontrado");
 		}
-		if(projeto instanceof PED) {
+		if(projeto instanceof PED && !((PED) projeto).getCategoria().toLowerCase().equals("coop")) {
 			if(projeto.hasGraduando()) {
-				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Projetos P&D nao podem ter mais de um graduando");
+				throw new ValidacaoException("Erro na associacao de pessoa a projeto: "
+						+ "Projetos P&D nao podem ter mais de um graduando");
 			}
 		}
 
 		if(pessoa != null && projeto != null) {
 			ParticipacaoGraduando partGrad = new ParticipacaoGraduando(pessoa, projeto, projeto.getDataInicio(), 
 			projeto.getDuracao(), valorHora, qntHoras);
-			participacoes.add(partGrad);
 			
-			pessoaController.addParicipacao(cpfPessoa, partGrad);
-			projetoController.addParticipacao(codigoProjeto, partGrad);
+			pessoaController.addParticipacao(cpfPessoa, partGrad);
+			try {
+				projetoController.addParticipacao(codigoProjeto, partGrad);
+				
+			}
+			catch(ValidacaoException e) {
+				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Aluno ja esta cadastrado nesse projeto");
+			}	
+			participacoes.add(partGrad);
 		}
 	}	
 	
@@ -155,7 +165,7 @@ public class ParticipacaoController {
 			ParticipacaoProfissional partProf = new ParticipacaoProfissional(pessoa, projeto, cargo, projeto.getDataInicio(), 
 			projeto.getDuracao(), valorHora, qntHoras);
 			participacoes.add(partProf);
-			pessoaController.addParicipacao(cpfPessoa, partProf);
+			pessoaController.addParticipacao(cpfPessoa, partProf);
 			projetoController.addParticipacao(codigoProjeto, partProf);
 		}
 	}
@@ -186,7 +196,7 @@ public class ParticipacaoController {
 					projeto.getDuracao(), valorHora, qntHoras);
 			
 			participacoes.add(partPosGrad);
-			pessoaController.addParicipacao(cpfPessoa, partPosGrad);
+			pessoaController.addParticipacao(cpfPessoa, partPosGrad);
 			projetoController.addParticipacao(codigoProjeto, partPosGrad);
 		}
 	}
@@ -211,10 +221,11 @@ public class ParticipacaoController {
 		Participacao participacao = null;
 		boolean hasParticipacao = false;
 		for(Participacao p:participacoes) {
-			if(p.getPessoa().equals(pes)) {
+			if(p.getPessoa().equals(pes) && p.getProjeto().getCodigo()==codigoProjeto) {
 				hasParticipacao = true;
 				participacao = p;
 			}
+			
 		}
 		if(hasParticipacao==false) {
 			throw new ValidacaoException("Erro na remocao de participacao: Pessoa nao possui participacao no projeto indicado");
@@ -225,4 +236,21 @@ public class ParticipacaoController {
 			proj.removeParticipacao(cpfPessoa);
 		}
 	}
+/**	
+	public static void main(String[] args) throws ValidacaoException, NaoEncontradaException {
+		PessoaController pess = new PessoaController();
+		ProjetoController projs = new ProjetoController();
+		ParticipacaoController pc = new ParticipacaoController(pess, projs);
+		pess.cadastraPessoa("700.634.064-03", "Gabriel", "gabriel774455@gmail.com");
+		projs.adicionaPED("narutoreg", "pivic", 2, 3, 4, "sanar a falta de inteligencia no povo brasileiro", 
+				"01/07/2017", 6);
+		PED ped = (PED)projs.recuperaProjeto(1);
+		System.out.println(ped.hasGraduando());
+		pc.associaGraduando("700.634.064-03", 1, 750.00, 5);
+		System.out.println(ped.hasGraduando());
+		pc.removeParticipacao("700.634.064-03", 1);
+		System.out.println(ped.hasGraduando());
+
+	}
+	*/
 }

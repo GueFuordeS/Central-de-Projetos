@@ -83,19 +83,13 @@ public abstract class Participacao implements Comparable<Participacao> {
 		public int compareTo(Participacao part) {
 			return this.getPessoa().getNome().compareTo(part.getPessoa().getNome());
 		}
-		
+
 		@Override
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
-			result = prime * result + ((dataInicio == null) ? 0 : dataInicio.hashCode());
-			result = prime * result + duracao;
 			result = prime * result + ((pessoa == null) ? 0 : pessoa.hashCode());
 			result = prime * result + ((projeto == null) ? 0 : projeto.hashCode());
-			result = prime * result + qntHoras;
-			long temp;
-			temp = Double.doubleToLongBits(valorHora);
-			result = prime * result + (int) (temp ^ (temp >>> 32));
 			return result;
 		}
 
@@ -108,13 +102,6 @@ public abstract class Participacao implements Comparable<Participacao> {
 			if (getClass() != obj.getClass())
 				return false;
 			Participacao other = (Participacao) obj;
-			if (dataInicio == null) {
-				if (other.dataInicio != null)
-					return false;
-			} else if (!dataInicio.equals(other.dataInicio))
-				return false;
-			if (duracao != other.duracao)
-				return false;
 			if (pessoa == null) {
 				if (other.pessoa != null)
 					return false;
@@ -125,10 +112,6 @@ public abstract class Participacao implements Comparable<Participacao> {
 					return false;
 			} else if (!projeto.equals(other.projeto))
 				return false;
-			if (qntHoras != other.qntHoras)
-				return false;
-			if (Double.doubleToLongBits(valorHora) != Double.doubleToLongBits(other.valorHora))
-				return false;
 			return true;
-		}	
+		}
 }

@@ -134,38 +134,12 @@ public abstract class Projeto {
 		return this.participacoes;
 	}
 	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + codigo;
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		return result;
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Projeto other = (Projeto) obj;
-		if (codigo != other.codigo)
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		return true;
-	}
 
 	public void addicionaParticipacao(Participacao participacao) throws ValidacaoException {
 		for(Participacao p:participacoes) {
 			if(p.equals(participacao)) {
-				throw new ValidacaoException("Participacao ja associada a pessoa");
+				throw new ValidacaoException("Erro na associacao: participacao ja esta cadastrado nesse projeto");
 			}
 		}
 		this.participacoes.add(participacao);
@@ -200,5 +174,33 @@ public abstract class Projeto {
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + codigo;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Projeto other = (Projeto) obj;
+		if (codigo != other.codigo)
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		return true;
 	}
 }

@@ -119,8 +119,6 @@ public class Validacao {
 		if(valorHora <= 0) throw new ValidacaoException("Erro na associacao de pessoa a projeto: Valor da hora invalido");
 	}
 	
-
-	
 	public static void validaQntHoras(int valorHora) throws ValidacaoException {
 		if(valorHora <= 0) throw new ValidacaoException("Erro na associacao de pessoa a projeto: Quantidade de horas invalida");
 	}
@@ -165,8 +163,9 @@ public class Validacao {
 		if(categoria == null || categoria.trim().isEmpty()) {
 			throw new ValidacaoException("Categoria nao pode ser nula ou vazia");
 		}
-		else if(!categoria.equals("PIBIC") && !categoria.equals("PIBITI") && !categoria.equals("PIVIC")
-				&& !categoria.equals("COOP")) {
+		else if(!categoria.toLowerCase().equals("pibic") && !categoria.toLowerCase().equals("pibiti") 
+				&& !categoria.toLowerCase().equals("pivic")
+				&& !categoria.toLowerCase().equals("coop")) {
 			throw new ValidacaoException("Erro no cadastro de projeto: Categoria invalida");
 		}
 	}

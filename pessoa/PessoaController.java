@@ -101,7 +101,7 @@ public class PessoaController {
 		return retorno;
 	}
 
-	public void addParicipacao(String cpfPessoa, Participacao participacao) throws NaoEncontradaException, ValidacaoException {
+	public void addParticipacao(String cpfPessoa, Participacao participacao) throws NaoEncontradaException, ValidacaoException {
 		Pessoa p = this.recuperaPessoa(cpfPessoa);
 		p.adicionaPartcicipacao(participacao);
 	}

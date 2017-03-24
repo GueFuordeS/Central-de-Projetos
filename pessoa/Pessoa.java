@@ -39,7 +39,7 @@ public class Pessoa {
 	public void adicionaPartcicipacao(Participacao participacao) throws ValidacaoException {
 		for(Participacao p:participacoes) {
 			if(p.equals(participacao)) {
-				throw new ValidacaoException("Participacao ja associada a pessoa");
+				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Aluno ja esta cadastrado nesse projeto");
 			}
 		}
 		this.participacoes.add(participacao);
@@ -125,6 +125,7 @@ public class Pessoa {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
 
@@ -141,6 +142,11 @@ public class Pessoa {
 			if (other.cpf != null)
 				return false;
 		} else if (!cpf.equals(other.cpf))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
 			return false;
 		return true;
 	}
