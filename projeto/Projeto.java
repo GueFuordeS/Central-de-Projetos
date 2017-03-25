@@ -203,4 +203,13 @@ public abstract class Projeto {
 			return false;
 		return true;
 	}
+
+	public boolean hasParticipacao(String cpfPessoa) {
+		for(Participacao p:participacoes) {
+			if(p.getPessoa().getCpf().equals(cpfPessoa)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

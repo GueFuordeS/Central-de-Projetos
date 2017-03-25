@@ -2,11 +2,13 @@ package myUtils;
 
 import excecoes.ValidacaoException;
 import pessoa.Pessoa;
+import pessoa.PessoaController;
 import projeto.Projeto;
+import projeto.ProjetoController;
 
 /**
  * 
- * Classe de utilidade, por isso a necessidade de uso de metodos estaticos
+ * Classe de utilidade, uso de metodos estaticos aqui para evitar repeticoes durante as validacoes
  * 
  * @author Gabriel Fernandes
  *
@@ -229,6 +231,18 @@ public class Validacao {
 		else if(!titulacao.toLowerCase().equals("mestrado") && !titulacao.toLowerCase().equals("doutorado")) {
 			throw new ValidacaoException("Erro na associacao de pessoa a projeto: "
 					+ "titulaco de posgraduando invalida");
+		}
+	}
+
+	public static void validaPessoaController(PessoaController pessoaController) throws ValidacaoException {
+		if(pessoaController == null) {
+			throw new ValidacaoException("PessoaController nulo");
+		}
+	}
+
+	public static void validaProjetoController(ProjetoController projetoController) throws ValidacaoException {
+		if(projetoController == null) {
+			throw new ValidacaoException("ProjetoController nulo");
 		}
 	}
 } 

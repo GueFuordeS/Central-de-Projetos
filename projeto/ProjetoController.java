@@ -355,4 +355,13 @@ public class ProjetoController {
 		Projeto p = this.recuperaProjeto(codigoProjeto);
 		p.addicionaParticipacao(participacao);
 	}
+
+	public boolean hasParticipacao(String cpfPessoa, String nomeProjeto) {
+		for(Projeto p:projetos) {
+			if(p.getNome().equals(nomeProjeto)) {
+				return p.hasParticipacao(cpfPessoa);
+			}
+		}
+		return false;
+	}
 }

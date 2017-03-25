@@ -14,10 +14,15 @@ import projeto.*;
  * @author Gabriel Fernandes
  */
 public class Facade {
-	private PessoaController pessoaController = new PessoaController();
-	private ProjetoController projetoController = new ProjetoController();
-	private ParticipacaoController participacaoController = 
-			new ParticipacaoController(pessoaController, projetoController);
+	private PessoaController pessoaController;
+	private ProjetoController projetoController;
+	private ParticipacaoController participacaoController;
+	
+	public Facade() throws ValidacaoException {
+		pessoaController = new PessoaController();
+		projetoController = new ProjetoController();
+		participacaoController = new ParticipacaoController(pessoaController, projetoController);
+	}
 	
 	public void iniciaSistema() {
 		//por implementar

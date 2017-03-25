@@ -93,6 +93,15 @@ public class PessoaController {
 		return null;
 	}
 	
+	public boolean hasParticipacao(String cpf, String nomeProjeto) {
+		for(Pessoa p:pessoas) {
+			if(p.getCpf().equals(cpf)) {
+				return p.hasParticipacao(nomeProjeto);
+			}
+		}
+		return false;
+	}
+	
 	public String toString() {
 		String retorno = "";
 		for(Pessoa p:pessoas) {

@@ -5,6 +5,7 @@ import java.util.Set;
 
 import excecoes.NaoEncontradaException;
 import excecoes.ValidacaoException;
+
 import static myUtils.Validacao.*;
 import pessoa.*;
 import projeto.*;
@@ -15,7 +16,12 @@ public class ParticipacaoController {
 	private ProjetoController projetoController;
 	private Set<Participacao> participacoes;
 	
-	public ParticipacaoController(PessoaController pessoaController, ProjetoController projetoController){
+	public ParticipacaoController(PessoaController pessoaController, ProjetoController projetoController) 
+			throws ValidacaoException {
+		
+		validaPessoaController(pessoaController);
+		validaProjetoController(projetoController);
+		
 		this.pessoaController = pessoaController;
 		this.projetoController = projetoController;
 		this.participacoes = new HashSet<>();
@@ -35,7 +41,7 @@ public class ParticipacaoController {
 
 	public void associaProfessor(String cpfPessoa, int codigoProjeto, boolean coordenador, double valorHora, int qntHoras)
 			throws NaoEncontradaException, ValidacaoException {
-		
+
 		validaQntHoras(qntHoras);
 		validaValorHoraProfessor(valorHora);
 		
@@ -232,6 +238,17 @@ public class ParticipacaoController {
 			proj.removeParticipacao(cpfPessoa);
 		}
 	}
+	
+	public boolean hasParticipacao(String cpf, String nomeProjeto) throws NaoEncontradaException, ValidacaoException {
+		for(Participacao p:participacoes) {
+			if(pessoaController.recuperaPessoa(cpf).equals(p.getPessoa()) 
+					&& projetoController.recuperaProjeto(nomeProjeto).equals(p.getProjeto())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 /**	
 	public static void main(String[] args) throws ValidacaoException, NaoEncontradaException {
 		PessoaController pess = new PessoaController();

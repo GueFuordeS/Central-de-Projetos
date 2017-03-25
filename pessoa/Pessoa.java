@@ -110,6 +110,15 @@ public class Pessoa {
 		Validacao.validaEmail(email);
 		this.email = email;
 	}
+
+	public boolean hasParticipacao(String nomeProjeto) {
+		for(Participacao p:participacoes) {
+			if(p.getProjeto().getNome().equals(nomeProjeto)) {
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	public boolean hasParticipacao(Participacao participacao) {
 		for(Participacao p:participacoes) {
