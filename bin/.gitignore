@@ -1,13 +1,11 @@
 .metadata
 .recommenders
-/.classpath
-/.gitignore
 /.project
 /README.md
 /RemoteSystemsTempFiles/
 /acceptance_test/
-/controle/
 /easyaccept/
+/controle/
 /excecoes/
 /myUtils/
 /myUtilsTest/
