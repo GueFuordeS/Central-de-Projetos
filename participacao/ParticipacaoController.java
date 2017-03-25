@@ -117,10 +117,12 @@ public class ParticipacaoController {
 		catch(NaoEncontradaException e) {
 			throw new NaoEncontradaException("Erro na associacao de pessoa a projeto: Projeto nao encontrado");
 		}
-		if(projeto instanceof PED && !((PED) projeto).getCategoria().toLowerCase().equals("coop")) {
-			if(projeto.hasGraduando()) {
-				throw new ValidacaoException("Erro na associacao de pessoa a projeto: "
-						+ "Projetos P&D nao podem ter mais de um graduando");
+		if(projeto instanceof PED) {
+			if(!((PED) projeto).getCategoria().toLowerCase().equals("coop")) {
+				if(projeto.hasGraduando()) {
+					throw new ValidacaoException("Erro na associacao de pessoa a projeto: "
+							+ "Projetos P&D nao podem ter mais de um graduando");
+				}
 			}
 		}
 
@@ -129,13 +131,7 @@ public class ParticipacaoController {
 			projeto.getDuracao(), valorHora, qntHoras);
 			
 			pessoaController.addParticipacao(cpfPessoa, partGrad);
-			try {
-				projetoController.addParticipacao(codigoProjeto, partGrad);
-				
-			}
-			catch(ValidacaoException e) {
-				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Aluno ja esta cadastrado nesse projeto");
-			}	
+			projetoController.addParticipacao(codigoProjeto, partGrad);
 			participacoes.add(partGrad);
 		}
 	}	
@@ -194,7 +190,7 @@ public class ParticipacaoController {
 		if(pessoa != null && projeto != null) {
 			ParticipacaoPosGraduando partPosGrad = new ParticipacaoPosGraduando(pessoa, projeto, titulacao,projeto.getDataInicio(), 
 					projeto.getDuracao(), valorHora, qntHoras);
-			
+
 			participacoes.add(partPosGrad);
 			pessoaController.addParticipacao(cpfPessoa, partPosGrad);
 			projetoController.addParticipacao(codigoProjeto, partPosGrad);

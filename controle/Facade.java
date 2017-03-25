@@ -114,11 +114,11 @@ public class Facade {
 		
 		participacaoController.associaPosGraduando(cpfPessoa, codigoProjeto, titulacao, valorHora, qntHoras);
 	}
-	
+
 	public void removeParticipacao(String cpfPessoa, int codigoProjeto) throws NaoEncontradaException, ValidacaoException {
 		participacaoController.removeParticipacao(cpfPessoa, codigoProjeto);
 	}
-	
+
 	public void fechaSistema() {
 		//por implementar
 	}

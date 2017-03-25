@@ -102,7 +102,13 @@ public class PessoaController {
 	}
 
 	public void addParticipacao(String cpfPessoa, Participacao participacao) throws NaoEncontradaException, ValidacaoException {
-		Pessoa p = this.recuperaPessoa(cpfPessoa);
-		p.adicionaPartcicipacao(participacao);
+		Pessoa p = null;
+		try {
+			p = this.recuperaPessoa(cpfPessoa);
+		}
+		catch(NaoEncontradaException e) {
+			throw new NaoEncontradaException("Erro na associacao de pessoa a projeto: Pessoa nao encontrada");
+		}
+		if(p != null) p.adicionaPartcicipacao(participacao);
 	}
 }

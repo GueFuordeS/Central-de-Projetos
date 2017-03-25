@@ -64,7 +64,7 @@ public class PessoaTest {
 	@Test
 	public void hashEqualsTest() throws ValidacaoException {
 		Pessoa p2 = new Pessoa("222.333.444-55","Naty","naty@ccc.ufcg.edu.br");
-		assertTrue(p.equals(p2));
+		assertTrue(p.equals(p2)); //note que apenas o cpf diferenciam duas pessoas
 		
 		Pessoa p3 = new Pessoa("222.333.444-56","Natasha","natasha@ccc.ufcg.edu.br");
 		assertFalse(p.equals(p3));

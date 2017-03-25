@@ -1,6 +1,8 @@
 package myUtils;
 
 import excecoes.ValidacaoException;
+import pessoa.Pessoa;
+import projeto.Projeto;
 
 /**
  * 
@@ -116,11 +118,13 @@ public class Validacao {
 	}
 	
 	public static void validaValorHora(double valorHora) throws ValidacaoException {
-		if(valorHora <= 0) throw new ValidacaoException("Erro na associacao de pessoa a projeto: Valor da hora invalido");
+		if(valorHora <= 0) 
+			throw new ValidacaoException("Erro na associacao de pessoa a projeto: Valor da hora invalido");
 	}
 	
 	public static void validaQntHoras(int valorHora) throws ValidacaoException {
-		if(valorHora <= 0) throw new ValidacaoException("Erro na associacao de pessoa a projeto: Quantidade de horas invalida");
+		if(valorHora <= 0) 
+			throw new ValidacaoException("Erro na associacao de pessoa a projeto: Quantidade de horas invalida");
 	}
 	
 	public static void validaDuracao(int inteiro) throws ValidacaoException {
@@ -195,5 +199,36 @@ public class Validacao {
 	public static void validaValorHoraProfessorMonitoria(double valorHora) throws ValidacaoException {
 		if(valorHora != 0) throw new ValidacaoException("Erro na associacao de pessoa a projeto: Valor da hora de um "
 				+ "professor da monitoria deve ser zero");
+	}
+
+	public static void validaPessoa(Pessoa pessoa) throws ValidacaoException {
+		if(pessoa == null) throw new ValidacaoException("Pessoa nao pode ser nula");
+	}
+
+	public static void validaProjeto(Projeto projeto) throws ValidacaoException {
+		if(projeto == null) throw new ValidacaoException("Projeto nao pode ser nulo");
+		
+	}
+
+	public static void validaCargo(String cargo) throws ValidacaoException {
+		if(cargo == null || cargo.trim().isEmpty()) {
+			throw new ValidacaoException("Erro na associacao de pessoa a projeto: Cargo de profissional nulo"
+					+ " ou vazio");
+		}
+		else if(!cargo.toLowerCase().equals("desenvolvedor") && !cargo.toLowerCase().equals("gerente") 
+				&& !cargo.toLowerCase().equals("pesquisador")) {
+			throw new ValidacaoException("Erro na associacao de pessoa a projeto: Cargo de profissional invalido");
+		}
+	}
+
+	public static void validaTitulacao(String titulacao) throws ValidacaoException {
+		if(titulacao == null || titulacao.trim().isEmpty()) {
+			throw new ValidacaoException("Erro na associacao de pessoa a projeto: Titulacao de posgraduando nula"
+					+ " ou vazia");
+		}
+		else if(!titulacao.toLowerCase().equals("mestrado") && !titulacao.toLowerCase().equals("doutorado")) {
+			throw new ValidacaoException("Erro na associacao de pessoa a projeto: "
+					+ "titulaco de posgraduando invalida");
+		}
 	}
 } 

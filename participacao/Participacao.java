@@ -2,6 +2,8 @@ package participacao;
 
 import excecoes.ValidacaoException;
 import myUtils.Date;
+import myUtils.Validacao;
+
 import static myUtils.Validacao.*;
 import pessoa.Pessoa;
 import projeto.Projeto;
@@ -18,7 +20,14 @@ public abstract class Participacao implements Comparable<Participacao> {
 		public Participacao(Pessoa pessoa, Projeto projeto, String dataInicio, 
 				int duracaoEmMeses, double valorDaHora, int qtdeHorasDedicadas) throws ValidacaoException {
 			
-			validaDuracao(duracaoEmMeses);
+			Validacao.validaPessoa(pessoa);
+			Validacao.validaProjeto(projeto);
+			try { 
+				validaDuracao(duracaoEmMeses); 
+			}
+			catch(ValidacaoException e) { 
+				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Duracao invalida"); 
+			}
 			validaQntHoras(qtdeHorasDedicadas);
 			
 			this.pessoa = pessoa;

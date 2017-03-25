@@ -1,10 +1,5 @@
 .metadata
 .recommenders
-/.project
-/README.md
-/RemoteSystemsTempFiles/
-/acceptance_test/
-/easyaccept/
 /controle/
 /excecoes/
 /myUtils/
@@ -14,3 +9,4 @@
 /pessoaTest/
 /projeto/
 /projetoTest/
+/participacaoTest/

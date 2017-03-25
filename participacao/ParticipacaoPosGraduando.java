@@ -1,6 +1,7 @@
 package participacao;
 
 import excecoes.ValidacaoException;
+import static myUtils.Validacao.*;
 import pessoa.Pessoa;
 import projeto.Projeto;
 
@@ -12,6 +13,9 @@ public class ParticipacaoPosGraduando extends Participacao {
 			double valorDaHora, int qtdeHorasDedicadas) throws ValidacaoException {
 		
 		super(pessoa, projeto, dataInicio, duracaoEmMeses, valorDaHora, qtdeHorasDedicadas);
+		
+		validaTitulacao(titulacao);
+		
 		this.titulacao = titulacao;
 	}
 
@@ -19,7 +23,8 @@ public class ParticipacaoPosGraduando extends Participacao {
 		return titulacao;
 	}
 
-	public void setTitulacao(String titulacao) {
+	public void setTitulacao(String titulacao) throws ValidacaoException {
+		validaTitulacao(titulacao);
 		this.titulacao = titulacao;
 	}
 
