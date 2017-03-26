@@ -9,6 +9,7 @@ import excecoes.ValidacaoException;
 import myUtils.Date;
 import participacao.Participacao;
 import participacao.ParticipacaoGraduando;
+import participacao.ParticipacaoPosGraduando;
 import participacao.ParticipacaoProfessor;
 
 /**
@@ -208,5 +209,15 @@ public abstract class Projeto {
 			}
 		}
 		return false;
+	}
+	
+	public int getNumGraduandos() {
+		int numGraduandos = 0;
+		for(Participacao p:participacoes) {
+			if(p instanceof ParticipacaoGraduando || p instanceof ParticipacaoPosGraduando) {
+				numGraduandos++;
+			}
+		}
+		return numGraduandos;
 	}
 }

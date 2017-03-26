@@ -120,7 +120,7 @@ public class Validacao {
 	}
 	
 	public static void validaValorHora(double valorHora) throws ValidacaoException {
-		if(valorHora <= 0) 
+		if(valorHora < 0) 
 			throw new ValidacaoException("Erro na associacao de pessoa a projeto: Valor da hora invalido");
 	}
 	

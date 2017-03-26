@@ -234,16 +234,16 @@ public class ParticipacaoController {
 		}
 		
 		if(projeto instanceof Monitoria) {
-			throw new ValidacaoException("Erro na associacao de pessoa a projeto: Monitoria nao pode ter aluno posgraduando");
+			throw new ValidacaoException("Erro na associacao de pessoa a projeto: Tipo de projeto invalido para pos graduando");
 		}
 		
 		if(projeto instanceof PET) {
-			throw new ValidacaoException("Erro na associacao de pessoa a projeto: PET nao pode ter aluno posgraduando");
+			throw new ValidacaoException("Erro na associacao de pessoa a projeto: Tipo de projeto invalido para pos graduando");
 		}
 		
 		if(projeto instanceof PED) {
 			if(projetoController.hasPEDLimitacao(codigoProjeto)) {		
-				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Projetos P&D nao podem ter aluno posgraduando");
+				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Tipo de projeto invalido para pos graduando");
 			}
 		}
 

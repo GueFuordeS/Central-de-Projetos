@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import excecoes.ValidacaoException;
 import myUtils.Validacao;
 import participacao.*;
+import projeto.*;
 
 /** Classe responsavel por moldar as caracteristicas de uma pessoa, tornando-a interativa em nosso
  * sistema.
@@ -159,5 +160,71 @@ public class Pessoa {
 		final String FIM_DE_LINHA = System.lineSeparator();
 		return "Cpf: " + cpf + FIM_DE_LINHA + "Nome: " + nome + FIM_DE_LINHA + "Email: " + email
 				+ FIM_DE_LINHA;
+	}
+
+	public double calculaPontuacaoPorParticipacao() {
+		double pontuacao = 0;
+		double pontosMonitoria = 0;
+		double pontosExtensao = 0;
+		double pontosPET = 0;
+		double pontosPED = 0;
+
+		for(Participacao p:participacoes) {
+			if(p instanceof ParticipacaoGraduando) {
+				if(p.getProjeto() instanceof Monitoria) {
+					pontosMonitoria += p.getProjeto().getDuracao() / 4;
+				}
+				if(p.getProjeto() instanceof Extensao) {
+					pontosExtensao += p.getProjeto().getDuracao() / 3;
+				}
+				if(p.getProjeto() instanceof PET) {
+					pontosExtensao += p.getProjeto().getDuracao() / 3;
+				}
+				if(p.getProjeto() instanceof PED) {
+					pontosExtensao += p.getProjeto().getDuracao() / 3;
+				}
+			}
+			if(p instanceof ParticipacaoProfessor) {
+				if(p.getProjeto() instanceof Monitoria) {
+					pontosMonitoria += p.getProjeto().getDuracao() / 3;
+				}
+				if(p.getProjeto() instanceof Extensao) {
+					pontuacao += p.getProjeto().getDuracao() / 3;
+					pontuacao += p.getProjeto().getNumGraduandos();
+				}
+				if(p.getProjeto() instanceof PET) {
+					pontuacao += p.getProjeto().getDuracao() / 3;
+					pontuacao += p.getProjeto().getNumGraduandos();
+				}
+				if(p.getProjeto() instanceof PED) {
+					pontuacao += p.getProjeto().getDuracao() / 3;
+					pontuacao += p.getProjeto().getNumGraduandos();
+				}
+			}
+			if(p instanceof ParticipacaoProfissional) {
+				if(p.getProjeto() instanceof Extensao) {
+					pontuacao += p.getProjeto().getDuracao() / 3;
+				}
+				if(p.getProjeto() instanceof PED) {
+					if(((ParticipacaoProfissional) p).getCargo().toLowerCase().equals("desenvolvedor")) {
+						pontuacao += p.getProjeto().getDuracao() / 2.4;
+					}
+					if(((ParticipacaoProfissional) p).getCargo().toLowerCase().equals("pesquisador")) {
+						pontuacao += p.getProjeto().getDuracao() / 2;
+					}
+					if(((ParticipacaoProfissional) p).getCargo().toLowerCase().equals("gerente")) {
+						pontuacao += p.getProjeto().getDuracao() / 1.33333333;
+					}
+				}
+			}
+		}
+		
+		if(pontosMonitoria > 6) pontosMonitoria = 6.0;
+		if(pontosExtensao > 6) pontosMonitoria = 8.0;
+		if(pontosPET > 6) pontosMonitoria = 8.0;
+		if(pontosPED > 6) pontosMonitoria = 8.0;		
+		
+		pontuacao += pontosMonitoria + pontosExtensao + pontosPET + pontosPED;
+		return Math.floor(pontuacao);
 	}
 }

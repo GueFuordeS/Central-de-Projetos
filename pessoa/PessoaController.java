@@ -125,4 +125,9 @@ public class PessoaController {
 		Pessoa p = this.recuperaPessoa(cpfPessoa);
 		p.removeParticipacao(codigoProjeto);
 	}
+
+	public double calculaPontuacaoPorParticipacao(String cpf) throws NaoEncontradaException, ValidacaoException {
+		Pessoa p = this.recuperaPessoa(cpf);
+		return p.calculaPontuacaoPorParticipacao();
+	}
 }
