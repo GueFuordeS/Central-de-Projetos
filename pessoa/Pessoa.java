@@ -38,7 +38,7 @@ public class Pessoa {
 	
 	public void adicionaPartcicipacao(Participacao participacao) throws ValidacaoException {
 		for(Participacao p:participacoes) {
-			if(p.equals(participacao)) {
+			if(p.getPessoa().equals(participacao.getPessoa()) && p.getProjeto().equals(participacao.getProjeto())) {
 				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Aluno ja esta cadastrado nesse projeto");
 			}
 		}

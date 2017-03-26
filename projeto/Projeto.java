@@ -133,19 +133,17 @@ public abstract class Projeto {
 	public ArrayList<Participacao> getParticipacoes() {
 		return this.participacoes;
 	}
-	
-
 
 	public void addicionaParticipacao(Participacao participacao) throws ValidacaoException {
 		for(Participacao p:participacoes) {
-			if(p.equals(participacao)) {
-				throw new ValidacaoException("Erro na associacao: participacao ja esta cadastrado nesse projeto");
+			if(p.getPessoa().equals(participacao.getPessoa()) && p.getProjeto().equals(participacao.getProjeto())) {
+				System.out.println(participacao.getPessoa().getNome());
+				throw new ValidacaoException("Erro na associacao de pessoa a projeto: associacao ja existe");
 			}
 		}
 		this.participacoes.add(participacao);
 		Collections.sort(participacoes);
 	}
-	
 	
 	public boolean hasProfessor() {
 		for(Participacao p:participacoes) {

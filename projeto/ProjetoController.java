@@ -1,8 +1,7 @@
 package projeto;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import excecoes.NaoEncontradaException;
 import excecoes.ValidacaoException;
@@ -10,37 +9,44 @@ import participacao.Participacao;
 import static myUtils.Codigo.*;
 
 public class ProjetoController {
-	private Set<Projeto> projetos;
+	private List<Projeto> projetos;
 	
 	public ProjetoController() {
-		this.projetos = new HashSet<>();
+		this.projetos = new ArrayList<>();
 	}
 
 	public int adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo,
 			 String periodo, String dataInicio, int duracao) throws ValidacaoException {
 		int codigo = geraCodigo();
 		
-		projetos.add(new Monitoria(codigo, nome, disciplina, rendimento, objetivo,
-		 periodo, dataInicio, duracao));
-		
+		Monitoria mon = new Monitoria(codigo, nome, disciplina, rendimento, objetivo, 
+				periodo, dataInicio, duracao);
+		this.hasProjetoToAdd(codigo, nome);
+		projetos.add(mon);
+
 		return codigo;
 	}
 	
 	public int adicionaPET(String nome, String objetivo, int impacto, int rendimento, 
 			int prodTecnica, int prodAcademica, int patentes, String dataInicio, int duracao) throws ValidacaoException {
 		int codigo = geraCodigo();
-		
-		projetos.add(new PET(codigo, nome, objetivo, impacto, rendimento, 
-			 prodTecnica, prodAcademica, patentes, dataInicio, duracao));
-		
+
+		PET pet = new PET(codigo, nome, objetivo, impacto, rendimento, 
+				prodTecnica, prodAcademica, patentes, dataInicio, duracao);
+		this.hasProjetoToAdd(codigo, nome);
+		projetos.add(pet);
+
 		return codigo;
 	}
 	
 	public int adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao) 
 			throws ValidacaoException {
 		int codigo = geraCodigo();
-		
-		projetos.add(new Extensao(codigo, nome, objetivo, impacto, dataInicio, duracao));
+
+		Extensao ext = new Extensao(codigo, nome, objetivo, impacto, dataInicio, duracao);
+		this.hasProjetoToAdd(codigo, nome);
+		projetos.add(ext);
+			
 		return codigo;
 	}
 	
@@ -48,9 +54,38 @@ public class ProjetoController {
 			String objetivo, String dataInicio, int duracao) throws ValidacaoException {
 		int codigo = geraCodigo();
 		
-		projetos.add(new PED(codigo, nome, categoria, prodTecnica, prodAcademica, patentes, 
-				objetivo, dataInicio, duracao));
+		PED ped = new PED(codigo, nome, categoria, prodTecnica, prodAcademica, patentes, 
+				objetivo, dataInicio, duracao);
+		this.hasProjetoToAdd(codigo, nome);
+		projetos.add(ped);
+		
 		return codigo;
+	}
+	
+	private void hasProjetoToAdd(int codigo, String nome) throws ValidacaoException {
+		for(Projeto p:projetos) {
+			if(p.getNome().equals(nome)) {
+				throw new ValidacaoException("Projeto ja existe");
+			}
+		}
+	}
+	
+	public boolean hasProjeto(String nome) throws ValidacaoException {
+		for(Projeto p:projetos) {
+			if(p.getNome().equals(nome)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean hasProjeto(int codigo) throws ValidacaoException {
+		for(Projeto p:projetos) {
+			if(p.getCodigo() == codigo) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public void removeProjeto(int codigo) throws NaoEncontradaException, ValidacaoException {

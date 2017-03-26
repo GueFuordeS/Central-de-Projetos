@@ -1,8 +1,7 @@
 package participacao;
 
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.ArrayList;
+import java.util.List;
 import excecoes.NaoEncontradaException;
 import excecoes.ValidacaoException;
 
@@ -14,7 +13,7 @@ public class ParticipacaoController {
 
 	private PessoaController pessoaController;
 	private ProjetoController projetoController;
-	private Set<Participacao> participacoes;
+	private List<Participacao> participacoes;
 	
 	public ParticipacaoController(PessoaController pessoaController, ProjetoController projetoController) 
 			throws ValidacaoException {
@@ -24,9 +23,9 @@ public class ParticipacaoController {
 		
 		this.pessoaController = pessoaController;
 		this.projetoController = projetoController;
-		this.participacoes = new HashSet<>();
+		this.participacoes = new ArrayList<>();
 	}
-	
+
 	public PessoaController getPessoaController() {
 		return pessoaController;
 	}
@@ -35,7 +34,7 @@ public class ParticipacaoController {
 		return projetoController;
 	}
 
-	public Set<Participacao> getParticipacoes() {
+	public List<Participacao> getParticipacoes() {
 		return participacoes;
 	}
 
@@ -96,14 +95,17 @@ public class ParticipacaoController {
 			ParticipacaoProfessor partProf = new ParticipacaoProfessor(pessoa, projeto, coordenador, 
 				projeto.getDataInicio(),projeto.getDuracao() ,
 				valorHora, qntHoras);
-			participacoes.add(partProf);
+			
+			this.hasParticipacaoToAdd(cpfPessoa, codigoProjeto);
 			pessoaController.addParticipacao(cpfPessoa, partProf);
 			projetoController.addParticipacao(codigoProjeto, partProf);
+			participacoes.add(partProf);
 		}
 	}
 	
 	public void associaGraduando(String cpfPessoa, int codigoProjeto, double valorHora, int qntHoras) 
 			throws NaoEncontradaException, ValidacaoException{
+		
 		
 		validaValorHora(valorHora);
 		validaQntHoras(qntHoras);
@@ -136,6 +138,7 @@ public class ParticipacaoController {
 			ParticipacaoGraduando partGrad = new ParticipacaoGraduando(pessoa, projeto, projeto.getDataInicio(), 
 			projeto.getDuracao(), valorHora, qntHoras);
 			
+			this.hasParticipacaoToAdd(cpfPessoa, codigoProjeto);
 			pessoaController.addParticipacao(cpfPessoa, partGrad);
 			projetoController.addParticipacao(codigoProjeto, partGrad);
 			participacoes.add(partGrad);
@@ -166,9 +169,11 @@ public class ParticipacaoController {
 		if(pessoa != null && projeto != null) {
 			ParticipacaoProfissional partProf = new ParticipacaoProfissional(pessoa, projeto, cargo, projeto.getDataInicio(), 
 			projeto.getDuracao(), valorHora, qntHoras);
-			participacoes.add(partProf);
+			
+			this.hasParticipacaoToAdd(cpfPessoa, codigoProjeto);
 			pessoaController.addParticipacao(cpfPessoa, partProf);
 			projetoController.addParticipacao(codigoProjeto, partProf);
+			participacoes.add(partProf);
 		}
 	}
 	
@@ -177,7 +182,7 @@ public class ParticipacaoController {
 
 		validaValorHora(valorHora);
 		validaQntHoras(qntHoras);
-		
+
 		Pessoa pessoa = null;
 		Projeto projeto = null;
 		try {
@@ -197,9 +202,10 @@ public class ParticipacaoController {
 			ParticipacaoPosGraduando partPosGrad = new ParticipacaoPosGraduando(pessoa, projeto, titulacao,projeto.getDataInicio(), 
 					projeto.getDuracao(), valorHora, qntHoras);
 
-			participacoes.add(partPosGrad);
+			this.hasParticipacaoToAdd(cpfPessoa, codigoProjeto);
 			pessoaController.addParticipacao(cpfPessoa, partPosGrad);
 			projetoController.addParticipacao(codigoProjeto, partPosGrad);
+			participacoes.add(partPosGrad);
 		}
 	}
 
@@ -238,6 +244,15 @@ public class ParticipacaoController {
 			proj.removeParticipacao(cpfPessoa);
 		}
 	}
+
+	public void hasParticipacaoToAdd(String cpf, int codigoProjeto) throws NaoEncontradaException, ValidacaoException {
+		for(Participacao p:participacoes) {
+			if(pessoaController.recuperaPessoa(cpf).equals(p.getPessoa()) 
+					&& projetoController.recuperaProjeto(codigoProjeto).equals(p.getProjeto())) {
+				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Participacao ja existe");
+			}
+		}
+	}
 	
 	public boolean hasParticipacao(String cpf, String nomeProjeto) throws NaoEncontradaException, ValidacaoException {
 		for(Participacao p:participacoes) {
@@ -248,7 +263,16 @@ public class ParticipacaoController {
 		}
 		return false;
 	}
-	
+
+	public Participacao recuperaParticipacao(String cpfPessoa, String nomeProjeto) throws NaoEncontradaException, ValidacaoException {
+		for(Participacao p:participacoes) {
+			if(p.getPessoa().getCpf().equals(cpfPessoa) && p.getProjeto().getNome().equals(nomeProjeto)) {
+				return p;
+			}
+		}
+		throw new NaoEncontradaException("Participacao nao existe");
+	}
+
 /**	
 	public static void main(String[] args) throws ValidacaoException, NaoEncontradaException {
 		PessoaController pess = new PessoaController();
