@@ -399,4 +399,33 @@ public class ProjetoController {
 		}
 		return false;
 	}
+	
+	public boolean hasProfessor(int codigo) throws NaoEncontradaException, ValidacaoException {
+		Projeto p = this.recuperaProjeto(codigo);
+		return p.hasProfessor();
+	}
+
+	public boolean hasGraduando(int codigo) throws NaoEncontradaException, ValidacaoException {
+		Projeto p = this.recuperaProjeto(codigo);
+		return p.hasGraduando();
+	}
+	
+	public boolean hasCoordenador(int codigo) throws NaoEncontradaException, ValidacaoException {
+		Projeto p = this.recuperaProjeto(codigo);
+		return p.hasCoordenador();
+	}
+	
+	public boolean hasPEDLimitacao(int codigo) throws NaoEncontradaException, ValidacaoException {
+		Projeto p = this.recuperaProjeto(codigo);
+		if(p instanceof PED) {
+			PED ped = (PED) p;
+			return ped.hasPEDLimitacao();
+		}
+		return false;
+	}
+
+	public void removeParticipacao(int codigo, String cpf) throws NaoEncontradaException, ValidacaoException {
+		Projeto p = this.recuperaProjeto(codigo);
+		p.removeParticipacao(cpf);
+	}
 }

@@ -136,8 +136,7 @@ public abstract class Projeto {
 
 	public void addicionaParticipacao(Participacao participacao) throws ValidacaoException {
 		for(Participacao p:participacoes) {
-			if(p.getPessoa().equals(participacao.getPessoa()) && p.getProjeto().equals(participacao.getProjeto())) {
-				System.out.println(participacao.getPessoa().getNome());
+			if(p.getPessoa().equals(participacao.getPessoa())) {
 				throw new ValidacaoException("Erro na associacao de pessoa a projeto: associacao ja existe");
 			}
 		}

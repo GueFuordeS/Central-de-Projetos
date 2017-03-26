@@ -120,4 +120,9 @@ public class PessoaController {
 		}
 		if(p != null) p.adicionaPartcicipacao(participacao);
 	}
+
+	public void removeParticipacao(String cpfPessoa, int codigoProjeto) throws NaoEncontradaException, ValidacaoException {
+		Pessoa p = this.recuperaPessoa(cpfPessoa);
+		p.removeParticipacao(codigoProjeto);
+	}
 }

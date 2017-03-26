@@ -77,7 +77,7 @@ public class PED extends Projeto {
 		produtividade.put(Produtividade.PATENTES, patentes);
 	}
 
-	public boolean hasProfLimitacao() {
+	public boolean hasPEDLimitacao() {
 		if(this.categoria.toLowerCase().equals("pibic") || this.categoria.toLowerCase().equals("pibiti") 
 				|| this.categoria.toLowerCase().equals("pivic")) {
 			return true;

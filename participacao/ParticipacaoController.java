@@ -67,30 +67,50 @@ public class ParticipacaoController {
 			validaValorHora(valorHora);
 		}
 		
-		if(coordenador) {
-			if(projeto instanceof PED) {
-				if(projeto.hasCoordenador()) {
-						throw new ValidacaoException("Erro na associacao de pessoa a projeto: "
-								+ "Projetos P&D nao podem ter mais de um coordenador");
-				}
-			}
-		}
-		
 		if(projeto instanceof Monitoria) {
-			if(projeto.hasProfessor()) {
+			if(projetoController.hasProfessor(codigoProjeto)) {
 				throw new ValidacaoException("Erro na associacao de pessoa a projeto: "
 						+ "Monitoria nao pode ter mais de um professor");
 			}
 		}
+
+		if(projeto instanceof PET) {
+			if(projetoController.hasProfessor(codigoProjeto)) {
+				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Projetos PET "
+						+ "nao podem ter mais de um professor");
+			}
+			else if(!coordenador) {
+				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Projetos PET "
+						+ "possuem um unico professor coordenador");
+			}
+		}
 		
+		if(projeto instanceof Extensao) {
+			if(projetoController.hasProfessor(codigoProjeto)) {
+				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Projetos Extensao "
+						+ "nao podem ter mais de um professor");
+			}
+			else if(!coordenador) {
+				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Projetos Extensao "
+						+ "possuem um unico professor coordenador");
+			}
+		}
+
 		if(projeto instanceof PED) {
-			if(((PED) projeto).hasProfLimitacao()) {
-				if(projeto.hasProfessor()) {
-					throw new ValidacaoException("Erro na associacao de pessoa a projeto: Projetos P&D "
-							+ "nao podem ter mais de um professor");
+			if(projetoController.hasPEDLimitacao(codigoProjeto)) {		
+				if(projetoController.hasProfessor(codigoProjeto)) {
+					throw new ValidacaoException("Erro na associacao de pessoa a projeto: Projetos P&D nao podem ter mais de um professor");
+				}
+			}
+			else {
+				if(coordenador) {
+					if(projetoController.hasCoordenador(codigoProjeto)) {
+						throw new ValidacaoException("Erro na associacao de pessoa a projeto: Projetos P&D nao podem ter mais de um coordenador");
+					}
 				}
 			}
 		}
+
 		if(pessoa != null && projeto != null) {
 			ParticipacaoProfessor partProf = new ParticipacaoProfessor(pessoa, projeto, coordenador, 
 				projeto.getDataInicio(),projeto.getDuracao() ,
@@ -125,11 +145,11 @@ public class ParticipacaoController {
 		catch(NaoEncontradaException e) {
 			throw new NaoEncontradaException("Erro na associacao de pessoa a projeto: Projeto nao encontrado");
 		}
+
 		if(projeto instanceof PED) {
-			if(!((PED) projeto).getCategoria().toLowerCase().equals("coop")) {
-				if(projeto.hasGraduando()) {
-					throw new ValidacaoException("Erro na associacao de pessoa a projeto: "
-							+ "Projetos P&D nao podem ter mais de um graduando");
+			if(projetoController.hasPEDLimitacao(codigoProjeto)) {		
+				if(projetoController.hasGraduando(codigoProjeto)) {
+					throw new ValidacaoException("Erro na associacao de pessoa a projeto: Projetos P&D nao podem ter mais de um graduando");
 				}
 			}
 		}
@@ -166,6 +186,20 @@ public class ParticipacaoController {
 			throw new NaoEncontradaException("Erro na associacao de pessoa a projeto: Projeto nao encontrado");
 		}
 		
+		if(projeto instanceof Monitoria) {
+			throw new ValidacaoException("Erro na associacao de pessoa a projeto: Monitoria nao pode ter profissional");
+		}
+		
+		if(projeto instanceof PET) {
+			throw new ValidacaoException("Erro na associacao de pessoa a projeto: PET nao pode ter profissional");
+		}
+		
+		if(projeto instanceof PED) {
+			if(projetoController.hasPEDLimitacao(codigoProjeto)) {		
+				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Projetos P&D nao podem ter profissional");
+			}
+		}
+		
 		if(pessoa != null && projeto != null) {
 			ParticipacaoProfissional partProf = new ParticipacaoProfissional(pessoa, projeto, cargo, projeto.getDataInicio(), 
 			projeto.getDuracao(), valorHora, qntHoras);
@@ -196,6 +230,20 @@ public class ParticipacaoController {
 		}
 		catch(NaoEncontradaException e) {
 			throw new NaoEncontradaException("Erro na associacao de pessoa a projeto: Projeto nao encontrado");
+		}
+		
+		if(projeto instanceof Monitoria) {
+			throw new ValidacaoException("Erro na associacao de pessoa a projeto: Monitoria nao pode ter aluno posgraduando");
+		}
+		
+		if(projeto instanceof PET) {
+			throw new ValidacaoException("Erro na associacao de pessoa a projeto: PET nao pode ter aluno posgraduando");
+		}
+		
+		if(projeto instanceof PED) {
+			if(projetoController.hasPEDLimitacao(codigoProjeto)) {		
+				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Projetos P&D nao podem ter aluno posgraduando");
+			}
 		}
 
 		if(pessoa != null && projeto != null) {
@@ -229,19 +277,19 @@ public class ParticipacaoController {
 		Participacao participacao = null;
 		boolean hasParticipacao = false;
 		for(Participacao p:participacoes) {
-			if(p.getPessoa().equals(pes) && p.getProjeto().getCodigo()==codigoProjeto) {
+			if(p.getPessoa().equals(pes) && p.getProjeto().equals(proj)) {
 				hasParticipacao = true;
 				participacao = p;
 			}
 			
 		}
-		if(hasParticipacao==false) {
+		if(!hasParticipacao) {
 			throw new ValidacaoException("Erro na remocao de participacao: Pessoa nao possui participacao no projeto indicado");
 		}
 		if(hasParticipacao==true && participacao!=null) {
 			participacoes.remove(participacao);
-			pes.removeParticipacao(codigoProjeto);
-			proj.removeParticipacao(cpfPessoa);
+			pessoaController.removeParticipacao(cpfPessoa, codigoProjeto);
+			projetoController.removeParticipacao(codigoProjeto, cpfPessoa);
 		}
 	}
 
