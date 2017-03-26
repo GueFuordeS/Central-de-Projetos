@@ -140,7 +140,8 @@ public class ParticipacaoControllerTest {
 			fail();
 		} //repare q mesmo mudando o valor da hora nao deixa de ser a mesma pessoa tentando o mesmo projeto q ja faz parte
 		catch(ValidacaoException e) {
-			assertEquals("Erro na associacao de pessoa a projeto: Participacao ja existe", e.getMessage());
+			assertEquals("Erro na associacao de pessoa a projeto: "
+					+ "Aluno ja esta cadastrado nesse projeto", e.getMessage());
 		}
 	}
 	
@@ -180,7 +181,8 @@ public class ParticipacaoControllerTest {
 			fail();
 		}
 		catch(ValidacaoException e) {
-			assertEquals("Erro na associacao de pessoa a projeto: Participacao ja existe", e.getMessage());
+			assertEquals("Erro na associacao de pessoa a projeto: "
+					+ "Aluno ja esta cadastrado nesse projeto", e.getMessage());
 		}
 	}
 	
@@ -200,7 +202,65 @@ public class ParticipacaoControllerTest {
 			fail();
 		}
 		catch(ValidacaoException e) {
-			assertEquals("Erro na associacao de pessoa a projeto: Participacao ja existe", e.getMessage());
+			assertEquals("Erro na associacao de pessoa a projeto: "
+					+ "Aluno ja esta cadastrado nesse projeto", e.getMessage());
+		}
+	}
+	
+	@Test
+	public void removeParticipacaoTest() throws ValidacaoException, NaoEncontradaException {
+		pesController.cadastraPessoa("810.455.237-02", "Jeonghwa", "jeonghwa@hanmail.net");
+		
+		projController.adicionaMonitoria("Monitoria de lp2", "lp2", 100, "auxiliar","2016.2", "01/01/2017", 12);
+		int codigoProjeto = projController.getCodigoProjeto("Monitoria de lp2");
+		
+		partController.associaGraduando("810.455.237-02", codigoProjeto, 25, 8);
+		
+		assertTrue(partController.hasParticipacao("810.455.237-02", "Monitoria de lp2"));
+		assertTrue(pesController.hasParticipacao("810.455.237-02", "Monitoria de lp2"));
+		assertTrue(projController.hasParticipacao("810.455.237-02", "Monitoria de lp2"));
+
+		partController.removeParticipacao("810.455.237-02", codigoProjeto);
+		
+		assertFalse(partController.hasParticipacao("810.455.237-02", "Monitoria de lp2"));
+		assertFalse(pesController.hasParticipacao("810.455.237-02", "Monitoria de lp2"));
+		assertFalse(projController.hasParticipacao("810.455.237-02", "Monitoria de lp2"));
+	}
+	
+	@Test
+	public void removeParticipacaoWithFailTest() throws ValidacaoException, NaoEncontradaException {
+		pesController.cadastraPessoa("810.455.237-02", "Jeonghwa", "jeonghwa@hanmail.net");
+		
+		projController.adicionaMonitoria("Monitoria de lp2", "lp2", 100, "auxiliar","2016.2", "01/01/2017", 12);
+		int codigoProjeto = projController.getCodigoProjeto("Monitoria de lp2");
+		
+		partController.associaGraduando("810.455.237-02", codigoProjeto, 25, 8);
+		
+		partController.removeParticipacao("810.455.237-02", codigoProjeto);
+		
+		try {
+			partController.removeParticipacao("810.455.237-02", codigoProjeto);
+			fail();
+		}
+		catch(ValidacaoException e) {
+			assertEquals("Erro na remocao de participacao: Pessoa nao possui participacao no projeto indicado", 
+					e.getMessage());
+		}
+		
+		try {
+			partController.removeParticipacao("411.425.581-23", codigoProjeto);
+			fail();
+		}
+		catch(ValidacaoException e) {
+			assertEquals("Erro na remocao de participacao: Pessoa nao encontrada", e.getMessage());
+		}
+		
+		try {
+			partController.removeParticipacao("810.455.237-02", Integer.MAX_VALUE);
+			fail(); //ate que levaria um tempo ne para o codigo chegar na casa dos 2,147,483,647
+		}
+		catch(ValidacaoException e) {
+			assertEquals("Erro na remocao de participacao: Projeto nao encontrado", e.getMessage());
 		}
 	}
 }

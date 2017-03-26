@@ -149,7 +149,8 @@ public class ParticipacaoController {
 		if(projeto instanceof PED) {
 			if(projetoController.hasPEDLimitacao(codigoProjeto)) {		
 				if(projetoController.hasGraduando(codigoProjeto)) {
-					throw new ValidacaoException("Erro na associacao de pessoa a projeto: Projetos P&D nao podem ter mais de um graduando");
+					throw new ValidacaoException("Erro na associacao de pessoa a projeto: "
+							+ "Projetos P&D nao podem ter mais de um graduando");
 				}
 			}
 		}
@@ -297,7 +298,7 @@ public class ParticipacaoController {
 		for(Participacao p:participacoes) {
 			if(pessoaController.recuperaPessoa(cpf).equals(p.getPessoa()) 
 					&& projetoController.recuperaProjeto(codigoProjeto).equals(p.getProjeto())) {
-				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Participacao ja existe");
+				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Aluno ja esta cadastrado nesse projeto");
 			}
 		}
 	}

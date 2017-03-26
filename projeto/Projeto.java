@@ -120,7 +120,7 @@ public abstract class Projeto {
 		boolean hasParticipacao = false;
 		Participacao participacao = null;
 		for(Participacao p:participacoes) {
-			if(p.getPessoa().getCpf() == cpf) {
+			if(p.getPessoa().getCpf().equals(cpf)) {
 				hasParticipacao = true;
 				participacao = p;
 			}
@@ -137,7 +137,7 @@ public abstract class Projeto {
 	public void addicionaParticipacao(Participacao participacao) throws ValidacaoException {
 		for(Participacao p:participacoes) {
 			if(p.getPessoa().equals(participacao.getPessoa())) {
-				throw new ValidacaoException("Erro na associacao de pessoa a projeto: associacao ja existe");
+				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Aluno ja esta cadastrado nesse projeto");
 			}
 		}
 		this.participacoes.add(participacao);
