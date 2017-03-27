@@ -165,39 +165,23 @@ public class Pessoa {
 	public double calculaPontuacaoPorParticipacao() {
 		double pontuacao = 0;
 		double pontosMonitoria = 0;
-		double pontosExtensao = 0;
-		double pontosPET = 0;
-		double pontosPED = 0;
+		double pontosExtras = 0;
 
 		for(Participacao p:this.participacoes) {
 			if(p instanceof ParticipacaoGraduando) {
 				if(p.getProjeto() instanceof Monitoria) {
-					pontosMonitoria += p.getProjeto().getDuracao() / 4.0;
+					pontosMonitoria += (p.getProjeto().getDuracao() / 6) * 1.5;
 				}
-				else if(p.getProjeto() instanceof Extensao) {
-					pontosExtensao += p.getProjeto().getDuracao() / 3.0;
-				}
-				else if(p.getProjeto() instanceof PET) {
-					pontosExtensao += p.getProjeto().getDuracao() / 3.0;
-				}
-				else if(p.getProjeto() instanceof PED) {
-					pontosExtensao += p.getProjeto().getDuracao() / 3.0;
+				else {
+					pontosExtras += (p.getProjeto().getDuracao() / 6) * 2;
 				}
 			}
 			else if(p instanceof ParticipacaoProfessor) {
 				if(p.getProjeto() instanceof Monitoria) {
-					pontosMonitoria += p.getProjeto().getDuracao() / 3.0;
+					pontosMonitoria += (p.getProjeto().getDuracao() / 12) * 4;
 				}
-				else if(p.getProjeto() instanceof Extensao) {
-					pontuacao += p.getProjeto().getDuracao() / 3.0;
-					pontuacao += p.getProjeto().getNumGraduandos();
-				}
-				else if(p.getProjeto() instanceof PET) {
-					pontuacao += p.getProjeto().getDuracao() / 3.0;
-					pontuacao += p.getProjeto().getNumGraduandos();
-				}
-				else if(p.getProjeto() instanceof PED) {
-					pontuacao += p.getProjeto().getDuracao() / 3.0;
+				else {
+					pontuacao += (p.getProjeto().getDuracao() / 12) * 4;
 					pontuacao += p.getProjeto().getNumGraduandos();
 				}
 			}
@@ -207,25 +191,23 @@ public class Pessoa {
 				}
 				else if(p.getProjeto() instanceof PED) {
 					if(((ParticipacaoProfissional) p).getCargo().toLowerCase().equals("desenvolvedor")) {
-						pontuacao += p.getProjeto().getDuracao() / 2.4;
+						pontuacao += (p.getProjeto().getDuracao() / 12) * 5;
 					}
 					else if(((ParticipacaoProfissional) p).getCargo().toLowerCase().equals("pesquisador")) {
-						pontuacao += p.getProjeto().getDuracao() / 2.0;
+						pontuacao += (p.getProjeto().getDuracao() / 12) * 6;
 					}
 					else if(((ParticipacaoProfissional) p).getCargo().toLowerCase().equals("gerente")) {
-						pontuacao += p.getProjeto().getDuracao() / 1.33333333;
+						pontuacao += (p.getProjeto().getDuracao() / 12) * 9;
 					}
 				}
 			}
 		}
 		
 		if(pontosMonitoria > 6) pontosMonitoria = 6;
-		if(pontosExtensao > 6) pontosMonitoria = 8;
-		if(pontosPET > 6) pontosMonitoria = 8;
-		if(pontosPED > 6) pontosMonitoria = 8;		
+		if(pontosExtras > 8) pontosExtras = 8;	
 		
-		pontuacao += pontosMonitoria + pontosExtensao + pontosPET + pontosPED;
-		return Math.floor(pontuacao);
+		pontuacao += pontosMonitoria + pontosExtras;
+		return pontuacao;
 	}
 
 	public double getInfoBolsa() {
