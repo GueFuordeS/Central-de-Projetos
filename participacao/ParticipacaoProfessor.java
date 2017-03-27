@@ -43,5 +43,17 @@ public class ParticipacaoProfessor extends Participacao {
 		if (isCoordenador != other.isCoordenador)
 			return false;
 		return true;
+	}
+
+	@Override
+	public double geraBolsa() {
+		if(this.isCoordenador) {
+			double soma = (super.getValorDaHora()*(7.0/5)) * super.getQtdeHorasDedicadas();
+			return soma;
+		}
+		else {
+			double soma = super.getValorDaHora() * super.getQtdeHorasDedicadas();
+			return soma;
+		}
 	}	
 }

@@ -231,41 +231,8 @@ public class Pessoa {
 	public double getInfoBolsa() {
 		double bolsa = 0;
 		for(Participacao p:this.participacoes) {
-			double soma = 0;
-			if(p instanceof ParticipacaoGraduando) {
-				soma += p.getValorDaHora() * p.getQtdeHorasDedicadas();
-			}
-			else if(p instanceof ParticipacaoPosGraduando) {
-				if(((ParticipacaoPosGraduando) p).getTitulacao().toLowerCase().equals("doutorado")) {
-					soma += (p.getValorDaHora() * p.getQtdeHorasDedicadas())*(4.0/3);
-				}
-				else {
-					soma += p.getValorDaHora() * p.getQtdeHorasDedicadas();
-				}
-			}
-			else if(p instanceof ParticipacaoProfessor) {
-				if(((ParticipacaoProfessor) p).isCoordenador()) {
-					soma += (p.getValorDaHora() * p.getQtdeHorasDedicadas())*(7.0/5);
-				}
-				else {
-					soma += p.getValorDaHora() * p.getQtdeHorasDedicadas();
-				}
-			}
-			else if(p instanceof ParticipacaoProfissional) {
-				if(((ParticipacaoProfissional) p).getCargo().toLowerCase().equals("pesquisador")) {
-					soma += (p.getValorDaHora() * p.getQtdeHorasDedicadas())+100;
-				}
-				else if(((ParticipacaoProfissional) p).getCargo().toLowerCase().equals("gerente")) {
-					soma += (p.getValorDaHora() * p.getQtdeHorasDedicadas())+20;
-				}
-				else {
-					soma += p.getValorDaHora() * p.getQtdeHorasDedicadas();
-				}
-			}
-			if(soma < 350.0) soma = 350.0;
-			bolsa += soma;
-			soma = 0;
+			bolsa += p.geraBolsa();
 		}
-		return Math.floor(bolsa);
+		return bolsa;
 	}
 }

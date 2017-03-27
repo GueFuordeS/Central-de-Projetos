@@ -52,4 +52,20 @@ public class ParticipacaoProfissional extends Participacao {
 			return false;
 		return true;
 	}
+
+	@Override
+	public double geraBolsa() {
+		if(this.cargo.toLowerCase().equals("pesquisador")) {
+			double soma = super.getValorDaHora() * super.getQtdeHorasDedicadas() + 100;
+			if(soma < 350) return 350; return soma;
+		}
+		else if(this.cargo.toLowerCase().equals("gerente")) {
+			int multiplicador = this.getProjeto().getNumParticipantes() * 20;
+			if(multiplicador > 100) multiplicador = 100;
+			double soma = super.getValorDaHora() * super.getQtdeHorasDedicadas() + multiplicador;
+			if(soma < 350) return 350; return soma;
+		}
+		double soma = super.getValorDaHora() * super.getQtdeHorasDedicadas();
+		if(soma < 350) return 350; return soma;
+	}
 }

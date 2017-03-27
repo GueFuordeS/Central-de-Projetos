@@ -123,4 +123,6 @@ public abstract class Participacao implements Comparable<Participacao> {
 				return false;
 			return true;
 		}
+
+		public abstract double geraBolsa();
 }

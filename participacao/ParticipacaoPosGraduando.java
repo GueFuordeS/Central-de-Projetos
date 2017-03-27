@@ -49,4 +49,14 @@ public class ParticipacaoPosGraduando extends Participacao {
 			return false;
 		return true;
 	}
+
+	@Override
+	public double geraBolsa() {
+		if(this.getTitulacao().toLowerCase().equals("doutorado")) {
+			double soma = super.getValorDaHora() * super.getQtdeHorasDedicadas()*(4.0/3);
+			if(soma < 350) return 350; return soma;
+		}
+		double soma = super.getValorDaHora() * super.getQtdeHorasDedicadas();
+		if(soma < 350) return 350; return soma;
+	}
 }

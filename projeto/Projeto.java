@@ -211,6 +211,14 @@ public abstract class Projeto {
 		return false;
 	}
 	
+	public int getNumParticipantes() {
+		int numParticipantes = 0;
+		for(int i = 0; i < this.participacoes.size(); i++) {
+			numParticipantes++;
+		}
+		return numParticipantes;
+	}
+	
 	public int getNumGraduandos() {
 		int numGraduandos = 0;
 		for(Participacao p:this.participacoes) {

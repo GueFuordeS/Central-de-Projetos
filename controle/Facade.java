@@ -132,7 +132,7 @@ public class Facade {
 		participacaoController.removeParticipacao(cpfPessoa, codigoProjeto);
 	}
 
-	public void fechaSistema() {
+	public void fechaSistema() throws NaoEncontradaException, ValidacaoException {
 		//por implementar
 	}
 	
