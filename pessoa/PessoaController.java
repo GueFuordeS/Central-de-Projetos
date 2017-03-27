@@ -130,4 +130,9 @@ public class PessoaController {
 		Pessoa p = this.recuperaPessoa(cpf);
 		return p.calculaPontuacaoPorParticipacao();
 	}
+
+	public double getValorBolsa(String cpf) throws NaoEncontradaException, ValidacaoException {
+		Pessoa p = this.recuperaPessoa(cpf);
+		return p.getInfoBolsa();
+	}
 }

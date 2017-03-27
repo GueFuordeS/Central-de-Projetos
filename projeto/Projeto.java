@@ -120,7 +120,7 @@ public abstract class Projeto {
 	public void removeParticipacao(String cpf) {
 		boolean hasParticipacao = false;
 		Participacao participacao = null;
-		for(Participacao p:participacoes) {
+		for(Participacao p:this.participacoes) {
 			if(p.getPessoa().getCpf().equals(cpf)) {
 				hasParticipacao = true;
 				participacao = p;
@@ -136,7 +136,7 @@ public abstract class Projeto {
 	}
 
 	public void addicionaParticipacao(Participacao participacao) throws ValidacaoException {
-		for(Participacao p:participacoes) {
+		for(Participacao p:this.participacoes) {
 			if(p.getPessoa().equals(participacao.getPessoa())) {
 				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Aluno ja esta cadastrado nesse projeto");
 			}
@@ -146,7 +146,7 @@ public abstract class Projeto {
 	}
 	
 	public boolean hasProfessor() {
-		for(Participacao p:participacoes) {
+		for(Participacao p:this.participacoes) {
 			if(p instanceof ParticipacaoProfessor) {
 				return true;
 			}
@@ -155,7 +155,7 @@ public abstract class Projeto {
 	}
 
 	public boolean hasGraduando() {
-		for(Participacao p:participacoes) {
+		for(Participacao p:this.participacoes) {
 			if(p instanceof ParticipacaoGraduando) {
 				return true;
 			}
@@ -164,7 +164,7 @@ public abstract class Projeto {
 	}
 
 	public boolean hasCoordenador() {
-		for(Participacao p:participacoes) {
+		for(Participacao p:this.participacoes) {
 			if(p instanceof ParticipacaoProfessor) {
 				if(((ParticipacaoProfessor) p).isCoordenador()) {
 					return true;
@@ -213,7 +213,7 @@ public abstract class Projeto {
 	
 	public int getNumGraduandos() {
 		int numGraduandos = 0;
-		for(Participacao p:participacoes) {
+		for(Participacao p:this.participacoes) {
 			if(p instanceof ParticipacaoGraduando || p instanceof ParticipacaoPosGraduando) {
 				numGraduandos++;
 			}

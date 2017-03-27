@@ -46,8 +46,12 @@ public class Facade {
 		return pessoaController.getInfoPessoa(cpf, atributo);
 	}
 	
-	public double calculaPontuacaoPorParticipacao(String cpf) throws NaoEncontradaException, ValidacaoException {
-		return pessoaController.calculaPontuacaoPorParticipacao(cpf);
+	public double calculaPontuacaoPorParticipacao(String cpfPessoa) throws NaoEncontradaException, ValidacaoException {
+		return pessoaController.calculaPontuacaoPorParticipacao(cpfPessoa);
+	}
+	
+	public double getValorBolsa(String cpfPessoa) throws NaoEncontradaException, ValidacaoException {
+		return pessoaController.getValorBolsa(cpfPessoa);
 	}
 
 	//Aqui comeca a parte de controle de projetos
@@ -138,7 +142,8 @@ public class Facade {
 	    		"acceptance_test/us2_test.txt", "acceptance_test/us2_test_exception.txt", 
 	    		"acceptance_test/us3_test.txt",
 	    		"acceptance_test/us3_test_exception.txt",
-	    		"acceptance_test/us4_test.txt"};
+	    		"acceptance_test/us4_test.txt",
+	    		"acceptance_test/us5_test.txt"};
 	    EasyAccept.main(args);
 	}
 }

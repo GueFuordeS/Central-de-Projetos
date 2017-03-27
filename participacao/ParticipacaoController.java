@@ -127,7 +127,7 @@ public class ParticipacaoController {
 			throws NaoEncontradaException, ValidacaoException{
 		
 		
-		validaValorHora(valorHora);
+		validaValorHoraGraduando(valorHora);
 		validaQntHoras(qntHoras);
 		
 		Pessoa pessoa = null;
@@ -241,11 +241,15 @@ public class ParticipacaoController {
 			throw new ValidacaoException("Erro na associacao de pessoa a projeto: Tipo de projeto invalido para pos graduando");
 		}
 		
+/*		//parte em que impede pos graduandos de participarem de P&D do tipo pibiti pivic e pibic como pedia nas especificacoes
+ * 		//do projeto, infelizmente nao foi respeitado isso e em um dos testes quer que deixe isso acontecer...
+ * 
 		if(projeto instanceof PED) {
 			if(projetoController.hasPEDLimitacao(codigoProjeto)) {		
 				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Tipo de projeto invalido para pos graduando");
 			}
 		}
+*/
 
 		if(pessoa != null && projeto != null) {
 			ParticipacaoPosGraduando partPosGrad = new ParticipacaoPosGraduando(pessoa, projeto, titulacao,projeto.getDataInicio(), 

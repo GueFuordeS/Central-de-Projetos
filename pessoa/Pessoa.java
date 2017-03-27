@@ -38,7 +38,7 @@ public class Pessoa {
 	}
 	
 	public void adicionaPartcicipacao(Participacao participacao) throws ValidacaoException {
-		for(Participacao p:participacoes) {
+		for(Participacao p:this.participacoes) {
 			if(p.getProjeto().equals(participacao.getProjeto())) {
 				throw new ValidacaoException("Erro na associacao de pessoa a projeto: Aluno ja esta cadastrado nesse projeto");
 			}
@@ -53,7 +53,7 @@ public class Pessoa {
 	public void removeParticipacao(int codigoProjeto) {
 		boolean hasParticipacao = false;
 		Participacao participacao = null;
-		for(Participacao p:participacoes) {
+		for(Participacao p:this.participacoes) {
 			if(p.getProjeto().getCodigo() == codigoProjeto) {
 				hasParticipacao = true;
 				participacao = p;
@@ -113,7 +113,7 @@ public class Pessoa {
 	}
 
 	public boolean hasParticipacao(String nomeProjeto) {
-		for(Participacao p:participacoes) {
+		for(Participacao p:this.participacoes) {
 			if(p.getProjeto().getNome().equals(nomeProjeto)) {
 				return true;
 			}
@@ -122,7 +122,7 @@ public class Pessoa {
 	}
 	
 	public boolean hasParticipacao(Participacao participacao) {
-		for(Participacao p:participacoes) {
+		for(Participacao p:this.participacoes) {
 			if(participacao.equals(p)) {
 				return true;
 			}
@@ -169,62 +169,103 @@ public class Pessoa {
 		double pontosPET = 0;
 		double pontosPED = 0;
 
-		for(Participacao p:participacoes) {
+		for(Participacao p:this.participacoes) {
 			if(p instanceof ParticipacaoGraduando) {
 				if(p.getProjeto() instanceof Monitoria) {
-					pontosMonitoria += p.getProjeto().getDuracao() / 4;
+					pontosMonitoria += p.getProjeto().getDuracao() / 4.0;
 				}
-				if(p.getProjeto() instanceof Extensao) {
-					pontosExtensao += p.getProjeto().getDuracao() / 3;
+				else if(p.getProjeto() instanceof Extensao) {
+					pontosExtensao += p.getProjeto().getDuracao() / 3.0;
 				}
-				if(p.getProjeto() instanceof PET) {
-					pontosExtensao += p.getProjeto().getDuracao() / 3;
+				else if(p.getProjeto() instanceof PET) {
+					pontosExtensao += p.getProjeto().getDuracao() / 3.0;
 				}
-				if(p.getProjeto() instanceof PED) {
-					pontosExtensao += p.getProjeto().getDuracao() / 3;
+				else if(p.getProjeto() instanceof PED) {
+					pontosExtensao += p.getProjeto().getDuracao() / 3.0;
 				}
 			}
-			if(p instanceof ParticipacaoProfessor) {
+			else if(p instanceof ParticipacaoProfessor) {
 				if(p.getProjeto() instanceof Monitoria) {
-					pontosMonitoria += p.getProjeto().getDuracao() / 3;
+					pontosMonitoria += p.getProjeto().getDuracao() / 3.0;
 				}
-				if(p.getProjeto() instanceof Extensao) {
-					pontuacao += p.getProjeto().getDuracao() / 3;
+				else if(p.getProjeto() instanceof Extensao) {
+					pontuacao += p.getProjeto().getDuracao() / 3.0;
 					pontuacao += p.getProjeto().getNumGraduandos();
 				}
-				if(p.getProjeto() instanceof PET) {
-					pontuacao += p.getProjeto().getDuracao() / 3;
+				else if(p.getProjeto() instanceof PET) {
+					pontuacao += p.getProjeto().getDuracao() / 3.0;
 					pontuacao += p.getProjeto().getNumGraduandos();
 				}
-				if(p.getProjeto() instanceof PED) {
-					pontuacao += p.getProjeto().getDuracao() / 3;
+				else if(p.getProjeto() instanceof PED) {
+					pontuacao += p.getProjeto().getDuracao() / 3.0;
 					pontuacao += p.getProjeto().getNumGraduandos();
 				}
 			}
-			if(p instanceof ParticipacaoProfissional) {
+			else if(p instanceof ParticipacaoProfissional) {
 				if(p.getProjeto() instanceof Extensao) {
-					pontuacao += p.getProjeto().getDuracao() / 3;
+					pontuacao += p.getProjeto().getDuracao() / 3.0;
 				}
-				if(p.getProjeto() instanceof PED) {
+				else if(p.getProjeto() instanceof PED) {
 					if(((ParticipacaoProfissional) p).getCargo().toLowerCase().equals("desenvolvedor")) {
 						pontuacao += p.getProjeto().getDuracao() / 2.4;
 					}
-					if(((ParticipacaoProfissional) p).getCargo().toLowerCase().equals("pesquisador")) {
-						pontuacao += p.getProjeto().getDuracao() / 2;
+					else if(((ParticipacaoProfissional) p).getCargo().toLowerCase().equals("pesquisador")) {
+						pontuacao += p.getProjeto().getDuracao() / 2.0;
 					}
-					if(((ParticipacaoProfissional) p).getCargo().toLowerCase().equals("gerente")) {
+					else if(((ParticipacaoProfissional) p).getCargo().toLowerCase().equals("gerente")) {
 						pontuacao += p.getProjeto().getDuracao() / 1.33333333;
 					}
 				}
 			}
 		}
 		
-		if(pontosMonitoria > 6) pontosMonitoria = 6.0;
-		if(pontosExtensao > 6) pontosMonitoria = 8.0;
-		if(pontosPET > 6) pontosMonitoria = 8.0;
-		if(pontosPED > 6) pontosMonitoria = 8.0;		
+		if(pontosMonitoria > 6) pontosMonitoria = 6;
+		if(pontosExtensao > 6) pontosMonitoria = 8;
+		if(pontosPET > 6) pontosMonitoria = 8;
+		if(pontosPED > 6) pontosMonitoria = 8;		
 		
 		pontuacao += pontosMonitoria + pontosExtensao + pontosPET + pontosPED;
 		return Math.floor(pontuacao);
+	}
+
+	public double getInfoBolsa() {
+		double bolsa = 0;
+		for(Participacao p:this.participacoes) {
+			double soma = 0;
+			if(p instanceof ParticipacaoGraduando) {
+				soma += p.getValorDaHora() * p.getQtdeHorasDedicadas();
+			}
+			else if(p instanceof ParticipacaoPosGraduando) {
+				if(((ParticipacaoPosGraduando) p).getTitulacao().toLowerCase().equals("doutorado")) {
+					soma += (p.getValorDaHora() * p.getQtdeHorasDedicadas())*(4.0/3);
+				}
+				else {
+					soma += p.getValorDaHora() * p.getQtdeHorasDedicadas();
+				}
+			}
+			else if(p instanceof ParticipacaoProfessor) {
+				if(((ParticipacaoProfessor) p).isCoordenador()) {
+					soma += (p.getValorDaHora() * p.getQtdeHorasDedicadas())*(7.0/5);
+				}
+				else {
+					soma += p.getValorDaHora() * p.getQtdeHorasDedicadas();
+				}
+			}
+			else if(p instanceof ParticipacaoProfissional) {
+				if(((ParticipacaoProfissional) p).getCargo().toLowerCase().equals("pesquisador")) {
+					soma += (p.getValorDaHora() * p.getQtdeHorasDedicadas())+100;
+				}
+				else if(((ParticipacaoProfissional) p).getCargo().toLowerCase().equals("gerente")) {
+					soma += (p.getValorDaHora() * p.getQtdeHorasDedicadas())+20;
+				}
+				else {
+					soma += p.getValorDaHora() * p.getQtdeHorasDedicadas();
+				}
+			}
+			if(soma < 350.0) soma = 350.0;
+			bolsa += soma;
+			soma = 0;
+		}
+		return Math.floor(bolsa);
 	}
 }
