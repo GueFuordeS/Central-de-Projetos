@@ -43,4 +43,18 @@ public class MonitoriaTest {
 			assertEquals("Rendimento precisa estar entre 0 e 100",e.getMessage());
 		}
 	}
+	
+	@Test
+	public void setDisciplinaTest() throws ValidacaoException {
+		mon.setDisciplina("Monitoria de plp");
+		assertEquals("Monitoria de plp", mon.getDisciplina());
+		
+		try {
+			mon.setDisciplina(" ");
+			fail();
+		}
+		catch (ValidacaoException e) {
+			assertEquals("Nome de disciplina nao pode ser nulo ou vazio", e.getMessage());
+		}
+	}
 }

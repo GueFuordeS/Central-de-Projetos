@@ -9,18 +9,18 @@ import excecoes.ValidacaoException;
 import pessoa.Pessoa;
 
 public class PessoaTest {
-	Pessoa p;
+	Pessoa pessoa;
 	
 	@Before
 	public void setUp() throws Exception {
-		p = new Pessoa("222.333.444-55","Natasha","natasha@ccc.ufcg.edu.br");
+		pessoa = new Pessoa("222.333.444-55","Natasha","natasha@ccc.ufcg.edu.br");
 	}
 
 	@Test
 	public void contructorTest() {
-		assertEquals("222.333.444-55",p.getCpf());
-		assertEquals("Natasha",p.getNome());
-		assertEquals("natasha@ccc.ufcg.edu.br",p.getEmail());
+		assertEquals("222.333.444-55",pessoa.getCpf());
+		assertEquals("Natasha",pessoa.getNome());
+		assertEquals("natasha@ccc.ufcg.edu.br",pessoa.getEmail());
 	}
 	
 	@Test
@@ -52,22 +52,22 @@ public class PessoaTest {
 	
 	@Test
 	public void settersTest() throws ValidacaoException {
-		assertEquals("Natasha",p.getNome());
-		p.setNome("Naty");
-		assertEquals("Naty",p.getNome());
+		assertEquals("Natasha",pessoa.getNome());
+		pessoa.setNome("Naty");
+		assertEquals("Naty",pessoa.getNome());
 		
-		assertEquals("natasha@ccc.ufcg.edu.br",p.getEmail());
-		p.setEmail("naty@ccc.ufcg.edu.br");
-		assertEquals("naty@ccc.ufcg.edu.br",p.getEmail());
+		assertEquals("natasha@ccc.ufcg.edu.br",pessoa.getEmail());
+		pessoa.setEmail("naty@ccc.ufcg.edu.br");
+		assertEquals("naty@ccc.ufcg.edu.br",pessoa.getEmail());
 	}
 	
 	@Test
 	public void hashEqualsTest() throws ValidacaoException {
 		Pessoa p2 = new Pessoa("222.333.444-55","Naty","naty@ccc.ufcg.edu.br");
-		assertTrue(p.equals(p2)); //note que apenas o cpf diferenciam duas pessoas
+		assertTrue(pessoa.equals(p2)); //note que apenas o cpf diferenciam duas pessoas
 		
 		Pessoa p3 = new Pessoa("222.333.444-56","Natasha","natasha@ccc.ufcg.edu.br");
-		assertFalse(p.equals(p3));
+		assertFalse(pessoa.equals(p3));
 	}
 	
 	@Test
@@ -76,6 +76,17 @@ public class PessoaTest {
 		String string = "Cpf: 222.333.444-55"   + FIM_DE_LINHA +
 		        "Nome: Natasha"                 + FIM_DE_LINHA +
 		        "Email: natasha@ccc.ufcg.edu.br"+ FIM_DE_LINHA;
-		assertEquals(string, p.toString());
+		assertEquals(string, pessoa.toString());
+	}
+	
+	
+	@Test
+	public void getInfoBolsaTest() {
+		assertEquals(0,pessoa.getInfoBolsa(),0.1); //pessoa nao tem a expertise para criar controllers e se adcionar a projetos
+	}													//para mudar este valor, mas com o easyaccept mostra-se que funcionam
+															//como o esperado
+	@Test
+	public void calculaPontuacaoPorParticipacaoTest() {
+		assertEquals(0,pessoa.calculaPontuacaoPorParticipacao(),0.1); //mesmo caso anterior
 	}
 }

@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import excecoes.ValidacaoException;
 import projeto.PET;
+import projeto.Produtividade;
 
 public class PETTest {
 	PET pet;
@@ -38,6 +39,26 @@ public class PETTest {
 		}
 		catch(ValidacaoException e) {
 			assertEquals("Rendimento precisa estar entre 0 e 100", e.getMessage());
+		}
+	}
+
+	@Test
+	public void setImpactoTest() throws ValidacaoException {
+		pet.setProdutividade(Produtividade.PATENTES, "5");
+		assertEquals(5, pet.getValor(Produtividade.PATENTES));
+		
+		try {
+			pet.setProdutividade(Produtividade.PRODACADEMICA, "morango");
+		}
+		catch (ValidacaoException e) {
+			assertEquals("Producao tecnica precisa ter um valor inteiro valido", e.getMessage());
+		}
+		
+		try {
+			pet.setProdutividade(Produtividade.PRODACADEMICA, "-1");
+		}
+		catch (ValidacaoException e) {
+			assertEquals("Erro no cadastro de projeto: Numero de producoes academicas invalido", e.getMessage());
 		}
 	}
 }

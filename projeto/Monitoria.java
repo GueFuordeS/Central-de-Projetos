@@ -5,7 +5,7 @@ import static myUtils.Validacao.*;
 import excecoes.ValidacaoException;
 import myUtils.Periodo;
 
-public class Monitoria extends Projeto {
+public class Monitoria extends Projeto implements Rendimento {
 	String disciplina;
 	Periodo periodo;
 	int rendimento;

@@ -50,4 +50,18 @@ public class ExtensaoTest {
 			assertEquals("Impacto social precisa ser entre 1 e 6",e.getMessage());
 		}
 	}
+	
+	@Test
+	public void setImpactoTest() throws ValidacaoException {
+		ext.setImpacto(5);
+		assertEquals(5,ext.getImpacto());
+		
+		try {
+			ext.setImpacto(7);
+			fail();
+		}
+		catch (ValidacaoException e) {
+			assertEquals("Impacto social precisa ser entre 1 e 6", e.getMessage());
+		}
+	}
 }

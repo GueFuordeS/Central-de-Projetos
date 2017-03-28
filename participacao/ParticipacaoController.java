@@ -325,22 +325,4 @@ public class ParticipacaoController {
 		}
 		throw new NaoEncontradaException("Participacao nao existe");
 	}
-
-/**	
-	public static void main(String[] args) throws ValidacaoException, NaoEncontradaException {
-		PessoaController pess = new PessoaController();
-		ProjetoController projs = new ProjetoController();
-		ParticipacaoController pc = new ParticipacaoController(pess, projs);
-		pess.cadastraPessoa("700.634.064-03", "Gabriel", "gabriel774455@gmail.com");
-		projs.adicionaPED("narutoreg", "pivic", 2, 3, 4, "sanar a falta de inteligencia no povo brasileiro", 
-				"01/07/2017", 6);
-		PED ped = (PED)projs.recuperaProjeto(1);
-		System.out.println(ped.hasGraduando());
-		pc.associaGraduando("700.634.064-03", 1, 750.00, 5);
-		System.out.println(ped.hasGraduando());
-		pc.removeParticipacao("700.634.064-03", 1);
-		System.out.println(ped.hasGraduando());
-
-	}
-	*/
 }

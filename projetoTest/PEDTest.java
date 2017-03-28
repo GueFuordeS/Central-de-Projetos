@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import excecoes.ValidacaoException;
 import projeto.PED;
+import projeto.Produtividade;
 
 public class PEDTest {
 	private PED ped;
@@ -41,6 +42,26 @@ public class PEDTest {
 		}
 		catch(ValidacaoException e) {
 			assertEquals("Erro no cadastro de projeto: Duracao invalida", e.getMessage());
+		}
+	}
+	
+	@Test
+	public void setImpactoTest() throws ValidacaoException {
+		ped.setProdutividade(Produtividade.PATENTES, "5");
+		assertEquals(5, ped.getValor(Produtividade.PATENTES));
+		
+		try {
+			ped.setProdutividade(Produtividade.PRODACADEMICA, "abacaxi");
+		}
+		catch (ValidacaoException e) {
+			assertEquals("Producao tecnica precisa ter um valor inteiro valido", e.getMessage());
+		}
+		
+		try {
+			ped.setProdutividade(Produtividade.PRODACADEMICA, null);
+		}
+		catch (ValidacaoException e) {
+			assertEquals("Producao tecnica precisa ter um valor inteiro valido", e.getMessage());
 		}
 	}
 }

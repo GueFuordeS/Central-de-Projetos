@@ -7,7 +7,7 @@ import java.util.Map;
 
 import excecoes.ValidacaoException;
 
-public class PET extends Projeto {
+public class PET extends Projeto implements Impacto, Rendimento {
 	int impacto;
 	int rendimento;
 	private Map<Produtividade,Integer> produtividade;
@@ -51,14 +51,32 @@ public class PET extends Projeto {
 		this.rendimento = rendimento;
 	}
 	
-	public void setProdutividade(Produtividade chave, String valor) throws NumberFormatException, ValidacaoException {
+	public void setProdutividade(Produtividade chave, String valor) throws ValidacaoException {
 		switch (chave) {
-		case PRODTECNICA: 
-			validaProdTecnica(Integer.parseInt(valor));
+		
+		case PRODTECNICA:
+			try {
+				validaProdTecnica(Integer.parseInt(valor));
+			}
+			catch (NumberFormatException e) {
+				throw new ValidacaoException("Producao tecnica precisa ter um valor inteiro valido");
+			}
+			
 		case PRODACADEMICA:
-			validaProdAcademica(Integer.parseInt(valor));
+			try {
+				validaProdAcademica(Integer.parseInt(valor));
+			}
+			catch (NumberFormatException e) {
+				throw new ValidacaoException("Producao tecnica precisa ter um valor inteiro valido");
+			}
+			
 		case PATENTES: 
-			validaPatentes(Integer.parseInt(valor));
+			try {
+				validaPatentes(Integer.parseInt(valor));
+			}
+			catch (NumberFormatException e) {
+				throw new ValidacaoException("Producao tecnica precisa ter um valor inteiro valido");
+			}
 		}
 		produtividade.put(chave, Integer.parseInt(valor));
 	}

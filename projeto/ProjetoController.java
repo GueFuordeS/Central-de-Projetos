@@ -212,13 +212,8 @@ public class ProjetoController {
 	}
 
 	private String getRendimento(Projeto p) {
-		if(p instanceof Monitoria) {
-			Monitoria ext = (Monitoria) p;
-			return Integer.toString(ext.getRendimento());
-		}
-		if(p instanceof PET) {
-			PET ext = (PET) p;
-			return Integer.toString(ext.getRendimento());
+		if(p instanceof Rendimento) {
+			return Integer.toString(((Rendimento) p).getRendimento());
 		}
 		return null;
 	}
@@ -240,13 +235,8 @@ public class ProjetoController {
 	}
 
 	private String getImpacto(Projeto p) {
-		if(p instanceof Extensao) {
-			Extensao ext = (Extensao) p;
-			return Integer.toString(ext.getImpacto());
-		}
-		if(p instanceof PET) {
-			PET ext = (PET) p;
-			return Integer.toString(ext.getImpacto());
+		if(p instanceof Impacto) {
+			return Integer.toString(((Impacto) p).getImpacto());
 		}
 		return null;
 	}
@@ -347,11 +337,8 @@ public class ProjetoController {
 	}
 
 	private void setRendimento(Projeto p, String valor) throws NumberFormatException, ValidacaoException {
-		if(p instanceof Monitoria) {
-			((Monitoria) p).setRendimento(Integer.parseInt(valor));
-		}
-		if(p instanceof PET) {
-			((PET) p).setRendimento(Integer.parseInt(valor));
+		if(p instanceof Rendimento) {
+			((Rendimento) p).setRendimento(Integer.parseInt(valor));
 		}
 	}
 
@@ -368,11 +355,8 @@ public class ProjetoController {
 	}
 
 	private void setImpacto(Projeto p, String valor) throws NumberFormatException, ValidacaoException {
-		if(p instanceof Extensao) {
-			((Extensao) p).setImpacto(Integer.parseInt(valor));
-		}
-		if(p instanceof PET) {
-			((PET) p).setImpacto(Integer.parseInt(valor));
+		if(p instanceof Impacto) {
+			((Impacto) p).setImpacto(Integer.parseInt(valor));
 		}
 	}
 

@@ -59,14 +59,32 @@ public class PED extends Projeto {
 		this.categoria = categoria;
 	}
 	
-	public void setProdutividade(Produtividade chave, String valor) throws NumberFormatException, ValidacaoException {
+	public void setProdutividade(Produtividade chave, String valor) throws ValidacaoException {
 		switch (chave) {
-		case PRODTECNICA: 
-			validaProdTecnica(Integer.parseInt(valor));
+		
+		case PRODTECNICA:
+			try {
+				validaProdTecnica(Integer.parseInt(valor));
+			}
+			catch (NumberFormatException e) {
+				throw new ValidacaoException("Producao tecnica precisa ter um valor inteiro valido");
+			}
+			
 		case PRODACADEMICA:
-			validaProdAcademica(Integer.parseInt(valor));
+			try {
+				validaProdAcademica(Integer.parseInt(valor));
+			}
+			catch (NumberFormatException e) {
+				throw new ValidacaoException("Producao tecnica precisa ter um valor inteiro valido");
+			}
+			
 		case PATENTES: 
-			validaPatentes(Integer.parseInt(valor));
+			try {
+				validaPatentes(Integer.parseInt(valor));
+			}
+			catch (NumberFormatException e) {
+				throw new ValidacaoException("Producao tecnica precisa ter um valor inteiro valido");
+			}
 		}
 		produtividade.put(chave, Integer.parseInt(valor));
 	}

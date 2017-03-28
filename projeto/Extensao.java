@@ -4,7 +4,7 @@ import static myUtils.Validacao.*;
 
 import excecoes.ValidacaoException;
 
-public class Extensao extends Projeto {
+public class Extensao extends Projeto implements Impacto {
 	int impacto;
 	
 	public Extensao(int codigo, String nome, String objetivo, int impacto, String dataInicio, int duracao) 
@@ -18,7 +18,8 @@ public class Extensao extends Projeto {
 	public int getImpacto() {
 		return this.impacto;
 	}
-	
+
+	@Override
 	public void setImpacto(int impacto) throws ValidacaoException {
 		validaImpacto(impacto);
 		this.impacto = impacto;

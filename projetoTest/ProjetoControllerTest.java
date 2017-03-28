@@ -89,6 +89,9 @@ public class ProjetoControllerTest {
 		controller.adicionaMonitoria("Monitoria de lp2", "lp2", 95, "auxiliar","2016.2", "01/01/2017", 12);
 		
 		int codigo = Codigo.getCodigo();
+		assertEquals("6", controller.getInfoProjeto(codigo-1, "impacto"));
+		assertEquals("95", controller.getInfoProjeto(codigo, "rendimento"));
+		
 		controller.editaProjeto(codigo-1, "impacto", "4");
 		controller.editaProjeto(codigo, "rendimento", "80");
 		
