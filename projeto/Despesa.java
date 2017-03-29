@@ -1,5 +1,9 @@
 package projeto;
 
+import static myUtils.Validacao.*;
+
+import excecoes.ValidacaoException;
+
 public class Despesa { //classe sem especificacao ainda, ate o user story chegado
 	private double montanteBolsas;
 	private double montanteCusteio;
@@ -30,7 +34,11 @@ public class Despesa { //classe sem especificacao ainda, ate o user story chegad
 		return montanteCapital;
 	}
 	
-	public void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital) {
+	public void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital) throws ValidacaoException {
+		validaDouble(montanteBolsas);
+		validaDouble(montanteCusteio);
+		validaDouble(montanteCapital);
+		
 		this.montanteBolsas = montanteBolsas;
 		this.montanteCusteio = montanteCusteio;
 		this.montanteCapital = montanteCapital;

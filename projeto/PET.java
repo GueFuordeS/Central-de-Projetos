@@ -91,4 +91,13 @@ public class PET extends Projeto implements Impacto, Rendimento {
 	public double calculaColaboracao() {
 		return 0;
 	}
+
+	@Override
+	public void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital)
+			throws ValidacaoException {
+		if(montanteCapital > 0) throw new ValidacaoException("Erro na atualizacao de projeto: "
+				+ "projeto do tipo PET nao permite despesas de capital");
+		super.getDespesas().atualizaDespesas(montanteBolsas, montanteCusteio, montanteCapital);
+		
+	}
 }

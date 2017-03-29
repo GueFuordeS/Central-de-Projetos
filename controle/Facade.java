@@ -24,7 +24,7 @@ public class Facade {
 		pessoaController = new PessoaController();
 		projetoController = new ProjetoController();
 		participacaoController = new ParticipacaoController(pessoaController, projetoController);
-		uasc = new UASC();
+		uasc = new UASC(projetoController);
 	}
 	
 	public void iniciaSistema() {
@@ -104,11 +104,13 @@ public class Facade {
 		projetoController.editaProjeto(codigo, atributo, valor);
 	}
 	
-	public void atualizaDespesasProjeto(int codigoProjeto, double montanteBolsas, double montanteCusteio, double montanteCapital) 
+	public void atualizaDespesasProjeto(String codigoProjeto, double montanteBolsas, double montanteCusteio, double montanteCapital) 
 			throws NaoEncontradaException, ValidacaoException {
-		projetoController.atualizaDespesasProjeto(codigoProjeto, montanteBolsas, montanteCusteio, montanteCapital);
+		if(codigoProjeto == null || codigoProjeto.trim().isEmpty()) throw new ValidacaoException("Erro na "
+				+ "atualizacao de projeto: codigo nulo ou vazio");
+		projetoController.atualizaDespesasProjeto(Integer.parseInt(codigoProjeto), montanteBolsas, montanteCusteio, montanteCapital);
 	}
-	
+
 	public double calculaColaboracaoUASC(int codigoProjeto) throws NaoEncontradaException, ValidacaoException {
 		return projetoController.calculaColaboracaoUASC(codigoProjeto);
 	}
@@ -144,14 +146,20 @@ public class Facade {
 		participacaoController.removeParticipacao(cpfPessoa, codigoProjeto);
 	}
 	
-	public void diminuiReceita(double valor) {
+	//parte do uasc
+	
+	public void diminuiReceita(double valor) throws ValidacaoException {
 		uasc.diminuiReceita(valor);
+	}
+	
+	public double calculaColaboracaoTotalUASC() {
+		return uasc.calculaColaboracaoTotalUASC();
 	}
 
 	public void fechaSistema() throws NaoEncontradaException, ValidacaoException {
 		//por implementar
 	}
-	
+
 	public static void main(String[] args) {
 	    args = new String[] {"controle.Facade", 
 	    		"acceptance_test/us1_test.txt", 

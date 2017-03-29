@@ -53,4 +53,13 @@ public class Monitoria extends Projeto implements Rendimento {
 	public double calculaColaboracao() {
 		return 0;
 	}
+
+	@Override
+	public void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital)
+			throws ValidacaoException {
+		if(montanteCusteio > 0 || montanteCapital > 0) throw new ValidacaoException("Erro na atualizacao de projeto: "
+				+ "projeto do tipo monitoria nao permite despesas de custeio ou capital");
+		super.getDespesas().atualizaDespesas(montanteBolsas, montanteCusteio, montanteCapital);
+		
+	}
 }

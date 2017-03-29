@@ -419,6 +419,18 @@ public class ProjetoController {
 	}
 	
 	public double calculaColaboracaoUASC(int codigoProjeto) throws NaoEncontradaException, ValidacaoException {
+		
 		return this.recuperaProjeto(codigoProjeto).calculaColaboracao();
+	}
+	
+	public double calculaColaboracaoTotalUASC() {
+		double total = 0;
+		for(Projeto p:projetos) {
+			if(!p.getCheckingUASC()) {
+				total += p.calculaColaboracao();
+				p.setTrueUASC();
+			}
+		} 
+		return total;
 	}
 }

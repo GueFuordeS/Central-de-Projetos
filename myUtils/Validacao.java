@@ -119,6 +119,10 @@ public class Validacao {
 		if(inteiro <= 0) throw new ValidacaoException("Inteiro invalido para a operacao");
 	}
 	
+	public static void validaDouble(double numero) throws ValidacaoException {
+		if(numero < 0) throw new ValidacaoException("Erro na atualizacao da receita da unidade: valor negativo");
+	}
+
 	public static void validaValorHora(double valorHora) throws ValidacaoException {
 		if(valorHora <= 0) 
 			throw new ValidacaoException("Erro na associacao de pessoa a projeto: Valor da hora invalido");

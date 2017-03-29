@@ -115,4 +115,20 @@ public class PED extends Projeto {
 		
 		return super.getDespesasTotais() * (percentual/100);
 	}
+
+	@Override
+	public void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital)
+			throws ValidacaoException {
+		if(!this.categoria.toLowerCase().equals("coop")) {
+			if(montanteCusteio > 0 || montanteCapital > 0) throw new ValidacaoException("Erro na atualizacao de projeto: "
+					+ "projeto do tipo P&D - PIBIC ou PIBIT nao permite despesas de custeio ou capital");
+		}
+		else {
+			System.out.println(montanteBolsas + " " + montanteCusteio + " " + montanteCapital);
+			if(montanteCusteio == 0 || montanteCapital == 0 || getMontanteBolsas() == 0) throw new 
+					ValidacaoException("Erro na atualizacao de projeto: projeto do tipo Coop devem possuir todas as despesas");
+		}
+		if(montanteBolsas == 0) throw new ValidacaoException("Erro na atualizacao de projeto: montante nulo ou vazio");
+		super.getDespesas().atualizaDespesas(montanteBolsas, montanteCusteio, montanteCapital);
+	}
 }

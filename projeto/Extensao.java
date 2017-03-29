@@ -30,4 +30,12 @@ public class Extensao extends Projeto implements Impacto {
 		if(super.getMontanteCusteio() <= 10000 && super.getMontanteCapital() <= 10000) return 0;
 		return super.getDespesasTotais() * ((10.0-(this.impacto/2.0))/100);
 	}
+
+	@Override
+	public void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital)
+			throws ValidacaoException {
+		if(montanteCapital > 0) throw new ValidacaoException("Erro na atualizacao de projeto: "
+				+ "projeto do tipo Extensao nao permite despesas de capital");
+		super.getDespesas().atualizaDespesas(montanteBolsas, montanteCusteio, montanteCapital);
+	}
 }

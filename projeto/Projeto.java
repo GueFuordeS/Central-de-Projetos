@@ -27,6 +27,7 @@ public abstract class Projeto {
 	private Date dataInicio;
 	private int duracao;
 	private Despesa despesas;
+	private boolean checkingUASC;
 	private ArrayList<Participacao> participacoes;
 	
 	/** 
@@ -50,6 +51,7 @@ public abstract class Projeto {
 		this.dataInicio = new Date(dataInicio);
 		this.duracao = duracao;
 		this.despesas = new Despesa();
+		checkingUASC = false;
 		participacoes = new ArrayList<>();
 	}
 	
@@ -110,6 +112,22 @@ public abstract class Projeto {
 
 	public double getMontanteCapital() {
 		return this.despesas.getMontanteCapital();
+	}
+	
+	public boolean getCheckingUASC() {
+		return checkingUASC;
+	}
+	
+	public Despesa getDespesas() {
+		return this.despesas;
+	}
+	
+	public void setTrueUASC() {
+		this.checkingUASC = true;
+	}
+	
+	public void setFalseUASC() {
+		this.checkingUASC = false;
 	}
 	
 	public void setNome(String nome) throws ValidacaoException {
@@ -196,9 +214,7 @@ public abstract class Projeto {
 	
 	public abstract double calculaColaboracao();
 
-	public void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital) {
-		despesas.atualizaDespesas(montanteBolsas, montanteCusteio, montanteCapital);
-	}
+	public abstract void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital) throws ValidacaoException;
 
 	@Override
 	public int hashCode() {
