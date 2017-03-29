@@ -102,4 +102,17 @@ public class PED extends Projeto {
 		}
 		return false;
 	}
+	
+	@Override
+	public double calculaColaboracao() {
+		if(super.getMontanteCusteio() <= 10000 && super.getMontanteCapital() <= 10000) return 0;
+		
+		double percentual = 10;
+		if(this.produtividade.get(Produtividade.PATENTES) > 0) percentual += 3;
+		percentual += this.produtividade.get(Produtividade.PRODTECNICA) * 0.3;
+		percentual -= this.produtividade.get(Produtividade.PRODACADEMICA) * 0.2;
+		percentual += Math.floor(this.getMontanteCapital()/100000);
+		
+		return super.getDespesasTotais() * (percentual/100);
+	}
 }

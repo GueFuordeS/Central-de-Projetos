@@ -48,4 +48,9 @@ public class Monitoria extends Projeto implements Rendimento {
 		validaRendimento(rendimento);
 		this.rendimento = rendimento;
 	}
+
+	@Override
+	public double calculaColaboracao() {
+		return 0;
+	}
 }

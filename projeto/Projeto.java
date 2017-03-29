@@ -26,6 +26,7 @@ public abstract class Projeto {
 	private String objetivo;
 	private Date dataInicio;
 	private int duracao;
+	private Despesa despesas;
 	private ArrayList<Participacao> participacoes;
 	
 	/** 
@@ -48,6 +49,7 @@ public abstract class Projeto {
 		this.objetivo = objetivo;
 		this.dataInicio = new Date(dataInicio);
 		this.duracao = duracao;
+		this.despesas = new Despesa();
 		participacoes = new ArrayList<>();
 	}
 	
@@ -90,6 +92,24 @@ public abstract class Projeto {
 	 */
 	public int getDuracao() {
 		return this.duracao;
+	}
+	
+	public double getDespesasTotais() {
+		return this.despesas.getMontanteBolsas() + this.despesas.getMontanteCusteio() + this.despesas.getMontanteCapital();
+	}
+	
+	public double getMontanteBolsas() {
+		return this.despesas.getMontanteBolsas();
+	}
+
+
+	public double getMontanteCusteio() {
+		return this.despesas.getMontanteCusteio();
+	}
+
+
+	public double getMontanteCapital() {
+		return this.despesas.getMontanteCapital();
 	}
 	
 	public void setNome(String nome) throws ValidacaoException {
@@ -172,6 +192,12 @@ public abstract class Projeto {
 			}
 		}
 		return false;
+	}
+	
+	public abstract double calculaColaboracao();
+
+	public void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital) {
+		despesas.atualizaDespesas(montanteBolsas, montanteCusteio, montanteCapital);
 	}
 
 	@Override

@@ -412,4 +412,13 @@ public class ProjetoController {
 		Projeto p = this.recuperaProjeto(codigo);
 		p.removeParticipacao(cpf);
 	}
+	
+	public void atualizaDespesasProjeto(int codigo, double montanteBolsas, double montanteCusteio, double montanteCapital) 
+			throws NaoEncontradaException, ValidacaoException {
+		this.recuperaProjeto(codigo).atualizaDespesas(montanteBolsas, montanteCusteio, montanteCapital);
+	}
+	
+	public double calculaColaboracaoUASC(int codigoProjeto) throws NaoEncontradaException, ValidacaoException {
+		return this.recuperaProjeto(codigoProjeto).calculaColaboracao();
+	}
 }

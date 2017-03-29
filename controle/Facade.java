@@ -5,6 +5,7 @@ import excecoes.*;
 import participacao.ParticipacaoController;
 import pessoa.PessoaController;
 import projeto.*;
+import uasc.UASC;
 
 /**
  * Uso do padrao de projeto "facade" para convergir todo o sistema para esta classe,
@@ -17,11 +18,13 @@ public class Facade {
 	private PessoaController pessoaController;
 	private ProjetoController projetoController;
 	private ParticipacaoController participacaoController;
+	private UASC uasc;
 	
 	public Facade() throws ValidacaoException {
 		pessoaController = new PessoaController();
 		projetoController = new ProjetoController();
 		participacaoController = new ParticipacaoController(pessoaController, projetoController);
+		uasc = new UASC();
 	}
 	
 	public void iniciaSistema() {
@@ -101,6 +104,15 @@ public class Facade {
 		projetoController.editaProjeto(codigo, atributo, valor);
 	}
 	
+	public void atualizaDespesasProjeto(int codigoProjeto, double montanteBolsas, double montanteCusteio, double montanteCapital) 
+			throws NaoEncontradaException, ValidacaoException {
+		projetoController.atualizaDespesasProjeto(codigoProjeto, montanteBolsas, montanteCusteio, montanteCapital);
+	}
+	
+	public double calculaColaboracaoUASC(int codigoProjeto) throws NaoEncontradaException, ValidacaoException {
+		return projetoController.calculaColaboracaoUASC(codigoProjeto);
+	}
+
 	//Aqui comeca a parte de controle de participacoes
 	
 	public void associaProfessor(String cpfPessoa, int codigoProjeto, boolean coordenador, 
@@ -131,19 +143,27 @@ public class Facade {
 	public void removeParticipacao(String cpfPessoa, int codigoProjeto) throws NaoEncontradaException, ValidacaoException {
 		participacaoController.removeParticipacao(cpfPessoa, codigoProjeto);
 	}
+	
+	public void diminuiReceita(double valor) {
+		uasc.diminuiReceita(valor);
+	}
 
 	public void fechaSistema() throws NaoEncontradaException, ValidacaoException {
 		//por implementar
 	}
 	
 	public static void main(String[] args) {
-	    args = new String[] {"controle.Facade", "acceptance_test/us1_test.txt", 
+	    args = new String[] {"controle.Facade", 
+	    		"acceptance_test/us1_test.txt", 
 	    		"acceptance_test/us1_test_exception.txt",
-	    		"acceptance_test/us2_test.txt", "acceptance_test/us2_test_exception.txt", 
+	    		"acceptance_test/us2_test.txt",
+	    		"acceptance_test/us2_test_exception.txt", 
 	    		"acceptance_test/us3_test.txt",
 	    		"acceptance_test/us3_test_exception.txt",
 	    		"acceptance_test/us4_test.txt",
-	    		"acceptance_test/us5_test.txt"};
+	    		"acceptance_test/us5_test.txt",
+	    		"acceptance_test/us6_test.txt",
+	    		"acceptance_test/us6_test_exception.txt"};
 	    EasyAccept.main(args);
 	}
 }

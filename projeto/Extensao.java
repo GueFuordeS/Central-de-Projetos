@@ -24,4 +24,10 @@ public class Extensao extends Projeto implements Impacto {
 		validaImpacto(impacto);
 		this.impacto = impacto;
 	}
+
+	@Override
+	public double calculaColaboracao() {
+		if(super.getMontanteCusteio() <= 10000 && super.getMontanteCapital() <= 10000) return 0;
+		return super.getDespesasTotais() * ((10.0-(this.impacto/2.0))/100);
+	}
 }

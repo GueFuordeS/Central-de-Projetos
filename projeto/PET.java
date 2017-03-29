@@ -86,4 +86,9 @@ public class PET extends Projeto implements Impacto, Rendimento {
 		produtividade.put(Produtividade.PRODACADEMICA, prodAcademica);
 		produtividade.put(Produtividade.PATENTES, patentes);
 	}
+
+	@Override
+	public double calculaColaboracao() {
+		return 0;
+	}
 }
