@@ -19,7 +19,7 @@ public class PED extends Projeto {
 	private Map<Produtividade,Integer> produtividade;
 	
 	/**
-	 * 
+	 * Construtor responsavel por inicializar objetos dessa classe
 	 * 
 	 * @param codigo recebe o codigo que vai diferenciar cada projeto
 	 * @param nome nome referente ao projeto
@@ -119,13 +119,19 @@ public class PED extends Projeto {
 	@Override
 	public void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital)
 			throws ValidacaoException {
+		if(this.categoria.toLowerCase().equals("pibic") || this.categoria.toLowerCase().equals("pibiti")) {
+			if(montanteBolsas == 0) {
+				throw new ValidacaoException("Erro na atualizacao de projeto: projeto do tipo "
+						+ "P&D - PIBIC ou PIBIT deve permitir despesas de bolsas");
+			}
+		}
 		if(!this.categoria.toLowerCase().equals("coop")) {
 			if(montanteCusteio > 0 || montanteCapital > 0) throw new ValidacaoException("Erro na atualizacao de projeto: "
 					+ "projeto do tipo P&D - PIBIC ou PIBIT nao permite despesas de custeio ou capital");
 		}
 		else {
-			System.out.println(montanteBolsas + " " + montanteCusteio + " " + montanteCapital);
-			if(montanteCusteio == 0 || montanteCapital == 0 || getMontanteBolsas() == 0) throw new 
+			if(montanteCusteio == 0 || montanteCapital == 0 || montanteBolsas == 0) 
+				throw new 
 					ValidacaoException("Erro na atualizacao de projeto: projeto do tipo Coop devem possuir todas as despesas");
 		}
 		if(montanteBolsas == 0) throw new ValidacaoException("Erro na atualizacao de projeto: montante nulo ou vazio");

@@ -423,13 +423,22 @@ public class ProjetoController {
 		return this.recuperaProjeto(codigoProjeto).calculaColaboracao();
 	}
 	
-	public double calculaColaboracaoTotalUASC() {
+	public double calculaColaboracoesUASC() {
 		double total = 0;
 		for(Projeto p:projetos) {
 			if(!p.getCheckingUASC()) {
 				total += p.calculaColaboracao();
 				p.setTrueUASC();
 			}
+		} 
+		return total;
+	}
+	
+	public double calculaColaboracaoTotalUASC() {
+		double total = 0;
+		for(Projeto p:projetos) {
+				total += p.calculaColaboracao();
+
 		} 
 		return total;
 	}

@@ -120,7 +120,7 @@ public class Validacao {
 	}
 	
 	public static void validaDouble(double numero) throws ValidacaoException {
-		if(numero < 0) throw new ValidacaoException("Erro na atualizacao da receita da unidade: valor negativo");
+		if(numero < 0) throw new ValidacaoException("Erro na atualizacao de projeto: valor negativo");
 	}
 
 	public static void validaValorHora(double valorHora) throws ValidacaoException {

@@ -31,7 +31,7 @@ public class Facade {
 		//por implementar
 	}
 	
-	//Aqui comeca a parte de controle de pessoas
+// 	######### CONTROLE DE PESSOAS #########
 	
 	public String cadastraPessoa(String cpf, String nome, String email) throws ValidacaoException {
 		return pessoaController.cadastraPessoa(cpf, nome, email);
@@ -57,7 +57,7 @@ public class Facade {
 		return pessoaController.getValorBolsa(cpfPessoa);
 	}
 
-	//Aqui comeca a parte de controle de projetos
+// 	######### CONTROLE DE PROJETOS #########
 	
 	public int adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo,
 			 String periodo, String dataInicio, int duracao) throws ValidacaoException {
@@ -103,12 +103,7 @@ public class Facade {
 	ValidacaoException {
 		projetoController.editaProjeto(codigo, atributo, valor);
 	}
-	
-	public void atualizaDespesasProjeto(int codigoProjeto, double montanteBolsas, double montanteCusteio, double montanteCapital) 
-			throws NaoEncontradaException, ValidacaoException {
-		projetoController.atualizaDespesasProjeto(codigoProjeto, montanteBolsas, montanteCusteio, montanteCapital);
-	}
-	
+
 	public void atualizaDespesasProjeto(String codigoProjeto, double montanteBolsas, double montanteCusteio, double montanteCapital) 
 			throws NaoEncontradaException, ValidacaoException {
 		if(codigoProjeto == null || codigoProjeto.trim().isEmpty()) throw new ValidacaoException("Erro na "
@@ -116,11 +111,13 @@ public class Facade {
 		projetoController.atualizaDespesasProjeto(Integer.parseInt(codigoProjeto), montanteBolsas, montanteCusteio, montanteCapital);
 	}
 
-	public double calculaColaboracaoUASC(int codigoProjeto) throws NaoEncontradaException, ValidacaoException {
-		return projetoController.calculaColaboracaoUASC(codigoProjeto);
+	public double calculaColaboracaoUASC(String codigoProjeto) throws NaoEncontradaException, ValidacaoException {
+		if(codigoProjeto == null || codigoProjeto.trim().isEmpty()) throw new ValidacaoException("Erro na "
+				+ "consulta de projeto: codigo nulo ou vazio");
+		return projetoController.calculaColaboracaoUASC(Integer.parseInt(codigoProjeto));
 	}
 
-	//Aqui comeca a parte de controle de participacoes
+// 	######### CONTROLE DE PARTICIPACOES #########
 	
 	public void associaProfessor(String cpfPessoa, int codigoProjeto, boolean coordenador, 
 			double valorHora, int qntHoras)
@@ -151,7 +148,7 @@ public class Facade {
 		participacaoController.removeParticipacao(cpfPessoa, codigoProjeto);
 	}
 	
-	//parte do uasc
+// 	######### UASC #########
 	
 	public void diminuiReceita(double valor) throws ValidacaoException {
 		uasc.diminuiReceita(valor);
@@ -161,6 +158,10 @@ public class Facade {
 		return uasc.calculaColaboracaoTotalUASC();
 	}
 
+	public double calculaTotalEmCaixaUASC() {
+		return uasc.getReceita();
+	}
+	
 	public void fechaSistema() throws NaoEncontradaException, ValidacaoException {
 		//por implementar
 	}
