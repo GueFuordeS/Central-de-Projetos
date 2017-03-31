@@ -104,6 +104,11 @@ public class Facade {
 		projetoController.editaProjeto(codigo, atributo, valor);
 	}
 	
+	public void atualizaDespesasProjeto(int codigoProjeto, double montanteBolsas, double montanteCusteio, double montanteCapital) 
+			throws NaoEncontradaException, ValidacaoException {
+		projetoController.atualizaDespesasProjeto(codigoProjeto, montanteBolsas, montanteCusteio, montanteCapital);
+	}
+	
 	public void atualizaDespesasProjeto(String codigoProjeto, double montanteBolsas, double montanteCusteio, double montanteCapital) 
 			throws NaoEncontradaException, ValidacaoException {
 		if(codigoProjeto == null || codigoProjeto.trim().isEmpty()) throw new ValidacaoException("Erro na "
