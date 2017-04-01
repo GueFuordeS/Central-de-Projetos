@@ -6,6 +6,6 @@ Historico das colaboracoes:
 ==> Nome: PET Computacao Data de inicio: 2017-02-03 Valor colaborado: 0.0
 ==> Nome: SAD Computacao Data de inicio: 2017-01-01 Valor colaborado: 0.0
 
-Total acumulado com colaboracoes: 52140.0
-Total gasto: 1480.0
-Total em caixa: 50660.0
+Total gasto(R$):                           1480.0
+Total em caixa(R$):                       50660.0
+Total acumulado com colaboracoes(R$):     52140.0

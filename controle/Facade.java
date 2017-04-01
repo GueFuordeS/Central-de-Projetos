@@ -34,7 +34,7 @@ public class Facade {
 		
 		pessoaController = uasc.getPessoaController();
 		projetoController = uasc.getProjetoController();
-*/		participacaoController = uasc.getParticipacaoController();
+		participacaoController = uasc.getParticipacaoController(); */
 	}
 	
 // 	######### CONTROLE DE PESSOAS #########
@@ -177,6 +177,8 @@ public class Facade {
 	}
 	
 	public void fechaSistema() throws ValidacaoException, IOException  {
+		uasc.exportaDadosProjetos();
+		uasc.exportaDadosColaboracoes();
 		escreveObjeto("arquivos_sistema/cpc_ufcg.dat", uasc);
 	}
 

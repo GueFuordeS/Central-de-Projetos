@@ -69,40 +69,45 @@ public class UASC implements Serializable {
 	
 	public void exportaDadosProjetos() throws ESException, ValidacaoException {
 		final String FIM_DE_LINHA = System.lineSeparator();
-
+		String formatado0 = String.format("%2s%5d", "",projController.getTotalProjetosConcluidos());
+		String formatado1 = String.format("%5s%5d", "",projController.getNumParticipacaoGraduandos());
+		String formatado2 = String.format("%1s%5d", "",projController.getNumParticipacaoPosGraduandos());
+		String formatado3 = String.format("%1s%5d", "",projController.getNumParticipacaoProfissionais());
+		
 		String dados = "Cadastro de Projetos: " + projController.getTotalProjetosCadastrados() + " projetos registrados"
 						+ FIM_DE_LINHA
 						+ FIM_DE_LINHA
 		
 						+ projController.listaProjetos()
 		
-						+ "Total de projetos concluidos: " + " " + projController.getTotalProjetosConcluidos()
+						+ "Total de projetos concluidos:" + formatado0
 						+ FIM_DE_LINHA
-						+  "Participacao da graduacao: " + "    " + projController.getNumParticipacaoGraduandos()
+						+  "Participacao da graduacao:" + formatado1
 						+ " (" + projController.getPorcentagemParticipacaoGraduacao() + "%" + ")"
 						+ FIM_DE_LINHA
-						+  "Participacao da pos-graduacao: " + projController.getNumParticipacaoPosGraduandos()
+						+  "Participacao da pos-graduacao:" + formatado2
 						+ " (" + projController.getPorcentagemParticipacaoPosGraduacao() + "%" + ")"
 						+ FIM_DE_LINHA
-						+  "Participacao de profissionais: " + projController.getNumParticipacaoProfissionais()
-						+ " (" + projController.getPorcentagemParticipacaoProfissional() + "%" + ")"
-						+ FIM_DE_LINHA;
+						+  "Participacao de profissionais:" + formatado3
+						+ " (" + projController.getPorcentagemParticipacaoProfissional() + "%" + ")";
 
 		geraRelatorio("arquivos_sistema/relatorios/cad_projetos.txt", dados);
 	}
 	
 	public void exportaDadosColaboracoes() throws ESException {
 		final String FIM_DE_LINHA = System.lineSeparator();
+		String formatado0 = String.format("%22s%11.1f", "", this.totalGasto);
+		String formatado1 = String.format("%19s%11.1f", "", this.receita);
+		String formatado2 = String.format("%1s%11.1f", "", this.calculaColaboracaoTotalUASC());
 		
 		String dados = "Historico das colaboracoes:" + FIM_DE_LINHA
 						+ projController.listaColaboracoes()
 						+ FIM_DE_LINHA
-						+ "Total acumulado com colaboracoes: " + this.calculaColaboracaoTotalUASC()
+						+ "Total gasto(R$):" + formatado0
 						+ FIM_DE_LINHA
-						+ "Total gasto: " + this.totalGasto
+						+ "Total em caixa(R$):" + formatado1
 						+ FIM_DE_LINHA
-						+ "Total em caixa: " + this.receita
-						+ FIM_DE_LINHA;
+						+ "Total acumulado com colaboracoes(R$):" + formatado2;
 
 		geraRelatorio("arquivos_sistema/relatorios/cad_colaboracoes.txt", dados);
 	}

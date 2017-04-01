@@ -36,7 +36,7 @@ Data de inicio: 2017-01-01
 Coordenador: sem coordenador ate o dado momento
 Situacao: em andamento
 
-Total de projetos concluidos:  0
-Participacao da graduacao:     8 (53.3%)
-Participacao da pos-graduacao: 2 (13.3%)
-Participacao de profissionais: 5 (33.3%)
+Total de projetos concluidos:      0
+Participacao da graduacao:         8 (53.3%)
+Participacao da pos-graduacao:     2 (13.3%)
+Participacao de profissionais:     5 (33.3%)
