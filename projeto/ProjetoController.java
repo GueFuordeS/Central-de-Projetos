@@ -539,4 +539,15 @@ public class ProjetoController {
 		}
 		return dados;
 	}
+
+	public String listaColaboracoes() {
+		final String FIM_DE_LINHA = System.lineSeparator();
+		String dados = "";
+		
+		for(Projeto p:this.projetos) {
+			dados += "==> Nome: " + p.getNome() + " Data de inicio: " + p.getDataInicioAMD() 
+					 + " Valor colaborado: " + p.calculaColaboracao() + FIM_DE_LINHA;
+		}
+		return dados;
+	}
 }

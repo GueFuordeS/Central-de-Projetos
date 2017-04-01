@@ -12,6 +12,7 @@ import excecoes.ValidacaoException;
 
 public class UASC {
 	private double receita;
+	private double totalGasto;
 	private ProjetoController projController;
 	
 	public UASC(ProjetoController projetoController) {
@@ -24,6 +25,10 @@ public class UASC {
 		return this.receita;
 	}
 	
+	public double getTotalGasto() {
+		return this.totalGasto;
+	}
+	
 	public void diminuiReceita(double valor) throws ValidacaoException {
 		try {
 			validaDouble(valor);
@@ -31,10 +36,11 @@ public class UASC {
 		catch(ValidacaoException e) {
 			throw new ValidacaoException("Erro na atualizacao da receita da unidade: valor negativo");
 		}
-			
+		
 		receita += projController.calculaColaboracoesUASC();
 		if(this.receita - valor < 0) throw new ValidacaoException("Erro na atualizacao da receita da unidade: "
 				+ "a unidade nao possui fundos suficientes");
+		totalGasto += valor;
 		this.receita -= valor;
 	}
 	
@@ -49,7 +55,7 @@ public class UASC {
 		PrintWriter printWriter = null;
 		
 		try {
-			fileWriter = new FileWriter("relatorios/cad_projetos.txt");
+			fileWriter = new FileWriter("arquivos_sistema/relatorios/cad_projetos.txt");
 			printWriter = new PrintWriter(fileWriter);
 		}
 		catch(IOException e) {
@@ -81,7 +87,33 @@ public class UASC {
 		printWriter.close();
 	}
 	
-	public void exportaDadosColaboracoes() {
+	public void exportaDadosColaboracoes() throws IOException {
+		final String FIM_DE_LINHA = System.lineSeparator();
 		
+		FileWriter fileWriter = null;
+		PrintWriter printWriter = null;
+		
+		try {
+			fileWriter = new FileWriter("arquivos_sistema/relatorios/cad_colaboracoes.txt");
+			printWriter = new PrintWriter(fileWriter);
+		}
+		catch(IOException e) {
+			throw new IOException("erro ao estabelecer conexao com pasta de saida");
+		}
+		
+		String dados = "Historico das colaboracoes:" + FIM_DE_LINHA
+						+ projController.listaColaboracoes()
+						+ FIM_DE_LINHA
+						+ "Total acumulado com colaboracoes: " + this.calculaColaboracaoTotalUASC()
+						+ FIM_DE_LINHA
+						+ "Total gasto: " + this.totalGasto
+						+ FIM_DE_LINHA
+						+ "Total em caixa: " + this.receita
+						+ FIM_DE_LINHA;
+		
+		if(printWriter != null) {
+			printWriter.print(dados);
+		}
+		printWriter.close();
 	}
 }

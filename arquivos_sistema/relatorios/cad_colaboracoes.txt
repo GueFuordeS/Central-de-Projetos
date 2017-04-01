@@ -1,0 +1,11 @@
+Historico das colaboracoes:
+==> Nome: Monitoria de P2 Data de inicio: 2017-01-01 Valor colaborado: 0.0
+==> Nome: Projeto olimpico Data de inicio: 2017-03-02 Valor colaborado: 2640.0
+==> Nome: APLICACAO DA MINERACAO DE DADOS EM REPOSITORIOS DINAMICOS Data de inicio: 2017-01-01 Valor colaborado: 0.0
+==> Nome: Kubernetes Data de inicio: 2017-01-01 Valor colaborado: 49500.0
+==> Nome: PET Computacao Data de inicio: 2017-02-03 Valor colaborado: 0.0
+==> Nome: SAD Computacao Data de inicio: 2017-01-01 Valor colaborado: 0.0
+
+Total acumulado com colaboracoes: 52140.0
+Total gasto: 1480.0
+Total em caixa: 50660.0

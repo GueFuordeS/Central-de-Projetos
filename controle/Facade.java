@@ -167,8 +167,13 @@ public class Facade {
 		uasc.exportaDadosProjetos();
 	}
 	
+	public void exportaDadosColaboracoes() throws IOException {
+		uasc.exportaDadosColaboracoes();
+	}
+	
 	public void fechaSistema() throws ValidacaoException, IOException {
 		uasc.exportaDadosProjetos();
+		uasc.exportaDadosColaboracoes();
 		//por implementar
 	}
 
