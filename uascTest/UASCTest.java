@@ -17,7 +17,7 @@ public class UASCTest {
 	@Before
 	public void setUp() throws ValidacaoException, NaoEncontradaException {
 		projController = new ProjetoController();
-		uasc = new UASC(projController);
+		uasc = new UASC(null, projController, null);
 		
 		projController.adicionaExtensao("Reflorestamento da ufcg", "trocar as arvores da ufcg por ipês amarelo"
 				, 6, "01/06/2017", 12); //duracao so do plantio, porque o florescimento comeca em media depois de 3 anos

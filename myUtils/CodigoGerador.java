@@ -1,13 +1,20 @@
 package myUtils;
 
+import java.io.Serializable;
+
 /**
  * Classe de utilidade que eh responsavel por gerir e gerar os codigos
  * necessarios para identificar os projetos
  * 
  * @author Gabriel Fernandes
  */
-public class Codigo {
-	private static int codigo = 0;
+public class CodigoGerador implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private static int codigo;
+	
+	public CodigoGerador() {
+		codigo = 0;
+	}
 	
 	/**
 	 * get do codigo, registra o numero de codigos ja gerado
@@ -15,7 +22,7 @@ public class Codigo {
 	 * 
 	 * @return um inteiro do codigo
 	 */
-	public static int getCodigo() {
+	public int getCodigo() {
 		return codigo;
 	}
 	
@@ -25,7 +32,7 @@ public class Codigo {
 	 * 
 	 * @return um inteiro que representa o codigo unico
 	 */
-	public static int geraCodigo() {
+	public int geraCodigo() {
 		return ++codigo;
 	}
 }

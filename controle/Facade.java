@@ -7,6 +7,7 @@ import participacao.ParticipacaoController;
 import pessoa.PessoaController;
 import projeto.*;
 import uasc.UASC;
+import static myUtils.EntradaSaidaDados.*;
 
 /**
  * Uso do padrao de projeto "facade" para convergir todo o sistema para esta classe,
@@ -25,11 +26,15 @@ public class Facade {
 		pessoaController = new PessoaController();
 		projetoController = new ProjetoController();
 		participacaoController = new ParticipacaoController(pessoaController, projetoController);
-		uasc = new UASC(projetoController);
+		uasc = new UASC(pessoaController, projetoController, participacaoController);
 	}
 	
-	public void iniciaSistema() {
-		//por implementar
+	public void iniciaSistema() throws ClassNotFoundException, IOException {
+/*		UASC uasc = (UASC)leObjeto("arquivos_sistema/cpc_ufcg.dat");
+		
+		pessoaController = uasc.getPessoaController();
+		projetoController = uasc.getProjetoController();
+*/		participacaoController = uasc.getParticipacaoController();
 	}
 	
 // 	######### CONTROLE DE PESSOAS #########
@@ -163,18 +168,16 @@ public class Facade {
 		return uasc.getReceita();
 	}
 	
-	public void exportaDadosProjetos() throws ValidacaoException, IOException {
+	public void exportaDadosProjetos() throws ESException, ValidacaoException {
 		uasc.exportaDadosProjetos();
 	}
 	
-	public void exportaDadosColaboracoes() throws IOException {
+	public void exportaDadosColaboracoes() throws ESException {
 		uasc.exportaDadosColaboracoes();
 	}
 	
-	public void fechaSistema() throws ValidacaoException, IOException {
-		uasc.exportaDadosProjetos();
-		uasc.exportaDadosColaboracoes();
-		//por implementar
+	public void fechaSistema() throws ValidacaoException, IOException  {
+		escreveObjeto("arquivos_sistema/cpc_ufcg.dat", uasc);
 	}
 
 	public static void main(String[] args) {

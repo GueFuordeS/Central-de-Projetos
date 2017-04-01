@@ -2,6 +2,8 @@ package myUtils;
 
 import static myUtils.Validacao.*;
 
+import java.io.Serializable;
+
 import excecoes.ValidacaoException;
 
 /**
@@ -10,7 +12,8 @@ import excecoes.ValidacaoException;
  * 
  * @author Gabriel Fernandes
  */
-public class Periodo implements Comparable<Periodo> {
+public class Periodo implements Comparable<Periodo>, Serializable {
+	private static final long serialVersionUID = 1L;
 	int ano;
 	int semestre;
 	

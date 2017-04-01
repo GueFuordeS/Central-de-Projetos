@@ -1,24 +1,32 @@
 package projeto;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import excecoes.NaoEncontradaException;
 import excecoes.ValidacaoException;
-import participacao.Participacao;
-import static myUtils.Codigo.*;
+import myUtils.CodigoGerador;
+import participacao.*;
 
-public class ProjetoController {
+public class ProjetoController implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private CodigoGerador codigoGerador;
 	private List<Projeto> projetos;
 	
 	public ProjetoController() {
+		this.codigoGerador = new CodigoGerador();
 		this.projetos = new ArrayList<>();
+	}
+	
+	public CodigoGerador getCodigoGerador() {
+		return codigoGerador;
 	}
 
 	public int adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo,
 			 String periodo, String dataInicio, int duracao) throws ValidacaoException {
-		int codigo = geraCodigo();
+		int codigo = this.codigoGerador.geraCodigo();
 		
 		Monitoria mon = new Monitoria(codigo, nome, disciplina, rendimento, objetivo, 
 				periodo, dataInicio, duracao);
@@ -30,7 +38,7 @@ public class ProjetoController {
 	
 	public int adicionaPET(String nome, String objetivo, int impacto, int rendimento, 
 			int prodTecnica, int prodAcademica, int patentes, String dataInicio, int duracao) throws ValidacaoException {
-		int codigo = geraCodigo();
+		int codigo = this.codigoGerador.geraCodigo();
 
 		PET pet = new PET(codigo, nome, objetivo, impacto, rendimento, 
 				prodTecnica, prodAcademica, patentes, dataInicio, duracao);
@@ -42,7 +50,7 @@ public class ProjetoController {
 	
 	public int adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao) 
 			throws ValidacaoException {
-		int codigo = geraCodigo();
+		int codigo = codigoGerador.geraCodigo();
 
 		Extensao ext = new Extensao(codigo, nome, objetivo, impacto, dataInicio, duracao);
 		this.hasProjetoToAdd(codigo, nome);
@@ -53,7 +61,7 @@ public class ProjetoController {
 	
 	public int adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, 
 			String objetivo, String dataInicio, int duracao) throws ValidacaoException {
-		int codigo = geraCodigo();
+		int codigo = codigoGerador.geraCodigo();
 		
 		PED ped = new PED(codigo, nome, categoria, prodTecnica, prodAcademica, patentes, 
 				objetivo, dataInicio, duracao);

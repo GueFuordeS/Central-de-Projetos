@@ -1,11 +1,13 @@
 package participacao;
 
+import java.io.Serializable;
+
 import excecoes.ValidacaoException;
 import pessoa.Pessoa;
 import projeto.Projeto;
 
-public class ParticipacaoProfessor extends Participacao {
-
+public class ParticipacaoProfessor extends Participacao implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private boolean isCoordenador;
 	
 	public ParticipacaoProfessor(Pessoa pessoa, Projeto projeto, boolean isCoordenador, String dataInicio, int duracaoEmMeses, 

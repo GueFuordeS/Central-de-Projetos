@@ -15,6 +15,7 @@ import excecoes.ValidacaoException;
  *
  */
 public class PED extends Projeto {
+	private static final long serialVersionUID = 1L;
 	String categoria;
 	private Map<Produtividade,Integer> produtividade;
 	

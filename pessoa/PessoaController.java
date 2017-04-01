@@ -1,5 +1,6 @@
 package pessoa;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import excecoes.*;
 import myUtils.Validacao;
@@ -12,7 +13,8 @@ import participacao.Participacao;
  * @author Gabriel Fernandes
  *
  */
-public class PessoaController {
+public class PessoaController implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Pessoa> pessoas;
 	
 	public PessoaController() {

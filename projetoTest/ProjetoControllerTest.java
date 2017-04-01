@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import excecoes.*;
-import myUtils.Codigo;
+import myUtils.CodigoGerador;
 import projeto.*;
 
 /**
@@ -16,6 +16,7 @@ import projeto.*;
  */
 public class ProjetoControllerTest {
 	ProjetoController controller;
+	CodigoGerador codigoGerador;
 
 	/*
 	 * neste caso testes bem gerais,
@@ -26,6 +27,7 @@ public class ProjetoControllerTest {
 	@Before
 	public void setUp() throws ValidacaoException {
 		controller = new ProjetoController();
+		codigoGerador = controller.getCodigoGerador();
 	}
 	
 	/**
@@ -38,7 +40,7 @@ public class ProjetoControllerTest {
 	 */
 	@Test
 	public void adicionaProjetotest() throws ValidacaoException {
-		int codigo = Codigo.getCodigo();
+		int codigo = this.codigoGerador.getCodigo();
 		assertEquals(codigo+1, controller.adicionaExtensao("Projeto olimpico","Ganhar medalhas de ouro",6,"01/01/2017",6));
 		assertEquals(codigo+2, controller.adicionaMonitoria("Monitoria de lp2", "lp2", 95, "auxiliar","2016.2", "01/01/2017", 12));
 		assertEquals(codigo+3 ,controller.adicionaPED("APLICACAO DA MINERACAO DE DADOS EM REPOSITORIOS DINAMICOS", "PIBITI", 
@@ -51,7 +53,7 @@ public class ProjetoControllerTest {
 		controller.adicionaExtensao("Projeto olimpico","Ganhar medalhas de ouro",6,"01/01/2017",6);
 		controller.adicionaMonitoria("Monitoria de lp2", "lp2", 95, "auxiliar","2016.2", "01/01/2017", 12);
 
-		int codigo = Codigo.getCodigo();
+		int codigo = this.codigoGerador.getCodigo();
 		try {
 			controller.removeProjeto(codigo-1);
 		}
@@ -78,7 +80,7 @@ public class ProjetoControllerTest {
 		controller.adicionaExtensao("Projeto olimpico","Ganhar medalhas de ouro",6,"01/01/2017",6);
 		controller.adicionaMonitoria("Monitoria de lp2", "lp2", 95, "auxiliar","2016.2", "01/01/2017", 12);
 
-		int codigo = Codigo.getCodigo();
+		int codigo = this.codigoGerador.getCodigo();
 		assertEquals("01/01/2017",controller.getInfoProjeto(codigo-1, "data de inicio"));
 		assertEquals("95",controller.getInfoProjeto(codigo, "rendimento"));
 	}
@@ -88,7 +90,7 @@ public class ProjetoControllerTest {
 		controller.adicionaExtensao("Projeto olimpico","Ganhar medalhas de ouro",6,"01/01/2017",6);
 		controller.adicionaMonitoria("Monitoria de lp2", "lp2", 95, "auxiliar","2016.2", "01/01/2017", 12);
 		
-		int codigo = Codigo.getCodigo();
+		int codigo = this.codigoGerador.getCodigo();
 		assertEquals("6", controller.getInfoProjeto(codigo-1, "impacto"));
 		assertEquals("95", controller.getInfoProjeto(codigo, "rendimento"));
 		

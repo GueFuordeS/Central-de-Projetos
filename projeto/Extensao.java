@@ -5,6 +5,7 @@ import static myUtils.Validacao.*;
 import excecoes.ValidacaoException;
 
 public class Extensao extends Projeto implements Impacto {
+	private static final long serialVersionUID = 1L;
 	int impacto;
 	
 	public Extensao(int codigo, String nome, String objetivo, int impacto, String dataInicio, int duracao) 

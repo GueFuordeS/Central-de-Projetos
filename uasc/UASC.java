@@ -4,20 +4,39 @@ import projeto.ProjetoController;
 
 import static myUtils.Validacao.*;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.Serializable;
 
+import excecoes.ESException;
 import excecoes.ValidacaoException;
+import participacao.ParticipacaoController;
+import pessoa.PessoaController;
+import static myUtils.EntradaSaidaDados.*;
 
-public class UASC {
+public class UASC implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private double receita;
 	private double totalGasto;
+	private PessoaController pesController;
 	private ProjetoController projController;
+	private ParticipacaoController partController;
 	
-	public UASC(ProjetoController projetoController) {
+	public UASC(PessoaController pesController, ProjetoController projetoController, ParticipacaoController partController) {
 		this.receita = projetoController.calculaColaboracoesUASC();
+		this.pesController = pesController; 
 		this.projController = projetoController;
+		this.partController = partController;
+	}
+	
+	public PessoaController getPessoaController() {
+		return this.pesController;
+	}
+	
+	public ProjetoController getProjetoController() {
+		return this.projController;
+	}
+	
+	public ParticipacaoController getParticipacaoController() {
+		return this.partController;
 	}
 	
 	public double getReceita() {
@@ -48,21 +67,9 @@ public class UASC {
 		return projController.calculaColaboracaoTotalUASC();
 	}
 	
-	public void exportaDadosProjetos() throws ValidacaoException, IOException {
+	public void exportaDadosProjetos() throws ESException, ValidacaoException {
 		final String FIM_DE_LINHA = System.lineSeparator();
 
-		FileWriter fileWriter = null;
-		PrintWriter printWriter = null;
-		
-		try {
-			fileWriter = new FileWriter("arquivos_sistema/relatorios/cad_projetos.txt");
-			printWriter = new PrintWriter(fileWriter);
-		}
-		catch(IOException e) {
-			throw new IOException("erro ao estabelecer conexao com pasta de saida");
-		}
-		
-		
 		String dados = "Cadastro de Projetos: " + projController.getTotalProjetosCadastrados() + " projetos registrados"
 						+ FIM_DE_LINHA
 						+ FIM_DE_LINHA
@@ -80,26 +87,12 @@ public class UASC {
 						+  "Participacao de profissionais: " + projController.getNumParticipacaoProfissionais()
 						+ " (" + projController.getPorcentagemParticipacaoProfissional() + "%" + ")"
 						+ FIM_DE_LINHA;
-		
-		if(printWriter != null) {
-			printWriter.print(dados);
-		}
-		printWriter.close();
+
+		geraRelatorio("arquivos_sistema/relatorios/cad_projetos.txt", dados);
 	}
 	
-	public void exportaDadosColaboracoes() throws IOException {
+	public void exportaDadosColaboracoes() throws ESException {
 		final String FIM_DE_LINHA = System.lineSeparator();
-		
-		FileWriter fileWriter = null;
-		PrintWriter printWriter = null;
-		
-		try {
-			fileWriter = new FileWriter("arquivos_sistema/relatorios/cad_colaboracoes.txt");
-			printWriter = new PrintWriter(fileWriter);
-		}
-		catch(IOException e) {
-			throw new IOException("erro ao estabelecer conexao com pasta de saida");
-		}
 		
 		String dados = "Historico das colaboracoes:" + FIM_DE_LINHA
 						+ projController.listaColaboracoes()
@@ -110,10 +103,7 @@ public class UASC {
 						+ FIM_DE_LINHA
 						+ "Total em caixa: " + this.receita
 						+ FIM_DE_LINHA;
-		
-		if(printWriter != null) {
-			printWriter.print(dados);
-		}
-		printWriter.close();
+
+		geraRelatorio("arquivos_sistema/relatorios/cad_colaboracoes.txt", dados);
 	}
 }

@@ -6,6 +6,7 @@ import excecoes.ValidacaoException;
 import myUtils.Periodo;
 
 public class Monitoria extends Projeto implements Rendimento {
+	private static final long serialVersionUID = 1L;
 	String disciplina;
 	Periodo periodo;
 	int rendimento;

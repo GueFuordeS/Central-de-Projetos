@@ -24,7 +24,7 @@ public class ParticipacaoControllerTest {
 		
 		partController = new ParticipacaoController(pesController, projController);
 		
-		uasc = new UASC(projController);
+		uasc = new UASC(pesController, projController, partController);
 	}
 
 	@Test

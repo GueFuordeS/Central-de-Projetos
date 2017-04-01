@@ -2,11 +2,14 @@ package participacao;
 
 import excecoes.ValidacaoException;
 import static myUtils.Validacao.*;
+
+import java.io.Serializable;
+
 import pessoa.Pessoa;
 import projeto.Projeto;
 
-public class ParticipacaoPosGraduando extends Participacao {
-
+public class ParticipacaoPosGraduando extends Participacao implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String titulacao;
 	
 	public ParticipacaoPosGraduando(Pessoa pessoa, Projeto projeto, String titulacao,String dataInicio, int duracaoEmMeses,

@@ -2,6 +2,7 @@ package projeto;
 
 import static myUtils.Validacao.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -21,7 +22,8 @@ import participacao.ParticipacaoProfissional;
  *
  */
 
-public abstract class Projeto {
+public abstract class Projeto implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private int codigo;
 	private String nome;
 	private String objetivo;

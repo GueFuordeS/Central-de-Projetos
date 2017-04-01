@@ -2,9 +2,12 @@ package projeto;
 
 import static myUtils.Validacao.*;
 
+import java.io.Serializable;
+
 import excecoes.ValidacaoException;
 
-public class Despesa { //classe sem especificacao ainda, ate o user story chegado
+public class Despesa implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private double montanteBolsas;
 	private double montanteCusteio;
 	private double montanteCapital;
