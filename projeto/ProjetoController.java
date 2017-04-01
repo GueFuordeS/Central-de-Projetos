@@ -1,5 +1,6 @@
 package projeto;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -240,6 +241,10 @@ public class ProjetoController {
 		}
 		return null;
 	}
+	
+	public int getTotalProjetosCadastrados() {
+		return projetos.size();
+	}
 
 	public Projeto recuperaProjeto(int codigo) throws NaoEncontradaException, ValidacaoException {
 		for(Projeto p:this.projetos) {
@@ -249,7 +254,7 @@ public class ProjetoController {
 		}
 		throw new NaoEncontradaException("Erro na consulta de projeto: Projeto nao encontrado");
 	}
-	
+
 	public Projeto recuperaProjeto(String nome) throws NaoEncontradaException, ValidacaoException {
 		for(Projeto p:this.projetos) {
 			if(p.getNome().equals(nome)) {
@@ -425,7 +430,7 @@ public class ProjetoController {
 	
 	public double calculaColaboracoesUASC() {
 		double total = 0;
-		for(Projeto p:projetos) {
+		for(Projeto p:this.projetos) {
 			if(!p.getCheckingUASC()) {
 				total += p.calculaColaboracao();
 				p.setTrueUASC();
@@ -433,13 +438,105 @@ public class ProjetoController {
 		} 
 		return total;
 	}
-	
+
 	public double calculaColaboracaoTotalUASC() {
 		double total = 0;
-		for(Projeto p:projetos) {
+		for(Projeto p:this.projetos) {
 				total += p.calculaColaboracao();
 
 		} 
 		return total;
+	}
+
+	public int getTotalProjetosConcluidos() throws ValidacaoException {
+		int total = 0;
+		for(Projeto p:this.projetos) {
+			if(p.getSituacaoProjeto().equals("finalizado")) {
+				total++;
+			}
+		}
+		return total;
+	}
+	
+	public int getNumParitipacaoGradPosProfi() {
+		int total = 0;
+		
+		for(Projeto p:this.projetos) {
+			total += p.getNumParitipacaoGradPosProfi();
+		}
+		return total;
+	}
+
+	public int getNumParticipacaoGraduandos() {
+		int total = 0;
+		for(Projeto p:projetos) {
+			total += p.getNumParticipacaoGraduandos();
+		}
+		return total;
+	}
+
+	public int getNumParticipacaoPosGraduandos() {
+		int total = 0;
+		for(Projeto p:projetos) {
+			total += p.getNumParticipacaoPosGraduandos();
+		}
+		return total;
+	}
+	
+	public int getNumParticipacaoProfissionais() {
+		int total = 0;
+		for(Projeto p:projetos) {
+			total += p.getNumParticipacaoProfissionais();
+		}
+		return total;
+	}
+	
+	public String getPorcentagemParticipacaoGraduacao() {
+		double total = 0;
+		DecimalFormat df = new DecimalFormat("#.0");
+		
+		if(this.getNumParitipacaoGradPosProfi() != 0) {
+			total += (this.getNumParticipacaoGraduandos()/(this.getNumParitipacaoGradPosProfi()*1.0))*100;
+		}
+		return df.format(total);
+	}
+	
+	public String getPorcentagemParticipacaoPosGraduacao() {
+		double total = 0;
+		DecimalFormat df = new DecimalFormat("#.0");
+		
+		if(this.getNumParitipacaoGradPosProfi() != 0) {
+			total += (this.getNumParticipacaoPosGraduandos()/(this.getNumParitipacaoGradPosProfi()*1.0))*100;
+		}
+
+		return df.format(total);
+	}
+	
+	public String getPorcentagemParticipacaoProfissional() {
+		double total = 0;
+		DecimalFormat df = new DecimalFormat("#.0");
+
+		if(this.getNumParitipacaoGradPosProfi() != 0) {
+			total += (this.getNumParticipacaoProfissionais()/(this.getNumParitipacaoGradPosProfi()*1.0))*100;
+		}
+
+		return df.format(total);
+	}
+	
+	public String listaProjetos() throws ValidacaoException {
+		final String FIM_DE_LINHA = System.lineSeparator();
+		String dados = "";
+		int contador = 0;
+		
+		for(Projeto p:this.projetos) {
+			contador++;
+			dados += "==> Projeto " + contador + ":" + FIM_DE_LINHA
+			      + "Nome: " + p.getNome() + FIM_DE_LINHA
+			      + "Data de inicio: " + p.getDataInicioAMD() + FIM_DE_LINHA
+			      + "Coordenador: " + p.getCoordenadorNome() + FIM_DE_LINHA
+				  + "Situacao: " + p.getSituacaoProjeto() + FIM_DE_LINHA
+				  + FIM_DE_LINHA;
+		}
+		return dados;
 	}
 }

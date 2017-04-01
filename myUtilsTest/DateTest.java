@@ -119,4 +119,41 @@ public class DateTest {
 	public void toStringTest() {
 		assertEquals("27/01/2017", data.toString());
 	}
+	
+	@Test
+	public void toStringAMDTest() {
+		assertEquals("2017-01-27", data.toStringAMD());
+	}
+	
+	@Test
+	public void addMesesTest() throws ValidacaoException {
+		data.addMeses(28); //adcionando 28 meses à data
+		assertEquals("2019-05-27", data.toStringAMD()); //usando o formato aaaa-mm-dd
+	}
+	
+	@Test
+	public void addMesesWithFail() {
+		try {
+			data.addMeses(0); //adicionar 0 meses
+			fail();
+		} catch (Exception e) {
+			assertEquals("Quantidade de meses nao pode ser menor ou igual a zero", e.getMessage());
+		}
+		
+		try {
+			data.addMeses(-13); //adicionando meses, só que negativo
+			fail();
+		} catch (Exception e) {
+			assertEquals("Quantidade de meses nao pode ser menor ou igual a zero", e.getMessage());
+		}
+	}
+	
+	@Test
+	public void geraDataTerminoTest() throws ValidacaoException {
+		Date data2 = data.geraDataTermino(14); //adicionando 14 meses à data
+		assertEquals("2017-01-27", data.toStringAMD()); //data anterior
+		assertEquals("2018-03-27", data2.toStringAMD()); //nova data, usada pra simbolizar a data decorrido o tempo
+		
+		assertEquals(1, data2.compareTo(data)); //nova data sempre sera maior que a anterior
+	}
 }

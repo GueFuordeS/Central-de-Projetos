@@ -4,6 +4,10 @@ import projeto.ProjetoController;
 
 import static myUtils.Validacao.*;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import excecoes.ValidacaoException;
 
 public class UASC {
@@ -36,5 +40,48 @@ public class UASC {
 	
 	public double calculaColaboracaoTotalUASC() {
 		return projController.calculaColaboracaoTotalUASC();
+	}
+	
+	public void exportaDadosProjetos() throws ValidacaoException, IOException {
+		final String FIM_DE_LINHA = System.lineSeparator();
+
+		FileWriter fileWriter = null;
+		PrintWriter printWriter = null;
+		
+		try {
+			fileWriter = new FileWriter("relatorios/cad_projetos.txt");
+			printWriter = new PrintWriter(fileWriter);
+		}
+		catch(IOException e) {
+			throw new IOException("erro ao estabelecer conexao com pasta de saida");
+		}
+		
+		
+		String dados = "Cadastro de Projetos: " + projController.getTotalProjetosCadastrados() + " projetos registrados"
+						+ FIM_DE_LINHA
+						+ FIM_DE_LINHA
+		
+						+ projController.listaProjetos()
+		
+						+ "Total de projetos concluidos: " + " " + projController.getTotalProjetosConcluidos()
+						+ FIM_DE_LINHA
+						+  "Participacao da graduacao: " + "    " + projController.getNumParticipacaoGraduandos()
+						+ " (" + projController.getPorcentagemParticipacaoGraduacao() + "%" + ")"
+						+ FIM_DE_LINHA
+						+  "Participacao da pos-graduacao: " + projController.getNumParticipacaoPosGraduandos()
+						+ " (" + projController.getPorcentagemParticipacaoPosGraduacao() + "%" + ")"
+						+ FIM_DE_LINHA
+						+  "Participacao de profissionais: " + projController.getNumParticipacaoProfissionais()
+						+ " (" + projController.getPorcentagemParticipacaoProfissional() + "%" + ")"
+						+ FIM_DE_LINHA;
+		
+		if(printWriter != null) {
+			printWriter.print(dados);
+		}
+		printWriter.close();
+	}
+	
+	public void exportaDadosColaboracoes() {
+		
 	}
 }

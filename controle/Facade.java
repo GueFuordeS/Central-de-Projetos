@@ -1,5 +1,6 @@
 package controle;
 
+import java.io.IOException;
 import easyaccept.EasyAccept;
 import excecoes.*;
 import participacao.ParticipacaoController;
@@ -162,7 +163,12 @@ public class Facade {
 		return uasc.getReceita();
 	}
 	
-	public void fechaSistema() throws NaoEncontradaException, ValidacaoException {
+	public void exportaDadosProjetos() throws ValidacaoException, IOException {
+		uasc.exportaDadosProjetos();
+	}
+	
+	public void fechaSistema() throws ValidacaoException, IOException {
+		uasc.exportaDadosProjetos();
 		//por implementar
 	}
 

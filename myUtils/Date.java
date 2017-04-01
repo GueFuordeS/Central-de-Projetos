@@ -57,6 +57,24 @@ public class Date implements Comparable<Date> {
 		return this.ano;
 	}
 
+	public void addMeses(int meses) throws ValidacaoException {
+		try {
+		validaDuracao(meses);
+		}
+		catch(ValidacaoException e) {
+			throw new ValidacaoException("Quantidade de meses nao pode ser menor ou igual a zero");
+		}
+		
+		this.ano += meses/12;
+		this.mes += meses%12;
+	}
+
+	public Date geraDataTermino(int duracao) throws ValidacaoException {
+		Date novaData = new Date(this.toString());
+		novaData.addMeses(duracao);
+		return novaData;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -91,6 +109,13 @@ public class Date implements Comparable<Date> {
 		if(dia<10) return "0" + dia + "/" + mes + "/" + ano;
 		if(mes<10) return dia + "/" + "0" + mes + "/" + ano;
 		return dia + "/" + mes + "/" + ano;
+	}
+	
+	public String toStringAMD() { //no formato aaaa-mm-dd
+		if(dia<10 && mes<10) return ano + "-" + "0" + mes + "-" + "0" + dia;
+		if(dia<10) return ano + "-" + mes + "-" + "0" + dia;
+		if(mes<10) return ano + "-" + "0" + mes + "-" + dia;
+		return ano + "-" + mes + "-" + dia;
 	}
 
 	@Override

@@ -11,6 +11,7 @@ import participacao.Participacao;
 import participacao.ParticipacaoGraduando;
 import participacao.ParticipacaoPosGraduando;
 import participacao.ParticipacaoProfessor;
+import participacao.ParticipacaoProfissional;
 
 /**
  * 
@@ -28,6 +29,7 @@ public abstract class Projeto {
 	private int duracao;
 	private Despesa despesas;
 	private boolean checkingUASC;
+	private Date dataTermino;
 	private ArrayList<Participacao> participacoes;
 	
 	/** 
@@ -51,7 +53,8 @@ public abstract class Projeto {
 		this.dataInicio = new Date(dataInicio);
 		this.duracao = duracao;
 		this.despesas = new Despesa();
-		checkingUASC = false;
+		this.checkingUASC = false;
+		this.dataTermino = this.dataInicio.geraDataTermino(duracao);
 		participacoes = new ArrayList<>();
 	}
 	
@@ -88,6 +91,18 @@ public abstract class Projeto {
 		return this.dataInicio.toString();
 	}
 	
+	public String getDataInicioAMD() {
+		return this.dataInicio.toStringAMD();
+	}
+	
+	public String getDataTermino() {
+		return this.dataTermino.toString();
+	}
+	
+	public String getDataTerminoAMD() {
+		return this.dataTermino.toStringAMD();
+	}
+	
 	/** Metodo que ira retornar a duracao do projeto.
 	 * 
 	 * @return int - duracao do projeto.
@@ -122,6 +137,81 @@ public abstract class Projeto {
 		return this.despesas;
 	}
 	
+	public String getCoordenadorNome() {
+		String coordenador = "";
+		for(Participacao p:this.participacoes) {
+			if(p instanceof ParticipacaoProfessor) {
+				if(((ParticipacaoProfessor)p).isCoordenador()) {
+					coordenador += p.getPessoa().getNome();
+				}
+			}
+		}
+		
+		if(coordenador.trim().isEmpty()) coordenador += "sem coordenador ate o dado momento";
+		return coordenador;
+	}
+
+	public String getSituacaoProjeto() throws ValidacaoException {
+		if(this.dataTermino.compareTo(new Date("30/03/2017")) > 0) {
+			return "em andamento";
+		}
+		return "finalizado";
+	}
+
+	public int getNumParticipantes() {
+		return this.participacoes.size();
+	}
+	
+	public int getNumGraduandos() {
+		int numGraduandos = 0;
+		for(Participacao p:this.participacoes) {
+			if(p instanceof ParticipacaoGraduando || p instanceof ParticipacaoPosGraduando) {
+				numGraduandos++;
+			}
+		}
+		return numGraduandos;
+	}
+	
+	public int getNumParitipacaoGradPosProfi() {
+		int numParticipacao = 0;
+		for(Participacao p:this.participacoes) {
+			if(!(p instanceof ParticipacaoProfessor)) {
+				numParticipacao++;
+			}
+		}
+		return numParticipacao;
+	}
+	
+	public int getNumParticipacaoGraduandos() {
+		int numGraduandos = 0;
+		for(Participacao p:this.participacoes) {
+			if(p instanceof ParticipacaoGraduando) {
+				numGraduandos++;
+			}
+		}
+		return numGraduandos;
+	}
+	
+	public int getNumParticipacaoPosGraduandos() {
+		int numPosGraduandos = 0;
+		for(Participacao p:this.participacoes) {
+			if(p instanceof ParticipacaoPosGraduando) {
+				numPosGraduandos++;
+			}
+		}
+		return numPosGraduandos;
+	}
+	
+	public int getNumParticipacaoProfissionais() {
+		int numProfissionais = 0;
+		for(Participacao p:this.participacoes) {
+			if(p instanceof ParticipacaoProfissional) {
+				numProfissionais++;
+			}
+		}
+		return numProfissionais;
+	}
+
 	public void setTrueUASC() {
 		this.checkingUASC = true;
 	}
@@ -251,23 +341,5 @@ public abstract class Projeto {
 			}
 		}
 		return false;
-	}
-	
-	public int getNumParticipantes() {
-		int numParticipantes = 0;
-		for(int i = 0; i < this.participacoes.size(); i++) {
-			numParticipantes++;
-		}
-		return numParticipantes;
-	}
-	
-	public int getNumGraduandos() {
-		int numGraduandos = 0;
-		for(Participacao p:this.participacoes) {
-			if(p instanceof ParticipacaoGraduando || p instanceof ParticipacaoPosGraduando) {
-				numGraduandos++;
-			}
-		}
-		return numGraduandos;
 	}
 }

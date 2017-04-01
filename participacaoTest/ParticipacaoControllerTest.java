@@ -9,11 +9,13 @@ import excecoes.*;
 import participacao.*;
 import pessoa.PessoaController;
 import projeto.ProjetoController;
+import uasc.UASC;
 
 public class ParticipacaoControllerTest {
 	PessoaController pesController;
 	ProjetoController projController;
 	ParticipacaoController partController;
+	UASC uasc;
 	
 	@Before
 	public void setUp() throws ValidacaoException, NaoEncontradaException {
@@ -21,6 +23,8 @@ public class ParticipacaoControllerTest {
 		projController = new ProjetoController();
 		
 		partController = new ParticipacaoController(pesController, projController);
+		
+		uasc = new UASC(projController);
 	}
 
 	@Test
