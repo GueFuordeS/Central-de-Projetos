@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import excecoes.*;
-import myUtils.CodigoGerador;
+import myUtils.GeradorCodigo;
 import projeto.*;
 
 /**
@@ -16,7 +16,7 @@ import projeto.*;
  */
 public class ProjetoControllerTest {
 	ProjetoController controller;
-	CodigoGerador codigoGerador;
+	GeradorCodigo codigoGerador;
 
 	/*
 	 * neste caso testes bem gerais,

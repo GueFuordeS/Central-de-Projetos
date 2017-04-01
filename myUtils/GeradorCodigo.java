@@ -8,11 +8,11 @@ import java.io.Serializable;
  * 
  * @author Gabriel Fernandes
  */
-public class CodigoGerador implements Serializable {
+public class GeradorCodigo implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private static int codigo;
+	private int codigo;
 	
-	public CodigoGerador() {
+	public GeradorCodigo() {
 		codigo = 0;
 	}
 	

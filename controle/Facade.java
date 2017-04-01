@@ -21,7 +21,7 @@ public class Facade {
 	private ProjetoController projetoController;
 	private ParticipacaoController participacaoController;
 	private UASC uasc;
-	
+
 	public Facade() throws ValidacaoException {
 		pessoaController = new PessoaController();
 		projetoController = new ProjetoController();
@@ -30,11 +30,15 @@ public class Facade {
 	}
 	
 	public void iniciaSistema() throws ClassNotFoundException, IOException {
-/*		UASC uasc = (UASC)leObjeto("arquivos_sistema/cpc_ufcg.dat");
-		
-		pessoaController = uasc.getPessoaController();
-		projetoController = uasc.getProjetoController();
-		participacaoController = uasc.getParticipacaoController(); */
+		try {
+		this.uasc = (UASC)leObjeto("arquivos_sistema/cpc_ufcg.dat");
+		this.pessoaController = uasc.getPessoaController();
+		this.projetoController = uasc.getProjetoController();
+		this.participacaoController = uasc.getParticipacaoController();
+		}
+		catch(ClassNotFoundException | IOException e) {
+			
+		}
 	}
 	
 // 	######### CONTROLE DE PESSOAS #########
