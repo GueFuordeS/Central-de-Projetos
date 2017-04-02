@@ -1,11 +1,12 @@
 .metadata
 .recommenders
-/.classpath
+/.directory
 /.gitignore
 /.project
 /README.md
 /RemoteSystemsTempFiles/
 /acceptance_test/
+/arquivos_sistema/
 /controle/
 /easyaccept/
 /excecoes/
@@ -19,8 +20,4 @@
 /projetoTest/
 /uasc/
 /uascTest/
-/arquivos_sistema/
-/relatorios/
-/.directory
-/umlProjeto.ucls
 /uml/

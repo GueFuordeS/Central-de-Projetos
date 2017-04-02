@@ -8,10 +8,32 @@ import java.io.Serializable;
 import pessoa.Pessoa;
 import projeto.Projeto;
 
+/**
+ * Subclasse de Participacao, possui como caracteristicas
+ * adicionais a Participacao um cargo na qual
+ * todo profissional possui, podendo ser ele:
+ * "desenvolvedor", "pesquisador", ou "gerente".
+ * 
+ * @author Gabriel Fernandes
+ */
 public class ParticipacaoProfissional extends Participacao implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String cargo;
 	
+	/**
+	 * Inicializa objeto desta subclasse,
+	 * passando caracteristicas comuns de participacoes
+	 * para o construtor de Participacao.
+	 * 
+	 * @param pessoa				Pessoa na qual vai ser associada
+	 * @param projeto				Projeto na qual a Pessoa vai ser associada
+	 * @param cargo					funcao na qual profissional desempenha
+	 * @param dataInicio			data inicio da associacao
+	 * @param duracaoEmMeses		duracao planejada, em meses
+	 * @param valorDaHora			valor por hora que esta pessoa demanda ao participar deste Projeto
+	 * @param qtdeHorasDedicadas	horas dedicadas a cumprir as funcoes do projeto
+	 * @throws ValidacaoException	em caso de dados invalidos
+	 */
 	public ParticipacaoProfissional(Pessoa pessoa, Projeto projeto, String cargo, String dataInicio, int duracaoEmMeses,
 			double valorDaHora, int qtdeHorasDedicadas) throws ValidacaoException {
 	
@@ -22,15 +44,34 @@ public class ParticipacaoProfissional extends Participacao implements Serializab
 		this.cargo = cargo;
 	}
 	
+	/**
+	 * Acessa o cargo a qual Pessoa
+	 * desta Participacao possui.
+	 * 
+	 * @return		cargo do profissional
+	 */
 	public String getCargo() {
 		return cargo;
 	}
 
+	/**
+	 * Altera cargo em que profissional
+	 * desempenha.
+	 * 
+	 * @param cargo					novo cargo do profissional
+	 * @throws ValidacaoException	em caso de cargo invalido
+	 */
 	public void setCargo(String cargo) throws ValidacaoException {
 		validaCargo(cargo);
 		this.cargo = cargo;
 	}
 
+	/**
+	 * Sobrescrita do hashCode de
+	 * Participacao, usando alem das caracteristicas
+	 * escolhidas para gerar o hash da superclasse:
+	 * cargo de profissional.
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -39,6 +80,12 @@ public class ParticipacaoProfissional extends Participacao implements Serializab
 		return result;
 	}
 
+	/**
+	 * Sobrescrita do equals.
+	 * Alem das caracteristicas de Participacao
+	 * usa: cargo do profissional
+	 * para diferenciar dois objetos deste tipo.
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -56,6 +103,10 @@ public class ParticipacaoProfissional extends Participacao implements Serializab
 		return true;
 	}
 
+	/**
+	 * Implementacao de metodo abstrato da superclasse,
+	 * usando logica especifica para esta subclasse.
+	 */
 	@Override
 	public double geraBolsa() {
 		if(this.cargo.toLowerCase().equals("pesquisador")) {

@@ -102,7 +102,7 @@
   </class>  
   <class id="12" language="java" name="participacao.ParticipacaoProfessor" project="Central-de-Projetos" 
     file="/Central-de-Projetos/participacao/ParticipacaoProfessor.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="203" width="348" x="1297" y="3854"/>    
+    <position height="-1" width="-1" x="774" y="2778"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -163,291 +163,255 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="19">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="20" name="projetos">        
-        <position height="0" width="0" x="-215" y="-17"/>      
-      </attribute>      
-      <multiplicity id="21" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-215" y="-17"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="22">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="23" name="participacoes">        
-        <position height="0" width="0" x="92" y="89"/>      
-      </attribute>      
-      <multiplicity id="24" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="92" y="89"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="25">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <association id="26">    
-    <bendpoint x="699" y="676"/>    
-    <bendpoint x="699" y="1009"/>    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="27" name="pessoaController">        
-        <position height="0" width="0" x="112" y="-252"/>      
-      </attribute>      
-      <multiplicity id="28" minimum="0" maximum="1">        
-        <position height="0" width="0" x="112" y="-252"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="29">    
+  <generalization id="19">    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="3"/>  
   </generalization>  
-  <association id="30">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="31" name="projetoController">        
-        <position height="0" width="0" x="-385" y="50"/>      
-      </attribute>      
-      <multiplicity id="32" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-385" y="50"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="33">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <association id="34">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="35" name="pessoaController">        
-        <position height="0" width="0" x="112" y="-252"/>      
-      </attribute>      
-      <multiplicity id="36" minimum="0" maximum="1">        
-        <position height="0" width="0" x="112" y="-252"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="37">    
-    <bendpoint x="720" y="1009"/>    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="38" name="pesController">        
-        <position height="0" width="0" x="112" y="-252"/>      
-      </attribute>      
-      <multiplicity id="39" minimum="0" maximum="1">        
-        <position height="0" width="0" x="112" y="-252"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="40">    
-    <bendpoint x="1114" y="676"/>    
-    <bendpoint x="1114" y="1009"/>    
+  <association id="20">    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="41" name="projetoController">        
-        <position height="0" width="0" x="-385" y="50"/>      
-      </attribute>      
-      <multiplicity id="42" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-385" y="50"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="43">    
-    <bendpoint x="1673" y="3377"/>    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="44" name="dataTermino">        
-        <position height="0" width="0" x="20" y="-488"/>      
-      </attribute>      
-      <multiplicity id="45" minimum="0" maximum="1">        
-        <position height="0" width="0" x="20" y="-488"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="46">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="47" name="participacoes">        
-        <position height="0" width="0" x="92" y="89"/>      
-      </attribute>      
-      <multiplicity id="48" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="92" y="89"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="49">    
-    <bendpoint x="62" y="2431"/>    
-    <bendpoint x="16" y="3656"/>    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="50" name="pessoas">        
-        <position height="0" width="0" x="-25" y="801"/>      
-      </attribute>      
-      <multiplicity id="51" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="52">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <association id="53">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="54" name="pessoa">        
-        <position height="0" width="0" x="-25" y="801"/>      
-      </attribute>      
-      <multiplicity id="55" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-25" y="801"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="56">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="57" name="projeto">        
-        <position height="0" width="0" x="-215" y="-17"/>      
-      </attribute>      
-      <multiplicity id="58" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-215" y="-17"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="59">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="60" name="partController">        
-        <position height="0" width="0" x="-175" y="101"/>      
-      </attribute>      
-      <multiplicity id="61" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-175" y="101"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="62">    
-    <bendpoint x="1393" y="1342"/>    
-    <bendpoint x="1393" y="2431"/>    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="63" name="participacoes">        
-        <position height="0" width="0" x="92" y="89"/>      
-      </attribute>      
-      <multiplicity id="64" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="92" y="89"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="65">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="66" name="dataInicio">        
-        <position height="0" width="0" x="20" y="-488"/>      
-      </attribute>      
-      <multiplicity id="67" minimum="0" maximum="1">        
-        <position height="0" width="0" x="20" y="-488"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="68">    
-    <bendpoint x="1093" y="676"/>    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="69" name="participacaoController">        
-        <position height="0" width="0" x="-175" y="101"/>      
-      </attribute>      
-      <multiplicity id="70" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-175" y="101"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="71">    
-    <bendpoint x="1694" y="3377"/>    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="72" name="dataInicio">        
-        <position height="0" width="0" x="20" y="-488"/>      
-      </attribute>      
-      <multiplicity id="73" minimum="0" maximum="1">        
-        <position height="0" width="0" x="20" y="-488"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="74">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="75" name="uasc">        
+      <attribute id="21" name="uasc">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="76" minimum="0" maximum="1">        
+      <multiplicity id="22" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="18" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="77">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <generalization id="78">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <association id="79">    
+  <association id="23">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="80" name="periodo">        
+      <attribute id="24" name="periodo">        
         <position height="0" width="0" x="-207" y="-324"/>      
       </attribute>      
-      <multiplicity id="81" minimum="0" maximum="1">        
+      <multiplicity id="25" minimum="0" maximum="1">        
         <position height="0" width="0" x="-207" y="-324"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="16" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="82">    
+  <association id="26">    
+    <bendpoint x="1673" y="3377"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="27" name="dataTermino">        
+        <position height="0" width="0" x="20" y="-488"/>      
+      </attribute>      
+      <multiplicity id="28" minimum="0" maximum="1">        
+        <position height="0" width="0" x="20" y="-488"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="29">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="83" name="geradorCodigo">        
+      <attribute id="30" name="projetos">        
+        <position height="0" width="0" x="-215" y="-17"/>      
+      </attribute>      
+      <multiplicity id="31" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-215" y="-17"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="32">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="33" name="partController">        
+        <position height="0" width="0" x="-175" y="101"/>      
+      </attribute>      
+      <multiplicity id="34" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-175" y="101"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="35">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <association id="36">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="37" name="participacoes">        
+        <position height="0" width="0" x="92" y="89"/>      
+      </attribute>      
+      <multiplicity id="38" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="92" y="89"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="39">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="40" name="projeto">        
+        <position height="0" width="0" x="-215" y="-17"/>      
+      </attribute>      
+      <multiplicity id="41" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-215" y="-17"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="42">    
+    <bendpoint x="751" y="1009"/>    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="43" name="projController">        
+        <position height="0" width="0" x="-385" y="50"/>      
+      </attribute>      
+      <multiplicity id="44" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-385" y="50"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="45">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="46" name="dataInicio">        
+        <position height="0" width="0" x="20" y="-488"/>      
+      </attribute>      
+      <multiplicity id="47" minimum="0" maximum="1">        
+        <position height="0" width="0" x="20" y="-488"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="48">    
+    <bendpoint x="1114" y="676"/>    
+    <bendpoint x="1114" y="1009"/>    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="49" name="projetoController">        
+        <position height="0" width="0" x="-385" y="50"/>      
+      </attribute>      
+      <multiplicity id="50" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-385" y="50"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="51">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="52" name="pessoaController">        
+        <position height="0" width="0" x="112" y="-252"/>      
+      </attribute>      
+      <multiplicity id="53" minimum="0" maximum="1">        
+        <position height="0" width="0" x="112" y="-252"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="55" name="geradorCodigo">        
         <position height="0" width="0" x="-382" y="-127"/>      
       </attribute>      
-      <multiplicity id="84" minimum="0" maximum="1">        
+      <multiplicity id="56" minimum="0" maximum="1">        
         <position height="0" width="0" x="-382" y="-127"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="85">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="9"/>  
+  <association id="57">    
+    <bendpoint x="1093" y="676"/>    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="58" name="participacaoController">        
+        <position height="0" width="0" x="-175" y="101"/>      
+      </attribute>      
+      <multiplicity id="59" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-175" y="101"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="60">    
+    <bendpoint x="62" y="2431"/>    
+    <bendpoint x="16" y="3656"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="61" name="pessoas">        
+        <position height="0" width="0" x="-25" y="801"/>      
+      </attribute>      
+      <multiplicity id="62" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="63">    
+    <bendpoint x="699" y="676"/>    
+    <bendpoint x="699" y="1009"/>    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="64" name="pessoaController">        
+        <position height="0" width="0" x="112" y="-252"/>      
+      </attribute>      
+      <multiplicity id="65" minimum="0" maximum="1">        
+        <position height="0" width="0" x="112" y="-252"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="66">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="3"/>  
   </generalization>  
-  <association id="86">    
-    <bendpoint x="751" y="1009"/>    
+  <association id="67">    
+    <bendpoint x="720" y="1009"/>    
     <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="87" name="projController">        
+      <attribute id="68" name="pesController">        
+        <position height="0" width="0" x="112" y="-252"/>      
+      </attribute>      
+      <multiplicity id="69" minimum="0" maximum="1">        
+        <position height="0" width="0" x="112" y="-252"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="70">    
+    <bendpoint x="1694" y="3377"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="71" name="dataInicio">        
+        <position height="0" width="0" x="20" y="-488"/>      
+      </attribute>      
+      <multiplicity id="72" minimum="0" maximum="1">        
+        <position height="0" width="0" x="20" y="-488"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="73">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="74" name="pessoa">        
+        <position height="0" width="0" x="-25" y="801"/>      
+      </attribute>      
+      <multiplicity id="75" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="801"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="76">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <association id="77">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="78" name="projetoController">        
         <position height="0" width="0" x="-385" y="50"/>      
       </attribute>      
-      <multiplicity id="88" minimum="0" maximum="1">        
+      <multiplicity id="79" minimum="0" maximum="1">        
         <position height="0" width="0" x="-385" y="50"/>      
       </multiplicity>    
     </end>    

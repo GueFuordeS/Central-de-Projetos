@@ -10,12 +10,30 @@ import static myUtils.Validacao.*;
 import pessoa.*;
 import projeto.*;
 
+/**
+ * Classe de controle geral das Participacoes que
+ * sao realizadas em nossa unidade, gerencia criacao, remocao,
+ * guarda historico de participacoes e etc...
+ * 
+ * @author Gabriel Fernandes
+ */
 public class ParticipacaoController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private PessoaController pessoaController;
 	private ProjetoController projetoController;
 	private List<Participacao> participacoes;
 
+	/**
+	 * Como uma associacao eh uma Pessoa ligada a um Projeto,
+	 * necessita de um controle de Pessoa e um de Projeto em sua
+	 * inicializacao, pois cada associacao depende de uma Pessoa e de
+	 * um projeto ja existentes, necessitando ambos estarem previamente
+	 * registrados em ambos os seus controles.
+	 * 
+	 * @param pessoaController		controle de Pessoa
+	 * @param projetoController		controle de Projeto
+	 * @throws ValidacaoException	em caso de dados invalidos
+	 */
 	public ParticipacaoController(PessoaController pessoaController, ProjetoController projetoController)
 			throws ValidacaoException {
 
@@ -27,18 +45,51 @@ public class ParticipacaoController implements Serializable {
 		this.participacoes = new ArrayList<>();
 	}
 
+	/**
+	 * Acessa o controle de Pessoa
+	 * na qual este controle de participacoes 
+	 * esta usando.
+	 * 
+	 * @return	o controle de Pessoa
+	 */
 	public PessoaController getPessoaController() {
 		return pessoaController;
 	}
 
+	/**
+	 * Acessa o controle de Projeto
+	 * na qual este controle de participacoes 
+	 * esta usando.
+	 * 
+	 * @return	o controle de Projeto
+	 */
 	public ProjetoController getProjetoController() {
 		return projetoController;
 	}
 
+	/**
+	 * Acessa a lista contendoo resgitro 
+	 * de todas as participacoes ate o dado momento.
+	 * 
+	 * @return
+	 */
 	public List<Participacao> getParticipacoes() {
 		return participacoes;
 	}
 
+	/**
+	 * Faz uma vinculacao de uma Pessoa do controle
+	 * de Pessoas a um Projeto do controle de Projetos
+	 * como Professor, podendo ser ou nao um coordenador.
+	 * 
+	 * @param cpfPessoa					cpf da Pessoa
+	 * @param codigoProjeto				identificador unico do Projeto
+	 * @param coordenador				indicador se participacao de Professor eh como coordenador ou nao
+	 * @param valorHora					valor por hora gerado a partir da quantidade de horas dedicadas a essa associacao
+	 * @param qntHoras					quantidade de horas previstas para esta Pessoa se dedicar a esta associacao
+	 * @throws NaoEncontradaException	em caso de ambos, Pessoa ou Projeto, nao estiverem em seus respectivos controles
+	 * @throws ValidacaoException		em caso de dados invalidos
+	 */
 	public void associaProfessor(String cpfPessoa, int codigoProjeto, boolean coordenador, double valorHora,
 			int qntHoras) throws NaoEncontradaException, ValidacaoException {
 
@@ -119,6 +170,18 @@ public class ParticipacaoController implements Serializable {
 		}
 	}
 
+	/**
+	 * Faz uma vinculacao de uma Pessoa do controle
+	 * de Pessoas a um Projeto do controle de Projetos
+	 * como Graduando.
+	 * 
+	 * @param cpfPessoa					cpf da Pessoa
+	 * @param codigoProjeto				identificador unico do Projeto
+	 * @param valorHora					valor por hora gerado a partir da quantidade de horas dedicadas a essa associacao
+	 * @param qntHoras					quantidade de horas previstas para esta Pessoa se dedicar a esta associacao
+	 * @throws NaoEncontradaException	em caso de ambos, Pessoa ou Projeto, nao estiverem em seus respectivos controles
+	 * @throws ValidacaoException		em caso de dados invalidos
+	 */
 	public void associaGraduando(String cpfPessoa, int codigoProjeto, double valorHora, int qntHoras)
 			throws NaoEncontradaException, ValidacaoException {
 
@@ -159,6 +222,19 @@ public class ParticipacaoController implements Serializable {
 		}
 	}
 
+	/**
+	 * Faz uma vinculacao de uma Pessoa do controle
+	 * de Pessoas a um Projeto do controle de Projetos
+	 * como Profissional, desempenhando uma funcao especifica.
+	 * 
+	 * @param cpfPessoa					cpf da Pessoa
+	 * @param codigoProjeto				identificador unico do Projeto
+	 * @param cargo						cargo em que profissional vai desempenhar no Projeto
+	 * @param valorHora					valor por hora gerado a partir da quantidade de horas dedicadas a essa associacao
+	 * @param qntHoras					quantidade de horas previstas para esta Pessoa se dedicar a esta associacao
+	 * @throws NaoEncontradaException	em caso de ambos, Pessoa ou Projeto, nao estiverem em seus respectivos controles
+	 * @throws ValidacaoException		em caso de dados invalidos
+	 */
 	public void associaProfissional(String cpfPessoa, int codigoProjeto, String cargo, double valorHora, int qntHoras)
 			throws NaoEncontradaException, ValidacaoException {
 
@@ -204,6 +280,19 @@ public class ParticipacaoController implements Serializable {
 		}
 	}
 
+	/**
+	 * Faz uma vinculacao de uma Pessoa do controle
+	 * de Pessoas a um Projeto do controle de Projetos
+	 * como pos-graduando, possuindo uma titulacao.
+	 * 
+	 * @param cpfPessoa					cpf da Pessoa
+	 * @param codigoProjeto				identificador unico do Projeto
+	 * @param titulacao					titulo de pos-graduacao na qual Pessoa esta cursando
+	 * @param valorHora					valor por hora gerado a partir da quantidade de horas dedicadas a essa associacao
+	 * @param qntHoras					quantidade de horas previstas para esta Pessoa se dedicar a esta associacao
+	 * @throws NaoEncontradaException	em caso de ambos, Pessoa ou Projeto, nao estiverem em seus respectivos controles
+	 * @throws ValidacaoException		em caso de dados invalidos
+	 */
 	public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String titulacao, double valorHora,
 			int qntHoras) throws NaoEncontradaException, ValidacaoException {
 
@@ -233,11 +322,6 @@ public class ParticipacaoController implements Serializable {
 					"Erro na associacao de pessoa a projeto: Tipo de projeto invalido para pos graduando");
 		}
 
-		// parte em que impede pos graduandos de participarem de P&D do tipo
-		// pibiti pivic e pibic como pedia nas especificacoes
-		// do projeto, infelizmente nao foi respeitado isso e em um dos testes
-		// quer que deixe isso acontecer...
-
 		if (projeto instanceof PED) {
 			if (projetoController.hasPEDLimitacao(codigoProjeto)) {
 				throw new ValidacaoException(
@@ -256,6 +340,16 @@ public class ParticipacaoController implements Serializable {
 		}
 	}
 
+	/**
+	 * Realiza a remocao de Participacao
+	 * dos registros, retirando tambem de ambos
+	 * Pessoa e Projeto, o registro desta Participacao.
+	 * 
+	 * @param cpfPessoa					cpf da Pessoa a ser removida
+	 * @param codigoProjeto				identificador unico do Projeto
+	 * @throws NaoEncontradaException	em caso de Participacao, Pessoa ou Projeto nao existirem	
+	 * @throws ValidacaoException		em caso de dados invalidos
+	 */
 	public void removeParticipacao(String cpfPessoa, int codigoProjeto)
 			throws NaoEncontradaException, ValidacaoException {
 		Pessoa pes = null;
@@ -292,6 +386,16 @@ public class ParticipacaoController implements Serializable {
 		}
 	}
 
+	/**
+	 * Usado para lancar excecao caso associacao entre
+	 * Pessoa e Projeto a qual se esta tentando criar 
+	 * uma nova associacao ja exista.
+	 * 
+	 * @param cpf						cpf da Pessoa
+	 * @param codigoProjeto				codigo do Projeto
+	 * @throws NaoEncontradaException	em caso de Pessoa/Projeto nao sendo encontrado
+	 * @throws ValidacaoException		em caso de dados invalidos
+	 */
 	public void hasParticipacaoToAdd(String cpf, int codigoProjeto) throws NaoEncontradaException, ValidacaoException {
 		for (Participacao p : participacoes) {
 			if (pessoaController.recuperaPessoa(cpf).equals(p.getPessoa())
@@ -302,6 +406,20 @@ public class ParticipacaoController implements Serializable {
 		}
 	}
 
+	/**
+	 * Verifica se uma associacao entre Pessoa e Projeto
+	 * ja esta nos registros, utilizando-se de um boolean para o retorno,
+	 * usado principalmente em if's.
+	 * Difere de {@link participacao.ParticipacaoController#hasParticipacaoToAdd}
+	 * pois esta gera uma excecao ao confirmar Participacao, sendo necessario em casos
+	 * especificos de uso.
+	 * 
+	 * @param cpf						cpf da Pessoa
+	 * @param nomeProjeto				codigo do Projeto
+	 * @return							true para Participacao ja existe, false para ainda nao existe essa associacao
+	 * @throws NaoEncontradaException	em caso de Pessoa/Projeto nao sendo encontrado
+	 * @throws ValidacaoException		em caso de dados invalidos
+	 */
 	public boolean hasParticipacao(String cpf, String nomeProjeto) throws NaoEncontradaException, ValidacaoException {
 		for (Participacao p : participacoes) {
 			if (pessoaController.recuperaPessoa(cpf).equals(p.getPessoa())
@@ -312,6 +430,16 @@ public class ParticipacaoController implements Serializable {
 		return false;
 	}
 
+	/**
+	 * Recupera uma Participacao especifica
+	 * dentre os registros do controle de participacoes.
+	 * 
+	 * @param cpfPessoa					cpf da Pessoa presente na associacao
+	 * @param nomeProjeto				nome do Projeto da associacao
+	 * @return							objeto do tipo Participacao
+	 * @throws NaoEncontradaException	em caso de Participacao nao ser encontrada
+	 * @throws ValidacaoException		em caso de dados invalidos
+	 */
 	public Participacao recuperaParticipacao(String cpfPessoa, String nomeProjeto)
 			throws NaoEncontradaException, ValidacaoException {
 		for (Participacao p : participacoes) {
