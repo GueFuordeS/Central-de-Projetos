@@ -8,6 +8,11 @@ import org.junit.Test;
 import excecoes.ValidacaoException;
 import pessoa.Pessoa;
 
+/**
+ * Test de unidade para a classe Pessoa.
+ * 
+ * @author Gabriel Fernandes
+ */
 public class PessoaTest {
 	Pessoa pessoa;
 	

@@ -63,7 +63,7 @@ public class EntradaSaidaDados {
 			objectInput = new ObjectInputStream(fileInput);
 		}
 		catch(FileNotFoundException e) {
-			throw new ESException("Arquivo nao encontrado");
+			//deixa o sistema iniciar do zero novamente
 		}
 		catch(IOException e) {
 			throw new ESException();

@@ -29,15 +29,15 @@ public class Facade {
 		uasc = new UASC(pessoaController, projetoController, participacaoController);
 	}
 	
-	public void iniciaSistema() throws ClassNotFoundException, IOException {
+	public void iniciaSistema() throws ClassNotFoundException, IOException {	
 		try {
-		this.uasc = (UASC)leObjeto("arquivos_sistema/cpc_ufcg.dat");
-		this.pessoaController = uasc.getPessoaController();
-		this.projetoController = uasc.getProjetoController();
-		this.participacaoController = uasc.getParticipacaoController();
+			this.uasc = (UASC)leObjeto("arquivos_sistema/cpc_ufcg.dat");
+			this.pessoaController = uasc.getPessoaController();
+			this.projetoController = uasc.getProjetoController();
+			this.participacaoController = uasc.getParticipacaoController();
 		}
-		catch(ClassNotFoundException | IOException e) {
-			
+		catch(NullPointerException e) {
+			//deixa o sistema comecar do zero, pois nao ha nenhum ponto no qual o programa ja possa partir
 		}
 	}
 	
@@ -181,8 +181,6 @@ public class Facade {
 	}
 	
 	public void fechaSistema() throws ValidacaoException, IOException  {
-		uasc.exportaDadosProjetos();
-		uasc.exportaDadosColaboracoes();
 		escreveObjeto("arquivos_sistema/cpc_ufcg.dat", uasc);
 	}
 

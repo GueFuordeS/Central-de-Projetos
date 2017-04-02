@@ -9,6 +9,11 @@ import excecoes.NaoEncontradaException;
 import excecoes.ValidacaoException;
 import pessoa.*;
 
+/**
+ * Test de unidade para a classe PessoaController.
+ * 
+ * @author Gabriel Fernandes
+ */
 public class PessoaControllerTest {
 	PessoaController pessoas;
 	
@@ -17,7 +22,7 @@ public class PessoaControllerTest {
 		pessoas = new PessoaController();
 		pessoas.cadastraPessoa("222.333.444-55","Natasha","natasha@ccc.ufcg.edu.br");
 	}
-	
+
 	@Test
 	public void cadastraPessoaTest() throws NaoEncontradaException, ValidacaoException  {
 		try {

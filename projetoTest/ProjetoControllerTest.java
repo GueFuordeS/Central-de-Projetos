@@ -57,18 +57,12 @@ public class ProjetoControllerTest {
 		try {
 			controller.removeProjeto(codigo-1);
 		}
-		catch(ValidacaoException e) {
-			fail();
-		}
 		catch(NaoEncontradaException e) {
 			fail();
 		}
 		
 		try {
 			controller.removeProjeto(codigo);
-		}
-		catch(ValidacaoException e) {
-			fail();
 		}
 		catch(NaoEncontradaException e) {
 			fail();

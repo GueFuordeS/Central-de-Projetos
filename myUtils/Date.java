@@ -62,7 +62,7 @@ public class Date implements Comparable<Date>, Serializable {
 
 	public void addMeses(int meses) throws ValidacaoException {
 		try {
-		validaDuracao(meses);
+			validaDuracao(meses);
 		}
 		catch(ValidacaoException e) {
 			throw new ValidacaoException("Quantidade de meses nao pode ser menor ou igual a zero");
