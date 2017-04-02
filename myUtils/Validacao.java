@@ -11,7 +11,6 @@ import projeto.ProjetoController;
  * Classe de utilidade, uso de metodos estaticos aqui para evitar repeticoes durante as validacoes
  * 
  * @author Gabriel Fernandes
- *
  */
 public class Validacao {
 	

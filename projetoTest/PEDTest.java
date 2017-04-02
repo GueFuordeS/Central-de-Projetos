@@ -9,6 +9,11 @@ import excecoes.ValidacaoException;
 import projeto.PED;
 import projeto.Produtividade;
 
+/**
+ * Testes de unidade da classe PED.
+ * 
+ * @author Gabriel Fernandes
+ */
 public class PEDTest {
 	private PED ped;
 	

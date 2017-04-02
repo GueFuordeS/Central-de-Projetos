@@ -11,6 +11,12 @@ import java.io.PrintWriter;
 
 import excecoes.ESException;
 
+/**
+ * Classe de utilidade, com funcoes de leitura e escrita em arquivos,
+ * uso de metodos estaticos para simplificar o uso externo dela.
+ * 
+ * @author Gabriel Fernandes
+ */
 public class EntradaSaidaDados {
 	
 	public static void geraRelatorio(String caminho, String relatorio) throws ESException {

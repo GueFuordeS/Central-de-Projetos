@@ -8,6 +8,11 @@ import org.junit.Test;
 import excecoes.ValidacaoException;
 import projeto.Extensao;
 
+/**
+ * Testes de unidade da classe Extensao.
+ * 
+ * @author Gabriel Fernandes
+ */
 public class ExtensaoTest {
 	private Extensao ext;
 	

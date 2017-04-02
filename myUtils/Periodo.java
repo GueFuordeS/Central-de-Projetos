@@ -8,7 +8,7 @@ import excecoes.ValidacaoException;
 
 /**
  * Implementacao de um tipo periodo para usar dadas nossas necessidades
- * (Embora um pouco desnecessario, nao fica legal usando de string para representar este tipo)
+ * (Embora um pouco desnecessario, nao fica legal usando de string para representar este tipo).
  * 
  * @author Gabriel Fernandes
  */
@@ -17,6 +17,18 @@ public class Periodo implements Comparable<Periodo>, Serializable {
 	int ano;
 	int semestre;
 	
+	/**
+	 * Recebe string em parametro ao ser instanciada,
+	 * necessita de um formato de periodo valido.
+	 * Formatos:aaaa.1
+	 * 			aaaa.2
+	 * 
+	 * no qual, aaaa = um ano qualquer
+	 * (sujeito a excecao dependendo do ano em questao).
+	 * 
+	 * @param periodo				string com o periodo
+	 * @throws ValidacaoException	em caso de dados invalidos
+	 */
 	public Periodo(String periodo) throws ValidacaoException {
 		validaPeriodo(periodo);
 		
@@ -34,14 +46,28 @@ public class Periodo implements Comparable<Periodo>, Serializable {
 		this.semestre = semestre;
 	}
 	
+	/**
+	 * Acessa ano referente ao periodo.
+	 * 
+	 * @return		inteiro do ano referente ao periodo
+	 */
 	public int getAno() {
 		return this.ano;
 	}
 	
+	/**
+	 * Retorna 1 ou 2, dependendo do semestre do
+	 * ano.
+	 * 
+	 * @return		inteiro, representando cada parte do ano(primeira ou segunda metade do ano).
+	 */
 	public int getSemestre() {
 		return this.semestre;
 	}
 
+	/**
+	 * Uso do ano + semestre para gerar os codigos hash.
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -51,6 +77,9 @@ public class Periodo implements Comparable<Periodo>, Serializable {
 		return result;
 	}
 
+	/**
+	 * Uso do ano e semestre para definir se dois periodos sao iguais.
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -67,11 +96,20 @@ public class Periodo implements Comparable<Periodo>, Serializable {
 		return true;
 	}
 
+	/**
+	 * string no format:aaaa.1
+	 * 					aaaa.2
+	 */
 	@Override
 	public String toString() {
 		return this.ano + "." + this.semestre;
 	}
 
+	/**
+	 * Implementacao de metodo da interface
+	 * comparable, para tornar possivel comparacoes entre
+	 * objetos do tipo Periodo.
+	 */
 	@Override
 	public int compareTo(Periodo periodo2) {
 		if(this.ano > periodo2.getAno()) return 1;

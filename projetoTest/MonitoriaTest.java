@@ -8,6 +8,11 @@ import org.junit.Test;
 import excecoes.ValidacaoException;
 import projeto.Monitoria;
 
+/**
+ * Testes de unidade da classe Monitoria.
+ * 
+ * @author Gabriel Fernandes
+ */
 public class MonitoriaTest {
 	private Monitoria mon;
 	

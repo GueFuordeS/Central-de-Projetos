@@ -11,6 +11,11 @@ import participacao.ParticipacaoPosGraduando;
 import pessoa.*;
 import projeto.*;
 
+/**
+ * Testes de unidade da classe ParticipacaoPosGraduando.
+ * 
+ * @author Gabriel Fernandes
+ */
 public class ParticipacaoPosGraduandoTest {
 	PessoaController pessoaCtrl;
 	ProjetoController projetoCtrl;

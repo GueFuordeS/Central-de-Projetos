@@ -10,7 +10,7 @@ import excecoes.ValidacaoException;
 import pessoa.*;
 
 /**
- * Test de unidade para a classe PessoaController.
+ * Teste de unidade para a classe PessoaController.
  * 
  * @author Gabriel Fernandes
  */

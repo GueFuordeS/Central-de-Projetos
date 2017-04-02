@@ -10,6 +10,11 @@ import excecoes.ValidacaoException;
 import projeto.ProjetoController;
 import uasc.UASC;
 
+/**
+ * Testes de unidade da classe UASC.
+ * 
+ * @author Gabriel Fernandes
+ */
 public class UASCTest {
 	ProjetoController projController;
 	UASC uasc;

@@ -9,7 +9,7 @@ import excecoes.ValidacaoException;
 import pessoa.Pessoa;
 
 /**
- * Test de unidade para a classe Pessoa.
+ * Teste de unidade para a classe Pessoa.
  * 
  * @author Gabriel Fernandes
  */

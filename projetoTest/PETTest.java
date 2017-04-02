@@ -9,6 +9,11 @@ import excecoes.ValidacaoException;
 import projeto.PET;
 import projeto.Produtividade;
 
+/**
+ * Testes de unidade da classe PET.
+ * 
+ * @author Gabriel Fernandes
+ */
 public class PETTest {
 	PET pet;
 	

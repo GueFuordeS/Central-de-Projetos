@@ -9,10 +9,9 @@ import excecoes.ValidacaoException;
 /**
  * 
  * Classe implementada para representar um tipo de dado, no caso uma data para as necessidades do projeto
- * para manter um maior controle sobre esse tipo preferiu-se implementa-lo do que reusar de uma classe ja disponivel
+ * para manter um maior controle sobre esse tipo preferiu-se implementa-lo do que reusar de uma classe ja disponivel.
  * 
  * @author Gabriel Fernandes
- *
  */
 public class Date implements Comparable<Date>, Serializable {
 	private static final long serialVersionUID = 1L;
@@ -21,7 +20,7 @@ public class Date implements Comparable<Date>, Serializable {
 	int ano;
 	
 	/**
-	 * Construtor da classe
+	 * Construtor da classe.
 	 * 
 	 * @param date recebe a data
 	 * @throws ValidacaoException caso o formato ou a data em si seja invalida
@@ -48,18 +47,44 @@ public class Date implements Comparable<Date>, Serializable {
 		this.ano = ano;
 	}
 	
+	/**
+	 * Acesso ao atributo dia de uma
+	 * data.
+	 * 
+	 * @return		dia da data
+	 */
 	public int getDia() {
 		return this.dia;
 	}
 	
+	/**
+	 * Acesso ao atributo mes de uma
+	 * data.
+	 * 
+	 * @return		mes da data
+	 */
 	public int getMes() {
 		return this.mes;
 	}
 	
+	/**
+	 * Acesso ao atributo ano de uma
+	 * data.
+	 * 
+	 * @return		ano da data
+	 */
 	public int getAno() {
 		return this.ano;
 	}
 
+	/**
+	 * Incrementa uma data ja existente,
+	 * atualizando a data dada a quantidade de meses passados
+	 * como argumento.
+	 * 
+	 * @param meses					meses a adicionar na data
+	 * @throws ValidacaoException	caso quantidades de meses seja menor ou igual a zero
+	 */
 	public void addMeses(int meses) throws ValidacaoException {
 		try {
 			validaDuracao(meses);
@@ -72,12 +97,27 @@ public class Date implements Comparable<Date>, Serializable {
 		this.mes += meses%12;
 	}
 
+	/**
+	 * Gera uma nova data, a partir de uma ja existente
+	 * e de uma quantidade de meses, retorna nova data,
+	 * nao altera a atual
+	 * (utilizado principalmente para gerar datas de terminos a partir
+	 * de um periodo de tempo).
+	 * 
+	 * @param duracao				duracao a incrementar na novaData
+	 * @return						nova data
+	 * @throws ValidacaoException	em caso de duracao for menor ou igual a zero
+	 */
 	public Date geraDataTermino(int duracao) throws ValidacaoException {
 		Date novaData = new Date(this.toString());
 		novaData.addMeses(duracao);
 		return novaData;
 	}
 	
+	/**
+	 * Sobrescreve hashCode.
+	 * Utiliza-se dia, mes e ano para geracao do codigo hash.
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -88,6 +128,12 @@ public class Date implements Comparable<Date>, Serializable {
 		return result;
 	}
 
+	/**
+	 * Sobrescreve equals.
+	 * Caso necessite comparacao entre duas instancias de
+	 * Date, para saber se sao a mesma data, verifica-se
+	 * se possuem dia, mes e ano semlhantes, se sim, sao a mesma data.
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -106,6 +152,11 @@ public class Date implements Comparable<Date>, Serializable {
 		return true;
 	}
 
+	/**
+	 * Sobrescreve toString
+	 * (Garante um 0 antes de dia ou mes, se este for menor que 10).
+	 * Formato de data: "dd/mm/aaaa".
+	 */
 	@Override
 	public String toString() {
 		if(dia<10 && mes<10) return "0" + dia + "/" + "0" + mes + "/" + ano;
@@ -114,6 +165,12 @@ public class Date implements Comparable<Date>, Serializable {
 		return dia + "/" + mes + "/" + ano;
 	}
 	
+	/**
+	 * Sobrescreve toString.
+	 * Formato de data: "aaaa-mm-dd"
+	 * (disso vem o "AMD").
+	 * 
+	 */
 	public String toStringAMD() { //no formato aaaa-mm-dd
 		if(dia<10 && mes<10) return ano + "-" + "0" + mes + "-" + "0" + dia;
 		if(dia<10) return ano + "-" + mes + "-" + "0" + dia;
@@ -121,6 +178,11 @@ public class Date implements Comparable<Date>, Serializable {
 		return ano + "-" + mes + "-" + dia;
 	}
 
+	/**
+	 * Implementacao de metodo da interface
+	 * comparable, para tornar possivel comparacoes entre
+	 * objetos do tipo Date.
+	 */
 	@Override
 	public int compareTo(Date date) {
 		if(this.ano > date.getAno()) return 1;

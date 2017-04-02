@@ -11,6 +11,11 @@ import pessoa.PessoaController;
 import projeto.ProjetoController;
 import uasc.UASC;
 
+/**
+ * Testes de unidade da classe ParticipacaoController.
+ * 
+ * @author Gabriel Fernandes
+ */
 public class ParticipacaoControllerTest {
 	PessoaController pesController;
 	ProjetoController projController;
