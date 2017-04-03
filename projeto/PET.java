@@ -22,8 +22,8 @@ import excecoes.ValidacaoException;
  */
 public class PET extends Projeto implements Impacto, Rendimento {
 	private static final long serialVersionUID = 1L;
-	int impacto;
-	int rendimento;
+	private int impacto;
+	private int rendimento;
 	private Map<Produtividade,Integer> produtividade;
 	
 	/**

@@ -15,7 +15,7 @@ import excecoes.ValidacaoException;
  */
 public class Extensao extends Projeto implements Impacto {
 	private static final long serialVersionUID = 1L;
-	int impacto;
+	private int impacto;
 	
 	/**
 	 * Constroi objeto a partir de informacoes passadas sobre ele 

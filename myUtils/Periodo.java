@@ -14,8 +14,8 @@ import excecoes.ValidacaoException;
  */
 public class Periodo implements Comparable<Periodo>, Serializable {
 	private static final long serialVersionUID = 1L;
-	int ano;
-	int semestre;
+	private int ano;
+	private int semestre;
 	
 	/**
 	 * Recebe string em parametro ao ser instanciada,

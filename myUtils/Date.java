@@ -15,9 +15,9 @@ import excecoes.ValidacaoException;
  */
 public class Date implements Comparable<Date>, Serializable {
 	private static final long serialVersionUID = 1L;
-	int dia;
-	int mes;
-	int ano;
+	private int dia;
+	private int mes;
+	private int ano;
 	
 	/**
 	 * Construtor da classe.

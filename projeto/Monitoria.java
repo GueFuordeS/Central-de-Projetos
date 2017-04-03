@@ -17,9 +17,9 @@ import myUtils.Periodo;
  */
 public class Monitoria extends Projeto implements Rendimento {
 	private static final long serialVersionUID = 1L;
-	String disciplina;
-	Periodo periodo;
-	int rendimento;
+	private String disciplina;
+	private Periodo periodo;
+	private int rendimento;
 	
 	/**
 	 * Constroi objeto a partir de informacoes passadas sobre ele 
